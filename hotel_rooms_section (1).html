@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7Days Motel - Prime Location</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --crimson: #C32026;
+            --crimson-dark: #741721;
+            --evergreen: #0F3A34;
+            --evergreen-dark: #0D2F2B;
+            --gold: #D4AF37;
+            --light-bg: #F8F5F2;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f9f9f9;
+        }
+
+        /* Location Section */
+        .location-section {
+            padding: 100px 40px;
+            background: linear-gradient(135deg, #f8f5f2 0%, #ffffff 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .location-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 400px;
+            height: 400px;
+            background: var(--evergreen);
+            opacity: 0.03;
+            border-radius: 50%;
+            transform: translate(200px, -200px);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header */
+        .location-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 80px;
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--crimson) 0%, var(--crimson-dark) 100%);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 15px rgba(195, 32, 38, 0.2);
+        }
+
+        .section-title {
+            font-size: 48px;
+            color: var(--evergreen);
+            margin-bottom: 20px;
+            font-weight: 300;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            color: #666;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Main Layout */
+        .location-main {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 60px;
+            margin-bottom: 80px;
+        }
+
+        /* Map Container */
+        .map-container {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(15, 58, 52, 0.15);
+            height: 600px;
+            transition: all 0.4s ease;
+        }
+
+        .map-container:hover {
+            box-shadow: 0 30px 60px rgba(15, 58, 52, 0.25);
+            transform: translateY(-5px);
+        }
+
+        .map-frame {
+            width: 100%;
+            height: 100%;
+        }
+
+        .map-frame iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            filter: grayscale(10%) contrast(1.05) saturate(1.05);
+        }
+
+        /* Get Directions Overlay */
+        .directions-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(15, 58, 52, 0.1), rgba(15, 58, 52, 0.3));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+
+        .map-container:hover .directions-overlay {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .directions-btn {
+            background: linear-gradient(135deg, var(--crimson) 0%, var(--crimson-dark) 100%);
+            color: white;
+            border: none;
+            padding: 18px 35px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(195, 32, 38, 0.4);
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.4s ease 0.1s;
+        }
+
+        .map-container:hover .directions-btn {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .directions-btn:hover {
+            background: linear-gradient(135deg, var(--crimson-dark) 0%, #5a121a 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(195, 32, 38, 0.5);
+        }
+
+        /* Location Details */
+        .location-details {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .detail-card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.03);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .detail-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .detail-card h3 {
+            color: var(--evergreen);
+            font-size: 22px;
+            margin-bottom: 20px;
+            font-weight: 400;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .detail-card h3 i {
+            color: var(--crimson);
+            font-size: 20px;
+        }
+
+        /* Address Card */
+        .address-card {
+            background: linear-gradient(135deg, var(--evergreen) 0%, var(--evergreen-dark) 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .address-card h3 {
+            color: white;
+        }
+
+        .address-card::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 100px;
+            height: 100px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+        }
+
+        .address-text {
+            font-size: 20px;
+            line-height: 1.5;
+            margin-bottom: 25px;
+            font-weight: 300;
+        }
+
+        .address-highlights {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .highlight-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .highlight-item i {
+            color: var(--gold);
+            font-size: 18px;
+            width: 24px;
+        }
+
+        .highlight-item div {
+            flex: 1;
+        }
+
+        .highlight-item strong {
+            display: block;
+            font-size: 18px;
+            color: white;
+        }
+
+        .highlight-item span {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        /* Transportation Card */
+        .transport-list {
+            list-style: none;
+        }
+
+        .transport-list li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+            color: var(--evergreen);
+            font-size: 16px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .transport-list li:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .transport-list i {
+            color: var(--crimson);
+            font-size: 18px;
+            width: 24px;
+        }
+
+        /* Features Card */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .feature-item {
+            background: rgba(15, 58, 52, 0.05);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            background: rgba(15, 58, 52, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .feature-item i {
+            color: var(--crimson);
+            font-size: 20px;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .feature-item span {
+            color: var(--evergreen);
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 58, 52, 0.95);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-container {
+            background: white;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 500px;
+            padding: 40px;
+            position: relative;
+            transform: translateY(30px);
+            transition: transform 0.4s ease;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-overlay.active .modal-container {
+            transform: translateY(0);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #999;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .modal-close:hover {
+            color: var(--crimson);
+        }
+
+        .modal-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .modal-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--crimson) 0%, var(--crimson-dark) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 32px;
+            box-shadow: 0 10px 20px rgba(195, 32, 38, 0.3);
+        }
+
+        .modal-title {
+            color: var(--evergreen);
+            font-size: 28px;
+            margin-bottom: 10px;
+            font-weight: 400;
+        }
+
+        .modal-subtitle {
+            color: #666;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .modal-content {
+            margin-bottom: 30px;
+        }
+
+        .location-option {
+            background: #f8f8f8;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .location-option:hover {
+            background: #f0f0f0;
+            border-color: var(--crimson);
+        }
+
+        .location-option.selected {
+            background: rgba(195, 32, 38, 0.05);
+            border-color: var(--crimson);
+        }
+
+        .option-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+
+        .option-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--evergreen);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+        }
+
+        .option-title {
+            color: var(--evergreen);
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .option-desc {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .modal-footer {
+            text-align: center;
+        }
+
+        .modal-btn {
+            background: linear-gradient(135deg, var(--evergreen) 0%, var(--evergreen-dark) 100%);
+            color: white;
+            border: none;
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .modal-btn:hover {
+            background: linear-gradient(135deg, var(--evergreen-dark) 0%, #0A2522 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(15, 58, 52, 0.3);
+        }
+
+        /* CTA Section */
+        .location-cta {
+            background: linear-gradient(135deg, var(--evergreen) 0%, var(--evergreen-dark) 100%);
+            border-radius: 20px;
+            padding: 50px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 20px 40px rgba(15, 58, 52, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .location-cta::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 150px;
+            height: 150px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+        }
+
+        .cta-title {
+            font-size: 36px;
+            margin-bottom: 15px;
+            font-weight: 300;
+        }
+
+        .cta-subtitle {
+            font-size: 18px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            line-height: 1.5;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .cta-btn {
+            padding: 18px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            min-width: 180px;
+            justify-content: center;
+        }
+
+        .cta-btn-primary {
+            background: var(--crimson);
+            color: white;
+            box-shadow: 0 10px 20px rgba(195, 32, 38, 0.3);
+        }
+
+        .cta-btn-primary:hover {
+            background: var(--crimson-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(195, 32, 38, 0.4);
+        }
+
+        .cta-btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .cta-btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .location-main {
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .location-main {
+                grid-template-columns: 1fr;
+            }
+            
+            .map-container {
+                height: 500px;
+            }
+            
+            .location-section {
+                padding: 80px 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .location-section {
+                padding: 60px 20px;
+            }
+            
+            .section-title {
+                font-size: 36px;
+            }
+            
+            .map-container {
+                height: 400px;
+            }
+            
+            .location-cta {
+                padding: 40px 30px;
+            }
+            
+            .cta-title {
+                font-size: 28px;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .cta-btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section-title {
+                font-size: 30px;
+            }
+            
+            .section-label {
+                padding: 8px 20px;
+                font-size: 13px;
+            }
+            
+            .map-container {
+                height: 350px;
+            }
+            
+            .detail-card {
+                padding: 25px;
+            }
+            
+            .modal-container {
+                padding: 30px 20px;
+                width: 95%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Location Section -->
+    <section class="location-section">
+        <div class="container">
+            <!-- Header -->
+            <div class="location-header">
+                <div class="section-label">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>PRIME LOCATION</span>
+                </div>
+                <h2 class="section-title">Where Luxury Meets Convenience</h2>
+                <p class="section-subtitle">Nestled in the most exclusive area of Entebbe, 7Days Motel offers both tranquility and accessibility to the city's finest attractions.</p>
+            </div>
+
+            <!-- Main Content -->
+            <div class="location-main">
+                <!-- Map Container -->
+                <div class="map-container">
+                    <div class="map-frame">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1994.9082828893952!2d32.4566381015772!3d0.05373357520054011!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177d87007324a94d%3A0xbda7c1f0e627e14b!2s7%20days%20motel!5e0!3m2!1sen!2sug!4v1764681450025!5m2!1sen!2sug" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                    <div class="directions-overlay">
+                        <button class="directions-btn" id="openDirectionsModal">
+                            <i class="fas fa-directions"></i>
+                            GET DIRECTIONS
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Location Details -->
+                <div class="location-details">
+                    <!-- Address Card -->
+                    <div class="detail-card address-card">
+                        <h3><i class="fas fa-hotel"></i> Prime Address</h3>
+                        <p class="address-text">Opposite UN Base,<br>Entebbe, Uganda</p>
+                        
+                        <div class="address-highlights">
+                            <div class="highlight-item">
+                                <i class="fas fa-plane-departure"></i>
+                                <div>
+                                    <strong>5 minutes</strong>
+                                    <span>to Entebbe International Airport</span>
+                                </div>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-city"></i>
+                                <div>
+                                    <strong>10 minutes</strong>
+                                    <span>to Entebbe City Center</span>
+                                </div>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-lake"></i>
+                                <div>
+                                    <strong>3 minutes</strong>
+                                    <span>to Lake Victoria Shore</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Features Card -->
+                    <div class="detail-card">
+                        <h3><i class="fas fa-crown"></i> Exclusive Features</h3>
+                        <div class="features-grid">
+                            <div class="feature-item">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>24/7 Security</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-university"></i>
+                                <span>UN Base Adjacent</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-user-secret"></i>
+                                <span>VIP Privacy</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-lock"></i>
+                                <span>Controlled Access</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA Section -->
+            <div class="location-cta">
+                <h3 class="cta-title">Experience Luxury in the Heart of Entebbe</h3>
+                <p class="cta-subtitle">Book your stay and enjoy our prime location with exclusive benefits and easy access to all attractions.</p>
+                <div class="cta-buttons">
+                    <a href="#" class="cta-btn cta-btn-primary">
+                        <i class="fas fa-calendar-check"></i>
+                        BOOK YOUR STAY
+                    </a>
+                    <a href="#" class="cta-btn cta-btn-secondary">
+                        <i class="fas fa-phone-alt"></i>
+                        CONTACT US
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Directions Modal -->
+    <div class="modal-overlay" id="directionsModal">
+        <div class="modal-container">
+            <button class="modal-close" id="closeModal">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="modal-header">
+                <div class="modal-icon">
+                    <i class="fas fa-directions"></i>
+                </div>
+                <h3 class="modal-title">Get Directions to 7Days Motel</h3>
+                <p class="modal-subtitle">Select your current location method</p>
+            </div>
+            
+            <div class="modal-content">
+                <div class="location-option" id="currentLocationOption">
+                    <div class="option-header">
+                        <div class="option-icon">
+                            <i class="fas fa-location-arrow"></i>
+                        </div>
+                        <div>
+                            <div class="option-title">Use My Current Location</div>
+                            <div class="option-desc">Get directions from where you are right now</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="location-option" id="manualLocationOption">
+                    <div class="option-header">
+                        <div class="option-icon">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </div>
+                        <div>
+                            <div class="option-title">Enter Location Manually</div>
+                            <div class="option-desc">Type your starting address or location</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+                <button class="modal-btn" id="getDirectionsBtn">
+                    <i class="fas fa-route"></i>
+                    GET DIRECTIONS
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Modal functionality
+        const openModalBtn = document.getElementById('openDirectionsModal');
+        const closeModalBtn = document.getElementById('closeModal');
+        const modal = document.getElementById('directionsModal');
+        const currentLocationOption = document.getElementById('currentLocationOption');
+        const manualLocationOption = document.getElementById('manualLocationOption');
+        const getDirectionsBtn = document.getElementById('getDirectionsBtn');
+        
+        let selectedOption = 'current';
+        
+        // Open modal
+        openModalBtn.addEventListener('click', () => {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        // Close modal
+        closeModalBtn.addEventListener('click', () => {
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Close modal when clicking outside
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Select location option
+        currentLocationOption.addEventListener('click', () => {
+            selectedOption = 'current';
+            currentLocationOption.classList.add('selected');
+            manualLocationOption.classList.remove('selected');
+        });
+        
+        manualLocationOption.addEventListener('click', () => {
+            selectedOption = 'manual';
+            manualLocationOption.classList.add('selected');
+            currentLocationOption.classList.remove('selected');
+        });
+        
+        // Initialize with current location selected
+        currentLocationOption.classList.add('selected');
+        
+        // Get directions button
+        getDirectionsBtn.addEventListener('click', () => {
+            if (selectedOption === 'current') {
+                // Get current location
+                if (navigator.geolocation) {
+                    getDirectionsBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> GETTING LOCATION...';
+                    
+                    navigator.geolocation.getCurrentPosition(
+                        (position) => {
+                            const lat = position.coords.latitude;
+                            const lng = position.coords.longitude;
+                            
+                            // Redirect to Google Maps with directions
+                            window.open(`https://www.google.com/maps/dir/${lat},${lng}/0.0537336,32.4566381/@0.0537336,32.4566381,17z`, '_blank');
+                            
+                            // Close modal and reset button
+                            modal.classList.remove('active');
+                            document.body.style.overflow = 'auto';
+                            getDirectionsBtn.innerHTML = '<i class="fas fa-route"></i> GET DIRECTIONS';
+                        },
+                        (error) => {
+                            alert('Unable to retrieve your location. Please enable location services or try manual entry.');
+                            getDirectionsBtn.innerHTML = '<i class="fas fa-route"></i> GET DIRECTIONS';
+                        }
+                    );
+                } else {
+                    alert('Geolocation is not supported by your browser. Please use manual entry.');
+                }
+            } else {
+                // For manual entry, open Google Maps with destination only
+                window.open('https://www.google.com/maps/dir//0.0537336,32.4566381/@0.0537336,32.4566381,17z', '_blank');
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Add smooth animations
+        document.addEventListener('DOMContentLoaded', () => {
+            // Animate cards on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe detail cards
+            document.querySelectorAll('.detail-card').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(card);
+            });
+            
+            // Observe CTA
+            const cta = document.querySelector('.location-cta');
+            cta.style.opacity = '0';
+            cta.style.transform = 'translateY(30px)';
+            cta.style.transition = 'opacity 0.6s ease 0.2s, transform 0.6s ease 0.2s';
+            observer.observe(cta);
+        });
+    </script>
+</body>
+</html>

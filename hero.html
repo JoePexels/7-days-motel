@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7Days Motel Entebbe | Cheap Hotels & Budget Accommodation | Affordable Motels Near Me</title>
+    <meta name="description"
+        content="Find the best cheap hotels in Entebbe at 7Days Motel. Budget-friendly accommodation with luxury amenities. Affordable motels near Entebbe Airport with special deals.">
+    <meta name="keywords"
+        content="cheap hotels, budget hotels, affordable motels, cheap motels, budget accommodation, low cost hotels, cheap hotels near me, budget motels, affordable hotels, cheap stays, discount hotels, economical hotels">
+    <meta name="author" content="7Days Motel Entebbe">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title"
+        content="7Days Motel Entebbe | Cheap Hotels & Budget Accommodation | Affordable Motels Near Me">
+    <meta property="og:description"
+        content="Best cheap hotels in Entebbe with luxury amenities. Budget-friendly accommodation near Entebbe Airport with special deals.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://7daysmotelentebbe.com">
+    <meta property="og:image" content="https://cf.bstatic.com/xdata/images/hotel/max1024x768/671161211.jpg">
+
+    <!-- Schema.org markup for Google -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Hotel",
+      "name": "7Days Motel Entebbe",
+      "description": "Best cheap hotels in Entebbe with luxury amenities. Budget-friendly accommodation",
+      "url": "https://7daysmotelentebbe.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Opposite UN Base",
+        "addressLocality": "Entebbe",
+        "addressCountry": "Uganda"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "0.0500",
+        "longitude": "32.4600"
+      },
+      "priceRange": "$",
+      "telephone": "+256-XXX-XXXXXX",
+      "amenityFeature": [
+        "Airport shuttle",
+        "Free WiFi",
+        "Air conditioning",
+        "Restaurant",
+        "Room service"
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.6",
+        "reviewCount": "342"
+      },
+      "makesOffer": {
+        "@type": "Offer",
+        "description": "Budget-friendly rates and special discounts for cheap hotel stays"
+      }
+    }
+    </script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --crimson: #C32026;
+            --crimson-dark: #741721;
+            --evergreen: #0F3A34;
+            --evergreen-dark: #0D2F2B;
+            --gold: #D6B87A;
+            --gold-light: #E8D4B0;
+            --gold-dark: #C7B87A;
+            --white: #FFFFFF;
+            --ivory: #F7F4EC;
+            --charcoal: #1A1A1A;
+            --mist: #E2E2E2;
+            --smoke: #444444;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--charcoal);
+            color: var(--white);
+            overflow-x: hidden;
+            font-family: 'Inter', sans-serif;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Cinzel', serif;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .vertical-text {
+            position: absolute;
+            left: 40px;
+            top: 50%;
+            transform: translateY(-50%);
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 12px;
+            letter-spacing: 8px;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+        }
+
+        .vertical-text::before {
+            content: '';
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1px;
+            height: 30px;
+            background: rgba(255, 255, 255, 0.7);
+        }
+
+        .vertical-text::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1px;
+            height: 30px;
+            background: rgba(255, 255, 255, 0.7);
+        }
+
+        .vertical-line-middle {
+            position: absolute;
+            left: 50%;
+            top: 70px;
+            transform: translateX(-50%);
+            width: 1px;
+            height: 30px;
+            background: rgba(255, 255, 255, 0.7);
+            margin: 15px 0;
+        }
+
+        .carousel {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1.2s ease, transform 1.8s ease;
+            transform: translateY(20px);
+            display: flex;
+            align-items: center;
+        }
+
+        .slide.active {
+            opacity: 1;
+            transform: translateY(0);
+            z-index: 1;
+        }
+
+        .slide-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+            transition: transform 8s ease;
+        }
+
+        .slide.active .slide-bg {
+            transform: scale(1.05);
+        }
+
+        .slide-1 .slide-bg {
+            background-image: linear-gradient(135deg, rgba(13, 47, 43, 0.2) 0%, rgba(26, 26, 26, 0.4) 100%), url('https://cf.bstatic.com/xdata/images/hotel/max1024x768/671161211.jpg?k=e72ad3573bfef6667e93a5f4458d733ff4839b25b0fd4e653cbd7365a2808033&o=');
+        }
+
+        .slide-2 .slide-bg {
+            background-image: linear-gradient(135deg, rgba(13, 47, 43, 0.2) 0%, rgba(26, 26, 26, 0.4) 100%), url('https://cf.bstatic.com/xdata/images/hotel/max1024x768/671160905.jpg?k=a44d668ec10fad9414e7429e07c5238ce8913b61e1566e6a60ff40a9d061f250&o=');
+        }
+
+        .slide-3 .slide-bg {
+            background-image: linear-gradient(135deg, rgba(13, 47, 43, 0.2) 0%, rgba(26, 26, 26, 0.4) 100%), url('https://cf.bstatic.com/xdata/images/hotel/max1024x768/671160950.jpg?k=5d1910d14755babe74a8d43830d92e7ebb304fe876abde539444213ecb06c8c0&o=');
+        }
+
+        .hero-content {
+            text-align: left;
+            color: var(--white);
+            max-width: 900px;
+            margin-left: 70px;
+            /* 40px (vertical text) + 30px gap */
+            position: relative;
+            transform: translateY(50px);
+            opacity: 0;
+            transition: transform 1s ease, opacity 1s ease;
+        }
+
+        .slide.active .hero-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .motel-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(195, 32, 38, 0.9) 0%, rgba(116, 23, 33, 0.9) 100%);
+            border-left: 3px solid var(--gold);
+            padding: 8px 20px;
+            margin-bottom: 30px;
+            font-size: 12px;
+            letter-spacing: 3px;
+            color: var(--white);
+            font-weight: 600;
+            border-radius: 2px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .hero-content h1 {
+            font-size: 3.2rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+            line-height: 1.2;
+            color: var(--white);
+        }
+
+        .hero-content h1 span {
+            color: var(--gold);
+        }
+
+        /* Horizontal Progress Line */
+        .heading-progress-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            width: 120px;
+        }
+
+        .heading-progress-bar {
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 5s linear;
+        }
+
+        .slide.active .heading-progress-bar {
+            width: 60px;
+        }
+
+        .heading-progress-static {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(to right, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0));
+        }
+
+        .hero-content p {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 800px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 300;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 20px;
+            justify-content: flex-start;
+            margin-bottom: 60px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border-radius: 0px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition);
+            letter-spacing: 1px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--crimson) 0%, var(--crimson-dark) 100%);
+            color: var(--white);
+            border: none;
+            box-shadow: 0 4px 15px rgba(195, 32, 38, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, var(--crimson-dark) 0%, var(--crimson) 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(195, 32, 38, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            backdrop-filter: blur(10px);
+            color: var(--white);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.7);
+            transform: translateY(-3px);
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: flex-start;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: left;
+        }
+
+        .stat-number {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: var(--gold);
+            font-family: 'Cinzel', serif;
+        }
+
+        .stat-text {
+            font-size: 12px;
+            letter-spacing: 1px;
+            color: rgba(255, 255, 255, 0.8);
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Progress Bar Navigation */
+        .carousel-nav {
+            position: absolute;
+            bottom: 100px;
+            left: 70px;
+            /* Aligned with hero content */
+            display: flex;
+            gap: 15px;
+            z-index: 10;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .nav-line-container {
+            width: 70px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.2);
+            position: relative;
+            border-radius: 1px;
+
+        }
+
+        .nav-line-progress {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background: var(--gold);
+            border-radius: 1px;
+            transition: width 5s linear;
+        }
+
+        .nav-line-container.active .nav-line-progress {
+            width: 100%;
+        }
+
+        .nav-line-circle {
+            position: absolute;
+            right: -3px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transition: var(--transition);
+        }
+
+        .nav-item.active .nav-line-circle {
+            background: var(--gold);
+            transform: translateY(-50%) scale(1.5);
+        }
+
+        /* Synchronized Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: rgba(255, 255, 255, 0.7);
+            z-index: 10;
+        }
+
+        .scroll-text {
+            font-size: 12px;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            font-family: 'Inter', sans-serif;
+            animation: scrollText 0.8s infinite alternate;
+        }
+
+        .scroll-line-container {
+            position: relative;
+            width: 1px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 2px;
+            overflow: hidden;
+            animation: scrollLineContainer 0.8s infinite alternate;
+        }
+
+        .scroll-line-moving {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            background: linear-gradient(to bottom, var(--gold), var(--gold-light));
+        }
+
+        @keyframes scrollText {
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes scrollLineContainer {
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(-15px);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+
+            .vertical-text {
+                left: 30px;
+            }
+
+            .hero-content {
+                margin-left: 60px;
+                /* 30px + 30px gap */
+                max-width: 800px;
+            }
+
+            .carousel-nav {
+                left: 60px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hero-content {
+                margin-left: 50px;
+                max-width: 700px;
+            }
+
+            .hero-content h1 {
+                font-size: 2.4rem;
+            }
+
+            .hero-stats {
+                gap: 40px;
+            }
+
+            .vertical-text {
+                left: 20px;
+            }
+
+            .carousel-nav {
+                left: 50px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .vertical-text {
+                width: 100%;
+                height: 80px;
+                left: -70px;
+                top: 80px;
+                padding: 20px 0;
+                transform: none;
+                writing-mode: horizontal-tb;
+                text-orientation: mixed;
+                flex-direction: row;
+                gap: 5px;
+                justify-content: center;
+            }
+
+            .vertical-line-middle {
+                position: relative;
+                top: 0;
+                left: -30px;
+                transform: none;
+                width: 50px;
+                height: 1px;
+                margin: 0 15px;
+            }
+
+            .vertical-text::before,
+            .vertical-text::after {
+                display: none;
+            }
+
+            .hero-content {
+                margin: 20px;
+                margin-top: 100px;
+                max-width: 100%;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-btns {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .hero-stats {
+                display: none;
+            }
+
+            .scroll-indicator{
+                bottom: -10px;
+            }
+
+            .carousel-nav {
+                left: 40px;
+                bottom: 80px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero-content p {
+                font-size: 0.9rem;
+            }
+
+            .stat-number {
+                font-size: 20px;
+            }
+
+            .hero-stats {
+                display: none;
+            }
+
+
+            .carousel-nav {
+                left: 20px;
+                bottom: 50px;
+            }
+
+            .nav-line-container {
+                width: 60px;
+            }
+
+            .heading-progress-container {
+                width: 100px;
+            }
+
+            .slide.active .heading-progress-bar {
+                width: 50px;
+            }
+
+            .heading-progress-static {
+                width: 50px;
+            }
+
+            .scroll-indicator {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="vertical-text">
+            <span>7DAYS</span> &nbsp; &nbsp; &nbsp;
+            <div class="vertical-line-middle"></div>
+            <span>MOTEL</span>
+        </div>
+
+        <div class="carousel">
+            <!-- Slide 1 -->
+            <div class="slide slide-1 active">
+                <div class="slide-bg"></div>
+                <div class="container">
+                    <div class="hero-content">
+                        <div class="motel-tag">7DAYS MOTEL ENTEBBE</div>
+                        <h1>Cheap Hotels <span>Budget Prices</span></h1>
+                        <div class="heading-progress-container">
+                            <div class="heading-progress-bar"></div>
+                            <div class="heading-progress-static"></div>
+                        </div>
+                        <p>Find the best cheap hotels in Entebbe with luxury amenities at budget prices. Our affordable
+                            motels offer premium comfort without the high cost. Perfect for budget-conscious travelers.
+                        </p>
+                        <div class="hero-btns">
+                            <a href="#rooms" class="btn btn-primary">
+                                <i class="fas fa-concierge-bell"></i>
+                                Find Cheap Hotels
+                            </a>
+                            <a href="#contact" class="btn btn-outline" id="hero-book-btn">
+                                <i class="fas fa-phone-alt"></i>
+                                Budget Accommodation
+                            </a>
+                        </div>
+                        <div class="hero-stats">
+                            <div class="stat">
+                                <div class="stat-number">50+</div>
+                                <div class="stat-text">Budget Rooms</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number">24/7</div>
+                                <div class="stat-text">Affordable Stays</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number">4.6★</div>
+                                <div class="stat-text">Value Rating</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="slide slide-2">
+                <div class="slide-bg"></div>
+                <div class="container">
+                    <div class="hero-content">
+                        <div class="motel-tag">7DAYS MOTEL ENTEBBE</div>
+                        <h1>Affordable Motels <span>Near Airport</span></h1>
+                        <div class="heading-progress-container">
+                            <div class="heading-progress-bar"></div>
+                            <div class="heading-progress-static"></div>
+                        </div>
+                        <p>Cheap motels near Entebbe Airport with premium amenities. Our budget hotels offer convenient
+                            access to all major attractions. Low-cost accommodation with exceptional value.</p>
+                        <div class="hero-btns">
+                            <a href="#rooms" class="btn btn-primary">
+                                <i class="fas fa-concierge-bell"></i>
+                                Cheap Motels
+                            </a>
+                            <a href="#location" class="btn btn-outline" id="hero-book-btn">
+                                <i class="fas fa-map-marker-alt"></i>
+                                Budget Hotels Near Me
+                            </a>
+                        </div>
+                        <div class="hero-stats">
+                            <div class="stat">
+                                <div class="stat-number">5min</div>
+                                <div class="stat-text">Airport Access</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number">$45</div>
+                                <div class="stat-text">Starting Rate</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number">10min</div>
+                                <div class="stat-text">City Center</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="slide slide-3">
+                <div class="slide-bg"></div>
+                <div class="container">
+                    <div class="hero-content">
+                        <div class="motel-tag">7DAYS MOTEL ENTEBBE</div>
+                        <h1>Budget Hotels <span>Luxury Comfort</span></h1>
+                        <div class="heading-progress-container">
+                            <div class="heading-progress-bar"></div>
+                            <div class="heading-progress-static"></div>
+                        </div>
+                        <p>Experience luxury comfort at budget hotel prices. Our affordable accommodation offers premium
+                            amenities without the premium price tag. Best value cheap hotels in Entebbe.</p>
+                        <div class="hero-btns">
+                            <a href="#rooms" class="btn btn-primary">
+                                <i class="fas fa-concierge-bell"></i>
+                                View Budget Rooms
+                            </a>
+                            <a href="#contact" class="btn btn-outline" id="hero-book-btn">
+                                <i class="fas fa-phone-alt"></i>
+                                Low Cost Stays
+                            </a>
+                        </div>
+                        <div class="hero-stats">
+                            <div class="stat">
+                                <div class="stat-number">100%</div>
+                                <div class="stat-text">Value Guarantee</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number">Free</div>
+                                <div class="stat-text">Airport Transfer</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number">5★</div>
+                                <div class="stat-text">Amenities</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Progress Bar Navigation -->
+        <div class="carousel-nav">
+            <div class="nav-item active" data-slide="0">
+                <div class="nav-line-container active">
+                    <div class="nav-line-progress"></div>
+                    <div class="nav-line-circle"></div>
+                </div>
+            </div>
+            <div class="nav-item" data-slide="1">
+                <div class="nav-line-container">
+                    <div class="nav-line-progress"></div>
+                    <div class="nav-line-circle"></div>
+                </div>
+            </div>
+            <div class="nav-item" data-slide="2">
+                <div class="nav-line-container">
+                    <div class="nav-line-progress"></div>
+                    <div class="nav-line-circle"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Synchronized Scroll Indicator -->
+        <div class="scroll-indicator">
+            <div class="scroll-text">SCROLL</div>
+            <div class="scroll-line-container">
+                <div class="scroll-line-moving"></div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Carousel functionality with progress bars
+        document.addEventListener('DOMContentLoaded', function () {
+            const slides = document.querySelectorAll('.slide');
+            const navItems = document.querySelectorAll('.nav-item');
+            const progressBars = document.querySelectorAll('.nav-line-progress');
+            const headingProgressBars = document.querySelectorAll('.heading-progress-bar');
+            let currentSlide = 0;
+            let slideInterval;
+
+            function showSlide(index) {
+                // Hide all slides
+                slides.forEach(slide => {
+                    slide.classList.remove('active');
+                });
+
+                // Remove active class from all nav items
+                navItems.forEach(item => {
+                    item.classList.remove('active');
+                    const container = item.querySelector('.nav-line-container');
+                    const progress = item.querySelector('.nav-line-progress');
+                    container.classList.remove('active');
+                    progress.style.transition = 'none';
+                    progress.style.width = '0%';
+                });
+
+                // Reset all heading progress bars
+                headingProgressBars.forEach(bar => {
+                    bar.style.transition = 'none';
+                    bar.style.width = '0';
+                });
+
+                // Show the selected slide
+                slides[index].classList.add('active');
+                navItems[index].classList.add('active');
+
+                // Reset and restart progress bar
+                const activeContainer = navItems[index].querySelector('.nav-line-container');
+                const activeProgress = navItems[index].querySelector('.nav-line-progress');
+
+                // Force reflow to reset transition
+                void activeProgress.offsetWidth;
+
+                // Start progress bar animation
+                activeContainer.classList.add('active');
+                activeProgress.style.transition = 'width 5s linear';
+                activeProgress.style.width = '100%';
+
+                // Start heading progress bar animation
+                const activeHeadingProgress = slides[index].querySelector('.heading-progress-bar');
+                void activeHeadingProgress.offsetWidth;
+                activeHeadingProgress.style.transition = 'width 5s linear';
+                activeHeadingProgress.style.width = '60px';
+
+                currentSlide = index;
+            }
+
+            // Add click event to nav items
+            navItems.forEach((item, index) => {
+                item.addEventListener('click', () => {
+                    showSlide(index);
+                    resetSlideInterval();
+                });
+            });
+
+            // Auto slide change every 5 seconds
+            function startSlideInterval() {
+                slideInterval = setInterval(() => {
+                    let nextSlide = (currentSlide + 1) % slides.length;
+                    showSlide(nextSlide);
+                }, 5000);
+            }
+
+            function resetSlideInterval() {
+                clearInterval(slideInterval);
+                startSlideInterval();
+            }
+
+            // Initialize the first slide
+            showSlide(0);
+            startSlideInterval();
+        });
+    </script>
+</body>
+
+</html>

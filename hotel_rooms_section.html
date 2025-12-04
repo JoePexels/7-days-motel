@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7Days Motel Entebbe - Premium Footer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --crimson: #C32026;
+            --crimson-dark: #741721;
+            --evergreen: #0F3A34;
+            --evergreen-dark: #0D2F2B;
+            --gold: #D4AF37;
+            --light-gold: #F4E8C1;
+            --light-gray: #F8F8F8;
+            --gray: #E0E0E0;
+            --dark-bg: #0A1A17;
+            --text-gray: #6B7280;
+        }
+
+
+
+
+        /* Footer Styles */
+        .luxury-footer {
+            background-color: var(--evergreen-dark);
+            color: var(--light-gray);
+            padding: 60px 0 30px;
+            position: relative;
+            overflow: hidden;
+            max-width: 1500px;
+            border-radius: 20px;
+            margin: 0 auto;
+            box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .footer-container {
+            max-width: 1450px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        /* Large Motel Name Background */
+        .footer-bg-text {
+            position: absolute;
+            bottom: -30px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.08;
+        }
+
+        .footer-bg-text h1 {
+            font-size: 150px;
+            font-weight: 900;
+            color: var(--light-gray);
+            letter-spacing: 8px;
+            line-height: 0.8;
+            text-transform: uppercase;
+            margin: 0;
+            padding: 0;
+        }
+
+        .footer-bg-text .motel-text {
+            display: block;
+            font-size: 180px;
+            letter-spacing: 15px;
+            margin-top: -40px;
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 50px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            color: var(--light-gold);
+            position: relative;
+            padding-bottom: 12px;
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--crimson);
+        }
+
+        /* Contact Information */
+        .contact-info {
+            margin-top: 20px;
+        }
+
+        .contact-info p {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: flex-start;
+            line-height: 1.6;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .contact-info p:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 1px;
+            background-color: rgba(255, 255, 255, 0.08);
+        }
+
+        .contact-info i {
+            color: var(--gold);
+            margin-right: 15px;
+            margin-top: 2px;
+            min-width: 45px;
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 10px;
+            font-size: 1rem;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .contact-info p:hover i {
+            background-color: var(--crimson);
+            transform: translateY(-2px);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0;
+            position: relative;
+        }
+
+        .footer-links li:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 1px;
+            background-color: rgba(255, 255, 255, 0.08);
+        }
+
+        /* Enhanced Animated Link Styles - Left Aligned */
+        .animated-link {
+            display: inline-block;
+            color: var(--gray);
+            text-decoration: none;
+            font-size: 1.05rem;
+            position: relative;
+            padding: 16px 0 16px 55px;
+            transition: all 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .animated-link::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 2px;
+            background-color: var(--crimson);
+            transition: width 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+            z-index: 1;
+        }
+
+        .animated-link::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 2px;
+            background-color: rgba(255, 255, 255, 0.15);
+            transition: all 0.3s ease;
+            z-index: 0;
+        }
+
+        .animated-link:hover {
+            color: var(--light-gold);
+            padding-left: 65px;
+        }
+
+        .animated-link:hover::before {
+            width: 45px;
+        }
+
+        .animated-link:hover::after {
+            width: 50px;
+            background-color: var(--gold);
+        }
+
+        /* Amenities Section - Updated */
+        .amenities-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .amenity-item {
+            display: flex;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.03);
+            padding: 12px 15px;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .amenity-item:hover {
+            background-color: rgba(255, 255, 255, 0.07);
+            border-color: rgba(212, 175, 55, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .amenity-item i {
+            color: var(--gold);
+            margin-right: 12px;
+            font-size: 1.1rem;
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 8px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .amenity-text {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        /* Social Links */
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 75px;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.05);
+            color: var(--gold);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.1);
+            transition: left 0.5s ease;
+        }
+
+        .social-link:hover::before {
+            left: 100%;
+        }
+
+        .social-link:hover {
+            background-color: var(--crimson);
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer Bottom */
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .copyright {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        .designer-credit {
+            display: flex;
+            align-items: center;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .designer-credit a {
+            color: var(--gold);
+            text-decoration: none;
+            margin-left: 5px;
+            font-weight: 600;
+            transition: color 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .designer-credit a:hover {
+            color: var(--crimson);
+        }
+
+        .designer-credit a i {
+            margin-left: 5px;
+            font-size: 0.8rem;
+        }
+
+        .payment-methods {
+            display: flex;
+            gap: 15px;
+            font-size: 1.8rem;
+            color: var(--gray);
+        }
+
+        .payment-methods i {
+            transition: all 0.3s ease;
+        }
+
+        .payment-methods i:hover {
+            color: var(--gold);
+            transform: translateY(-3px);
+        }
+
+        /* Hotel Badge */
+        .hotel-badge {
+            display: inline-flex;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.05);
+            color: var(--light-gold);
+            padding: 12px 25px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-top: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .hotel-badge:hover {
+            background-color: rgba(255, 255, 255, 0.08);
+            transform: translateY(-2px);
+        }
+
+        .hotel-badge i {
+            margin-right: 10px;
+            color: var(--gold);
+            font-size: 1rem;
+        }
+
+        /* Newsletter Section */
+        .newsletter {
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .newsletter h4 {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: var(--light-gold);
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+        }
+
+        .newsletter-form {
+            display: flex;
+            margin-top: 15px;
+            position: relative;
+        }
+
+        .newsletter-form input {
+            flex-grow: 1;
+            padding: 14px 15px;
+            border: none;
+            background-color: rgba(255, 255, 255, 0.05);
+            color: white;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-form input:focus {
+            outline: none;
+            background-color: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 0 2px rgba(195, 32, 38, 0.3);
+        }
+
+        .newsletter-form button {
+            padding: 0 25px;
+            background-color: var(--crimson);
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 120px;
+        }
+
+        .newsletter-form button:hover {
+            background-color: var(--gold);
+        }
+
+        .newsletter-form button i {
+            margin-right: 8px;
+        }
+
+        /* Newsletter Animation States */
+        .newsletter-form.sending button {
+            background-color: var(--evergreen);
+            pointer-events: none;
+        }
+
+        .newsletter-form.success button {
+            background-color: #2E7D32;
+            pointer-events: none;
+        }
+
+        .newsletter-form.error button {
+            background-color: #C62828;
+            pointer-events: none;
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, .3);
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+            margin-right: 8px;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .message {
+            margin-top: 10px;
+            padding: 10px 15px;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .message.success {
+            background-color: rgba(46, 125, 50, 0.2);
+            color: #A5D6A7;
+            border: 1px solid rgba(46, 125, 50, 0.3);
+            display: block;
+        }
+
+        .message.error {
+            background-color: rgba(198, 40, 40, 0.2);
+            color: #EF9A9A;
+            border: 1px solid rgba(198, 40, 40, 0.3);
+            display: block;
+        }
+
+        /* Quick Links Section */
+        .quick-links-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            color: var(--light-gold);
+            position: relative;
+            padding-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .quick-links-section h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--crimson);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .footer-bg-text h1 {
+                font-size: 180px;
+            }
+
+            .footer-bg-text .motel-text {
+                font-size: 150px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .footer-top {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+            }
+
+            .footer-bg-text h1 {
+                font-size: 150px;
+            }
+
+            .footer-bg-text .motel-text {
+                font-size: 120px;
+                letter-spacing: 10px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .footer-top {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .content-placeholder h1 {
+                font-size: 2.5rem;
+            }
+
+            .amenities-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-form input,
+            .newsletter-form button {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            .footer-bg-text h1 {
+                font-size: 120px;
+            }
+
+            .footer-bg-text .motel-text {
+                font-size: 100px;
+                letter-spacing: 8px;
+                margin-top: -30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer-container {
+                padding: 0 20px;
+            }
+
+            .content-placeholder h1 {
+                font-size: 2rem;
+            }
+
+            .footer-section h3 {
+                font-size: 1.3rem;
+            }
+
+            .contact-info p {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .contact-info i {
+                margin-bottom: 10px;
+            }
+
+            .footer-bg-text h1 {
+                font-size: 80px;
+            }
+
+            .footer-bg-text .motel-text {
+                font-size: 70px;
+                letter-spacing: 5px;
+                margin-top: -20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <footer class="luxury-footer">
+        <!-- Large Background Text -->
+        <div class="footer-bg-text">
+            <h1>7 DAYS MOTEL</h1>
+        </div>
+
+        <div class="footer-container">
+            <div class="footer-top">
+                <!-- Contact Information -->
+                <div class="footer-section">
+                    <h3>Our Location</h3>
+                    <div class="contact-info">
+                        <p>
+                            <i class="fas fa-map-pin"></i>
+                            <span><strong>Plot 40, Buku Road</strong><br>Opposite UN Base Office, Entebbe, Uganda</span>
+                        </p>
+                        <p>
+                            <i class="fas fa-envelope"></i>
+                            <span><strong>Email:</strong><br>7dayshotel2@gmail.com</span>
+                        </p>
+                        <p>
+                            <i class="fas fa-phone"></i>
+                            <span><strong>Call Us:</strong><br>+256 709 093 939<br>+256 701 880 222</span>
+                        </p>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-tripadvisor"></i>
+                        </a>
+                    </div>
+
+                </div>
+
+                <!-- Quick Links Section -->
+                <div class="footer-section quick-links-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#" class="animated-link">Home</a></li>
+                        <li><a href="#" class="animated-link">Rooms & Suites</a></li>
+                        <li><a href="#" class="animated-link">Dining Experience</a></li>
+                        <li><a href="#" class="animated-link">Special Packages</a></li>
+                        <li><a href="#" class="animated-link">Contact Us</a></li>
+                    </ul>
+
+                </div>
+
+                <!-- Amenities Section -->
+                <div class="footer-section">
+                    <h3>Our Amenities</h3>
+                    <div class="amenities-grid">
+                        <div class="amenity-item">
+                            <i class="fas fa-bed"></i>
+                            <div class="amenity-text">Luxury Accommodations</div>
+                        </div>
+                        <div class="amenity-item">
+                            <i class="fas fa-wifi"></i>
+                            <div class="amenity-text">High-Speed WiFi</div>
+                        </div>
+                        <div class="amenity-item">
+                            <i class="fas fa-utensils"></i>
+                            <div class="amenity-text">Fine Dining</div>
+                        </div>
+                        <div class="amenity-item">
+                            <i class="fas fa-concierge-bell"></i>
+                            <div class="amenity-text">24/7 Room Service</div>
+                        </div>
+                        <div class="amenity-item">
+                            <i class="fas fa-car"></i>
+                            <div class="amenity-text">Secure Parking</div>
+                        </div>
+                        <div class="amenity-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <div class="amenity-text">24/7 Security</div>
+                        </div>
+                    </div>
+
+                    <!-- Newsletter -->
+                    <div class="newsletter">
+                        <h4>Stay Updated</h4>
+                        <p style="font-size: 0.95rem; color: var(--gray); margin-bottom: 20px; line-height: 1.5;">
+                            Subscribe for exclusive offers and luxury updates.
+                        </p>
+
+                        <form class="newsletter-form" id="newsletterForm"
+                            action="https://formsubmit.co/7dayshotel2@gmail.com" method="POST">
+                            <input type="hidden" name="_subject" value="New Newsletter Subscription - 7Days Motel">
+                            <input type="hidden" name="_template" value="table">
+                            <input type="hidden" name="_captcha" value="false">
+                            <input type="hidden" name="_next" value="#newsletter-success">
+
+                            <input type="email" name="email" placeholder="Your email address" required>
+                            <button type="submit" id="subscribeBtn">
+                                <span class="btn-text">Subscribe</span>
+                            </button>
+                        </form>
+
+                        <div class="message" id="successMessage">
+                            <i class="fas fa-check-circle"></i> Thank you for subscribing!
+                        </div>
+
+                        <div class="message" id="errorMessage">
+                            <i class="fas fa-exclamation-circle"></i> Something went wrong. Please try again.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="copyright">
+                    &copy; 2023 7Days Motel Entebbe. All rights reserved.
+                </div>
+
+                <div class="designer-credit">
+                    Designed by <a href="https://vernoxdesigns.com" target="_blank">Vernox <i
+                            class="fas fa-external-link-alt"></i></a>
+                </div>
+
+                <div class="payment-methods">
+                    <i class="fab fa-cc-visa" title="Visa"></i>
+                    <i class="fab fa-cc-mastercard" title="Mastercard"></i>
+                    <i class="fab fa-cc-amex" title="American Express"></i>
+                    <i class="fas fa-money-check-alt" title="Cash"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Newsletter form submission with FormSubmit
+        const newsletterForm = document.getElementById('newsletterForm');
+        const subscribeBtn = document.getElementById('subscribeBtn');
+        const successMessage = document.getElementById('successMessage');
+        const errorMessage = document.getElementById('errorMessage');
+        const btnText = subscribeBtn.querySelector('.btn-text');
+
+        // Hide messages initially
+        successMessage.style.display = 'none';
+        errorMessage.style.display = 'none';
+
+        newsletterForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Show sending state
+            newsletterForm.classList.add('sending');
+            btnText.innerHTML = '<span class="spinner"></span> Sending...';
+            subscribeBtn.disabled = true;
+
+            // Hide any previous messages
+            successMessage.style.display = 'none';
+            errorMessage.style.display = 'none';
+
+            // Simulate form submission
+            const formData = new FormData(newsletterForm);
+            const email = formData.get('email');
+
+            // Validate email
+            if (!email || !email.includes('@')) {
+                // Show error
+                setTimeout(() => {
+                    newsletterForm.classList.remove('sending');
+                    newsletterForm.classList.add('error');
+                    btnText.textContent = 'Invalid Email';
+                    errorMessage.style.display = 'block';
+
+                    // Reset after 3 seconds
+                    setTimeout(() => {
+                        newsletterForm.classList.remove('error');
+                        btnText.textContent = 'Subscribe';
+                        subscribeBtn.disabled = false;
+                        errorMessage.style.display = 'none';
+                    }, 3000);
+                }, 1500);
+                return;
+            }
+
+            // Simulate API call to FormSubmit
+            setTimeout(() => {
+                newsletterForm.classList.remove('sending');
+                newsletterForm.classList.add('success');
+                btnText.innerHTML = '<i class="fas fa-check"></i> Subscribed!';
+
+                // Show success message
+                successMessage.style.display = 'block';
+
+                // Reset form
+                newsletterForm.reset();
+
+                // Reset button after 5 seconds
+                setTimeout(() => {
+                    newsletterForm.classList.remove('success');
+                    btnText.textContent = 'Subscribe';
+                    subscribeBtn.disabled = false;
+                    successMessage.style.display = 'none';
+                }, 5000);
+
+            }, 2000);
+        });
+
+        // Add hover effect to amenities
+        document.querySelectorAll('.amenity-item').forEach(item => {
+            item.addEventListener('mouseenter', function () {
+                const icon = this.querySelector('i');
+                icon.style.transform = 'scale(1.1)';
+                icon.style.backgroundColor = 'rgba(195, 32, 38, 0.2)';
+            });
+
+            item.addEventListener('mouseleave', function () {
+                const icon = this.querySelector('i');
+                icon.style.transform = 'scale(1)';
+                icon.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
+            });
+        });
+
+        // Add hover effect to contact icons
+        document.querySelectorAll('.contact-info p').forEach(item => {
+            item.addEventListener('mouseenter', function () {
+                const icon = this.querySelector('i');
+                icon.style.transform = 'scale(1.1)';
+            });
+
+            item.addEventListener('mouseleave', function () {
+                const icon = this.querySelector('i');
+                icon.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body>
+
+</html>

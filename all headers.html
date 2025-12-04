@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pearl of Africa | Luxury Hotel in Entebbe</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --crimson: #C32026;
+            --crimson-dark: #741721;
+            --evergreen: #0F3A34;
+            --evergreen-dark: #0D2F2B;
+            --light: #f8f8f8;
+            --light-gray: #eaeaea;
+            --gray: #777;
+            --white: #fff;
+            --gold: #D4AF37;
+            --gold-light: #E8C75A;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--evergreen);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 500;
+            line-height: 1.3;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 0;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--evergreen);
+            font-weight: 600;
+        }
+
+        .logo span {
+            color: var(--crimson);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 2rem;
+        }
+
+        nav ul li a {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--crimson);
+        }
+
+        .book-now {
+            background-color: var(--crimson);
+            color: var(--white);
+            padding: 0.6rem 1.5rem;
+            border-radius: 2px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .book-now:hover {
+            background-color: var(--crimson-dark);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(15, 58, 52, 0.7), rgba(15, 58, 52, 0.5)), url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            background-color: var(--crimson);
+            color: var(--white);
+            padding: 0.9rem 2.5rem;
+            border-radius: 2px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .hero-btn:hover {
+            background-color: var(--crimson-dark);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 0;
+        }
+
+        /* Section Header Style */
+        .section-header {
+            margin-bottom: 4rem;
+        }
+
+        .luxury-header-3-container {
+            display: flex;
+            align-items: center;
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .luxury-border-side {
+            flex-grow: 1;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--evergreen), transparent);
+            opacity: 0.4;
+        }
+
+        .luxury-header-content {
+            padding: 0 4rem;
+            text-align: center;
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        /* Custom Ribbon */
+        .ribbon {
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+            --r: .8em; /* control the cutout */
+            
+            border-block: .5em solid #0000;
+            padding-inline: calc(var(--r) + .25em) .5em;
+            line-height: 1.8;
+            clip-path: polygon(0 0,100% 0,100% 100%,0 100%,0 calc(100% - .25em),var(--r) 50%,0 .25em);
+            background:
+             radial-gradient(.2em 50% at right,#000a,#0000) border-box,
+             var(--crimson) padding-box; /* the color  */
+            width: fit-content;
+            margin: 0 auto 3rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .section-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            color: var(--evergreen-dark);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .section-header h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--crimson), transparent);
+        }
+
+        .section-header p {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.2rem;
+            color: var(--evergreen);
+            line-height: 1.7;
+            max-width: 500px;
+            margin: 0 auto;
+            opacity: 0.85;
+        }
+
+        /* Rooms Section */
+        .rooms {
+            background-color: var(--light);
+        }
+
+        .rooms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .room-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .room-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .room-img {
+            height: 220px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .room-content {
+            padding: 1.5rem;
+        }
+
+        .room-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+            color: var(--evergreen-dark);
+        }
+
+        .room-content p {
+            color: var(--gray);
+            margin-bottom: 1.2rem;
+            font-size: 0.95rem;
+        }
+
+        .room-price {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: var(--crimson);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .room-btn {
+            display: inline-block;
+            color: var(--crimson);
+            font-weight: 600;
+            font-size: 0.9rem;
+            position: relative;
+        }
+
+        .room-btn:after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            background-color: var(--crimson);
+            bottom: -2px;
+            left: 0;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+
+        .room-btn:hover:after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        /* Amenities Section */
+        .amenities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .amenity-card {
+            text-align: center;
+            padding: 2rem 1rem;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .amenity-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .amenity-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--evergreen) 0%, var(--evergreen-dark) 100%);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .amenity-card h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            color: var(--evergreen-dark);
+        }
+
+        .amenity-card p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        /* Virtual Tour Section */
+        .virtual-tour {
+            background-color: var(--light);
+        }
+
+        .tour-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .tour-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--evergreen-dark);
+        }
+
+        .tour-content p {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .tour-video {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .tour-video img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--crimson);
+            font-size: 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .play-btn:hover {
+            background-color: var(--white);
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        /* Newsletter Section */
+        .newsletter {
+            background: linear-gradient(135deg, var(--evergreen) 0%, var(--evergreen-dark) 100%);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .newsletter-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 2rem auto 0;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 0.9rem 1.2rem;
+            border: none;
+            border-radius: 2px 0 0 2px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+        }
+
+        .newsletter-btn {
+            background-color: var(--crimson);
+            color: var(--white);
+            border: none;
+            padding: 0 1.5rem;
+            border-radius: 0 2px 2px 0;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .newsletter-btn:hover {
+            background-color: var(--crimson-dark);
+        }
+
+        /* FAQs Section */
+        .faqs {
+            background-color: var(--light);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 1.5rem;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .faq-question {
+            background-color: var(--white);
+            padding: 1.5rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background-color: #f5f5f5;
+        }
+
+        .faq-answer {
+            background-color: var(--white);
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .faq-answer p {
+            padding-bottom: 1.5rem;
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+            padding: 0 1.5rem 1.5rem;
+        }
+
+        .faq-toggle {
+            color: var(--crimson);
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+
+        /* Weather Section */
+        .weather-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .weather-info {
+            background: linear-gradient(135deg, var(--evergreen) 0%, var(--evergreen-dark) 100%);
+            color: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .weather-location {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .weather-location i {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            color: var(--gold);
+        }
+
+        .weather-location h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+        }
+
+        .weather-details {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .weather-item {
+            text-align: center;
+        }
+
+        .weather-value {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .weather-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .weather-image {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .weather-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Small Bar Section */
+        .bar {
+            background-color: var(--light);
+        }
+
+        .bar-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .bar-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--evergreen-dark);
+        }
+
+        .bar-content p {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .bar-menu {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .bar-item {
+            background-color: var(--white);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .bar-item h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--evergreen-dark);
+        }
+
+        .bar-item p {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .bar-price {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: var(--crimson);
+        }
+
+        /* Coffee Corner Section */
+        .coffee-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .coffee-image {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .coffee-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .coffee-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--evergreen-dark);
+        }
+
+        .coffee-content p {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .coffee-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .coffee-feature {
+            display: flex;
+            align-items: center;
+        }
+
+        .coffee-feature i {
+            width: 40px;
+            height: 40px;
+            background-color: var(--evergreen);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+
+        .coffee-feature h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            color: var(--evergreen-dark);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--evergreen-dark);
+            color: var(--white);
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .footer-col h3:after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background-color: var(--crimson);
+            bottom: -8px;
+            left: 0;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-col ul li a {
+            color: rgba(255, 255, 255, 0.7);
+            transition: color 0.3s ease;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--crimson);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                padding: 1rem 0;
+            }
+
+            nav ul {
+                margin-top: 1rem;
+            }
+
+            nav ul li {
+                margin: 0 0.8rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-header h2 {
+                font-size: 2.5rem;
+            }
+
+            .luxury-header-3-container {
+                flex-direction: column;
+            }
+
+            .luxury-border-side {
+                width: 100%;
+                margin: 1rem 0;
+            }
+
+            .luxury-header-content {
+                padding: 0;
+            }
+
+            .tour-container,
+            .weather-container,
+            .bar-container,
+            .coffee-container {
+                grid-template-columns: 1fr;
+            }
+
+            .bar-menu,
+            .coffee-features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">Pearl of <span>Africa</span></a>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#rooms">Rooms</a></li>
+                    <li><a href="#amenities">Amenities</a></li>
+                    <li><a href="#virtual-tour">Virtual Tour</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#" class="book-now">Book Now</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Luxury Redefined in Entebbe</h1>
+            <p>Experience Uganda's premier accommodation with breathtaking views of Lake Victoria, world-class amenities, and exceptional service.</p>
+            <a href="#rooms" class="hero-btn">Discover Our Resort</a>
+        </div>
+    </section>
+
+    <!-- Rooms Section -->
+    <section id="rooms" class="rooms">
+        <div class="container">
+            <div class="section-header">
+                <div class="luxury-header-3-container">
+                    <div class="luxury-border-side"></div>
+                    <div class="luxury-header-content">
+                        <div class="ribbon">Accommodation</div>
+                        <h2>Luxury Rooms & Suites</h2>
+                        <p>Experience unparalleled comfort in our exquisitely designed rooms and suites, each offering stunning views and premium amenities.</p>
+                    </div>
+                    <div class="luxury-border-side"></div>
+                </div>
+            </div>
+            <div class="rooms-grid">
+                <div class="room-card">
+                    <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Deluxe Room" class="room-img">
+                    <div class="room-content">
+                        <h3>Deluxe Room</h3>
+                        <p>Spacious room with a king-sized bed, private balcony, and panoramic views of Lake Victoria.</p>
+                        <div class="room-price">$280/night</div>
+                        <a href="#" class="room-btn">View Details</a>
+                    </div>
+                </div>
+                <div class="room-card">
+                    <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Executive Suite" class="room-img">
+                    <div class="room-content">
+                        <h3>Executive Suite</h3>
+                        <p>Luxurious suite with separate living area, premium amenities, and exclusive access to our executive lounge.</p>
+                        <div class="room-price">$450/night</div>
+                        <a href="#" class="room-btn">View Details</a>
+                    </div>
+                </div>
+                <div class="room-card">
+                    <img src="https://images.unsplash.com/photo-1584132967334-10e028bd69f7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Presidential Suite" class="room-img">
+                    <div class="room-content">
+                        <h3>Presidential Suite</h3>
+                        <p>Our most luxurious offering with private dining area, butler service, and breathtaking lake views.</p>
+                        <div class="room-price">$850/night</div>
+                        <a href="#" class="room-btn">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Amenities Section -->
+    <section id="amenities" class="amenities">
+        <div class="container">
+            <div class="section-header">
+                <div class="luxury-header-3-container">
+                    <div class="luxury-border-side"></div>
+                    <div class="luxury-header-content">
+                        <div class="ribbon">Facilities</div>
+                        <h2>Hotel Amenities</h2>
+                        <p>Discover our world-class facilities designed to enhance your stay and create unforgettable experiences.</p>
+                    </div>
+                    <div class="luxury-border-side"></div>
+                </div>
+            </div>
+            <div class="amenities-grid">
+                <div class="amenity-card">
+                    <div class="amenity-icon">
+                        <i class="fas fa-swimming-pool"></i>
+                    </div>
+                    <h3>Infinity Pool</h3>
+                    <p>Stunning infinity pool with panoramic views of Lake Victoria and the surrounding landscape.</p>
+                </div>
+                <div class="amenity-card">
+                    <div class="amenity-icon">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                    <h3>Luxury Spa</h3>
+                    <p>Rejuvenate your senses with our signature treatments and holistic wellness therapies.</p>
+                </div>
+                <div class="amenity-card">
+                    <div class="amenity-icon">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <h3>Fitness Center</h3>
+                    <p>State-of-the-art fitness facility with personal training services and group classes.</p>
+                </div>
+                <div class="amenity-card">
+                    <div class="amenity-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3>Fine Dining</h3>
+                    <p>Exquisite culinary experiences with locally sourced ingredients and international flavors.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Virtual Tour Section -->
+    <section id="virtual-tour" class="virtual-tour">
+        <div class="container">
+            <div class="section-header">
+                <div class="luxury-header-3-container">
+                    <div class="luxury-border-side"></div>
+                    <div class="luxury-header-content">
+                        <div class="ribbon">Experience</div>
+                        <h2>Virtual Tour</h2>
+                        <p>Take a sneak peek at our luxurious facilities and breathtaking surroundings before your arrival.</p>
+                    </div>
+                    <div class="luxury-border-side"></div>
+                </div>
+            </div>
+            <div class="tour-container">
+                <div class="tour-content">
+                    <h3>Explore Our Resort</h3>
+                    <p>Immerse yourself in the beauty of Pearl of Africa Resort with our interactive virtual tour. Discover our elegant accommodations, world-class amenities, and stunning natural surroundings from the comfort of your home.</p>
+                    <p>Our 360-degree virtual experience allows you to navigate through our property and get a true sense of the luxury that awaits you.</p>
+                    <a href="#" class="hero-btn" style="margin-top: 1.5rem;">Start Virtual Tour</a>
+                </div>
+                <div class="tour-video">
+                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Virtual Tour">
+                    <div class="play-btn">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="section-header">
+                <div class="luxury-header-3-container">
+                    <div class="luxury-border-side"></div>
+                    <div class="luxury-header-content">
+                        <div class="ribbon">Stay Updated</div>
+                        <h2>Newsletter</h2>
+                        <p>Subscribe to our newsletter for exclusive offers, updates, and travel inspiration.</p>
+                    </div>
+                    <div class="luxury-border-side"></div>
+                </div>
+            </div>
+            <div class="newsletter-content">
+                <p>Be the first to know about our special promotions, seasonal packages, and upcoming events at Pearl of Africa Resort.</p>
+                <form class="newsletter-form">
+                    <input type="email" class="newsletter-input" placeholder="Your email address" required>
+                    <button type="submit" class="newsletter-btn">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQs Section -->
+    <section class="faqs">
+        <div class="container">
+            <div class="section-header">
+                <div class="luxury-header-3-container">
+                    <div class="luxury-border-side"></div>
+                    <div class="luxury-header-content">
+                        <div class="ribbon">Information</div>
+                        <h2>FAQs</h2>
+                        <p>Find answers to commonly asked questions about our resort and services.</p>
+                    </div>
+                    <div class="luxury-border-side"></div>
+                </div>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What time is check-in and check-out?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Check-in time is 3:00 PM and check-out time is 11:00 AM. Early check-in and late check-out may be available upon request, subject to availability and additional charges.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Do you offer airport transfers?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we offer complimentary airport transfers for guests staying in our suites. For other room categories, airport transfer services are available at an additional charge. Please contact our concierge to arrange your transportation.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Is the resort child-friendly?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely! We welcome families and offer a range of child-friendly amenities including a kids' club, children's pool, and special menus. Baby-sitting services can also be arranged with advance notice.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What dining options are available?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We have three restaurants and two bars on property, offering a variety of culinary experiences from fine dining to casual poolside snacks. Room service is available 24 hours for in-room dining.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Weather Section -->
+    <section class="weather">
+        <div class="container">
+            <div class="section-header">
+                <div class="luxury-header-3-container">
+                    <div class="luxury-border-side"></div>
+                    <div class="luxury-header-content">
+                        <div class="ribbon">Local Info</div>
+                        <h2>Entebbe Weather</h2>
+                        <p>Current weather conditions to help you plan your activities during your stay.</p>
+                    </div>
+                    <div class="luxury-border-side"></div>
+                </div>
+            </div>
+            <div class="weather-container">
+                <div class="weather-info">
+                    <div class="weather-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3>Entebbe, Uganda</h3>
+                    </div>
+                    <div class="weather-details">
+                        <div class="weather-item">
+                            <div class="weather-value">26°C</div>
+                            <div class="weather-label">Temperature</div>
+                        </div>
+                        <div class="weather-item">
+                            <div class="weather-value">65%</div>
+                            <div class="weather-label">Humidity</div>
+                        </div>
+                        <div class="weather-item">
+                            <div class="weather-value">Partly Cloudy</div>
+                            <div class="weather-label">Conditions</div>
+                        </div>
+                        <div class="weather-item">
+                            <div class="weather-value">12 km/h</div>
+                            <div class="weather-label">Wind Speed</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="weather-image">
+                    <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Entebbe Weather">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Small Bar Section -->
+    <section class="bar">
+        <div class="container">
+            <div class="section-header">
+                <div class="luxury-header-3-container">
+                    <div class="luxury-border-side"></div>
+                    <div class="luxury-header-content">
+                        <div class="ribbon">Entertainment</div>
+                        <h2>Sunset Bar</h2>
+                        <p>Unwind with crafted cocktails and premium spirits while enjoying breathtaking views of Lake Victoria.</p>
+                    </div>
+                    <div class="luxury-border-side"></div>
+                </div>
+            </div>
+            <div class="bar-container">
+                <div class="bar-content">
+                    <h3>Signature Cocktails</h3>
+                    <p>Our expert mixologists have created an exclusive menu of signature cocktails inspired by local flavors and international classics. Enjoy your favorite drink while watching the spectacular African sunset over Lake Victoria.</p>
+                    <p>Open daily from 4:00 PM to midnight. Happy hour from 5:00 PM to 7:00 PM with special discounts on selected beverages.</p>
+                </div>
+                <div class="bar-menu">
+                    <div class="bar-item">
+                        <h4>Pearl Martini</h4>
+                        <p>Gin, dry vermouth, pearl onion garnish</p>
+                        <div class="bar-price">$12</div>
+                    </div>
+                    <div class="bar-item">
+                        <h4>Victoria Sunset</h4>
+                        <p>Tequila, orange juice, grenadine, lime</p>
+                        <div class="bar-price">$10</div>
+                    </div>
+                    <div class="bar-item">
+                        <h4>African Mule</h4>
+                        <p>Vodka, ginger beer, lime, mint</p>
+                        <div class="bar-price">$11</div>
+                    </div>
+                    <div class="bar-item">
+                        <h4>Uganda Gold</h4>
+                        <p>Whiskey, honey, lemon, bitters</p>
+                        <div class="bar-price">$13</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coffee Corner Section -->
+    <section class="coffee">
+        <div class="container">
+            <div class="section-header">
+                <div class="luxury-header-3-container">
+                    <div class="luxury-border-side"></div>
+                    <div class="luxury-header-content">
+                        <div class="ribbon">Refreshments</div>
+                        <h2>Coffee Corner</h2>
+                        <p>Experience the rich flavors of Ugandan coffee in our elegant café setting.</p>
+                    </div>
+                    <div class="luxury-border-side"></div>
+                </div>
+            </div>
+            <div class="coffee-container">
+                <div class="coffee-image">
+                    <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Coffee Corner">
+                </div>
+                <div class="coffee-content">
+                    <h3>Uganda's Finest Coffee</h3>
+                    <p>Our Coffee Corner showcases the best of Ugandan coffee beans, carefully selected from local farms and roasted to perfection. Enjoy a variety of brewing methods including pour-over, French press, and espresso.</p>
+                    <p>Complement your coffee experience with our selection of freshly baked pastries, light snacks, and artisanal desserts.</p>
+                    <div class="coffee-features">
+                        <div class="coffee-feature">
+                            <i class="fas fa-coffee"></i>
+                            <h4>Single-Origin Beans</h4>
+                        </div>
+                        <div class="coffee-feature">
+                            <i class="fas fa-clock"></i>
+                            <h4>Open 6 AM - 10 PM</h4>
+                        </div>
+                        <div class="coffee-feature">
+                            <i class="fas fa-cookie"></i>
+                            <h4>Fresh Pastries</h4>
+                        </div>
+                        <div class="coffee-feature">
+                            <i class="fas fa-wifi"></i>
+                            <h4>Complimentary WiFi</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>Pearl of Africa</h3>
+                    <p>Uganda's premier luxury resort offering exceptional accommodation, dining, and experiences in beautiful Entebbe.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#rooms">Rooms & Suites</a></li>
+                        <li><a href="#amenities">Amenities</a></li>
+                        <li><a href="#virtual-tour">Virtual Tour</a></li>
+                        <li><a href="#">Special Offers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li>Lake Victoria Drive</li>
+                        <li>Entebbe, Uganda</li>
+                        <li>+256 41 425 6789</li>
+                        <li>info@pearlofafrica.com</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Follow Us</h3>
+                    <ul>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">TripAdvisor</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Pearl of Africa Resort. All rights reserved. | Premium Luxury Hotel in Entebbe, Uganda</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                
+                question.addEventListener('click', () => {
+                    // Close all other FAQs
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    
+                    // Toggle current FAQ
+                    item.classList.toggle('active');
+                });
+            });
+            
+            // Header scroll effect
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('header');
+                if (window.scrollY > 50) {
+                    header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+                } else {
+                    header.style.boxShadow = '0 2px 15px rgba(0, 0, 0, 0.1)';
+                }
+            });
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('nav a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    if (this.getAttribute('href').startsWith('#')) {
+                        e.preventDefault();
+                        
+                        const targetId = this.getAttribute('href');
+                        const targetElement = document.querySelector(targetId);
+                        
+                        if (targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 100,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

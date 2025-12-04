@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7Days Motel | Premium Amenities</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --crimson: #C32026;
+            --crimson-dark: #741721;
+            --evergreen: #0F3A34;
+            --evergreen-dark: #0D2F2B;
+            --gold: #D6B87A;
+            --gold-light: #E8D4B0;
+            --gold-dark: #C7B8A2;
+            --white: #FFFFFF;
+            --ivory: #F7F4EC;
+            --charcoal: #1A1A1A;
+            --mist: #E2E2E2;
+            --smoke: #444444;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        body {
+            background: var(--ivory);
+            color: var(--charcoal);
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+            padding: 20px;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Luxury Header */
+        .luxury-header {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .luxury-header-3-container {
+            display: flex;
+            align-items: center;
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .luxury-border-side {
+            flex-grow: 1;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--evergreen), transparent);
+            opacity: 0.4;
+        }
+
+        .luxury-header-content {
+            padding: 0 4rem;
+            text-align: center;
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        .ribbon {
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+            --r: .8em;
+            
+            border-block: .5em solid #0000;
+            padding-inline: calc(var(--r) + .25em) .5em;
+            line-height: 1.8;
+            clip-path: polygon(0 0,100% 0,100% 100%,0 100%,0 calc(100% - .25em),var(--r) 50%,0 .25em);
+            background:
+             radial-gradient(.2em 50% at right,#000a,#0000) border-box,
+             var(--crimson) padding-box;
+            width: fit-content;
+            margin: 0 auto 3rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .luxury-header-content h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            color: var(--evergreen-dark);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .luxury-header-content h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--crimson), transparent);
+        }
+
+        .luxury-header-content p {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+            color: var(--evergreen);
+            line-height: 1.7;
+            max-width: 500px;
+            margin: 0 auto;
+            opacity: 0.85;
+        }
+        
+        /* Amenities Section Styles */
+        .amenities-section {
+            margin: 100px 0;
+            position: relative;
+        }
+
+        /* Quote Icons */
+        .quote-icon {
+            position: absolute;
+            color: rgba(13, 47, 43, 0.08);
+            font-size: 8rem;
+            z-index: 0;
+        }
+
+        .quote-top {
+            top: 20px;
+            left: 20px;
+        }
+
+        .quote-bottom {
+            bottom: 20px;
+            right: 20px;
+            transform: rotate(180deg);
+        }
+        
+        .amenities-container {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .main-amenity {
+            position: relative;
+            height: 550px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .main-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .main-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 40px;
+            background: linear-gradient(transparent, var(--evergreen-dark));
+            color: var(--white);
+            transform: translateY(0);
+            transition: var(--transition);
+        }
+        
+        .main-content h3 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+        }
+        
+        .main-content p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+        }
+        
+        .amenity-features {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .feature-tag {
+            background: var(--crimson);
+            color: var(--white);
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        .amenities-carousel-container {
+            position: relative;
+            width: 100%;
+        }
+        
+        .carousel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        
+        .carousel-header h3 {
+            font-size: 1.8rem;
+            color: var(--evergreen);
+        }
+        
+        .carousel-controls {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .carousel-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--evergreen);
+            border: none;
+            color: var(--white);
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        
+        .carousel-btn:hover {
+            background: var(--evergreen-dark);
+            transform: translateY(-2px);
+        }
+        
+        .amenities-carousel {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .carousel-track {
+            display: flex;
+            transition: transform 1.2s ease;
+            gap: 20px;
+        }
+        
+        .amenity-card {
+            width: 300px; /* Updated width */
+            height: 250px; /* Updated height */
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            flex-shrink: 0;
+        }
+        
+        .amenity-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .amenity-card.active {
+            border: 2px solid var(--crimson);
+        }
+        
+        .amenity-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .amenity-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(transparent, rgba(15, 58, 52, 0.9));
+            color: var(--white);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            height: 100%;
+            transition: var(--transition);
+            text-align: left; /* Align text to left */
+        }
+        
+        .amenity-info h4 {
+            font-size: 1.3rem;
+            color: var(--white);
+            margin-bottom: 10px;
+            text-align: left; /* Align text to left */
+        }
+        
+        .amenity-brief {
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+            opacity: 0.9;
+            line-height: 1.4;
+        }
+        
+        .amenity-icons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .amenity-icon {
+            width: 30px;
+            height: 30px;
+            background: rgb(219, 217, 217);
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--evergreen);
+            font-size: 1rem;
+        }
+        
+        .learn-more-btn {
+            display: inline-block;
+            background: var(--white);
+            color: var(--evergreen);
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+            text-align: center;
+            letter-spacing: 0.5px;
+            align-self: flex-start; /* Align to left */
+            margin-top: 5px;
+        }
+        
+        .learn-more-btn:hover {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid white;
+            transform: translateY(-1px);
+        }
+        
+        /* Enhanced Features Section */
+        .amenities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+        
+        .amenity-feature-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 35px 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .amenity-feature-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--crimson);
+        }
+        
+        .amenity-feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--crimson);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            transition: var(--transition);
+        }
+        
+        .amenity-feature-card:hover .feature-icon {
+            background: var(--evergreen);
+            transform: scale(1.1);
+        }
+        
+        .amenity-feature-card h4 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--evergreen);
+        }
+        
+        .amenity-feature-card p {
+            color: var(--smoke);
+            margin-bottom: 20px;
+        }
+        
+        .feature-list {
+            list-style: none;
+        }
+        
+        .feature-list li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .feature-list li:before {
+            content: '✓';
+            color: var(--crimson);
+            font-weight: bold;
+        }
+          
+        /* Carousel Indicators */
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--mist);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .indicator.active {
+            background: var(--crimson);
+            transform: scale(1.2);
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .luxury-header-content h2 {
+                font-size: 3rem;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .luxury-header-content h2 {
+                font-size: 2.5rem;
+            }
+            
+            .main-amenity {
+                height: 500px;
+            }
+            
+            .main-content {
+                padding: 30px;
+            }
+            
+            .main-content h3 {
+                font-size: 1.8rem;
+            }
+            
+            .luxury-header-3-container {
+                flex-direction: column;
+            }
+            
+            .luxury-border-side {
+                width: 100%;
+                margin: 1rem 0;
+            }
+            
+            .luxury-header-content {
+                padding: 0;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .quote-icon {
+                font-size: 5rem;
+            }
+            
+            .main-amenity {
+                height: 450px;
+            }
+            
+            .main-content {
+                padding: 25px;
+            }
+            
+            .main-content h3 {
+                font-size: 1.6rem;
+            }
+            
+            .carousel-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .amenity-features {
+                gap: 10px;
+            }
+            
+            .feature-tag {
+                padding: 4px 10px;
+                font-size: 0.6rem;
+            }
+            
+            .amenities-grid {
+                grid-template-columns: 1fr;
+            }
+            
+        }
+        
+        @media (max-width: 576px) {
+            body {
+                padding: 15px;
+            }
+            
+            .luxury-header-content h2 {
+                font-size: 2.2rem;
+            }
+            
+            .luxury-header-content p {
+                font-size: 1rem;
+            }
+            
+            .main-amenity {
+                height: 400px;
+            }
+            
+            .main-content {
+                padding: 20px;
+            }
+            
+            .main-content h3 {
+                font-size: 1.6rem;
+            }
+            
+            .main-content p{
+                font-size: 0.9rem;
+            }
+
+            .amenity-card {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+            
+        }
+        
+        @media (max-width: 400px) {
+            .luxury-header-content h2 {
+                font-size: 1.8rem;
+            }
+            
+            .location h3 {
+                font-size: 1.3rem;
+            }
+            
+            .amenity-card {
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Amenities Section -->
+    <section class="amenities-section">
+        <div class="container">
+            <!-- Quote Icons -->
+            <i class="fas fa-quote-left quote-icon quote-top"></i>
+            <i class="fas fa-quote-left quote-icon quote-bottom"></i>
+            
+            <!-- Luxury Header -->
+            <div class="luxury-header">
+                <div class="luxury-header-3-container">
+                    <div class="luxury-border-side"></div>
+                    <div class="luxury-header-content">
+                        <div class="ribbon">Premium Facilities</div>
+                        <h2>Hotel Amenities</h2>
+                        <p>Discover our world-class facilities designed to enhance your stay and create unforgettable experiences.</p>
+                    </div>
+                    <div class="luxury-border-side"></div>
+                </div>
+            </div>
+            
+            <div class="amenities-container">
+                <div class="main-amenity">
+                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Luxury Suite" class="main-image" id="mainImage">
+                    <div class="main-content">
+                        <h3 id="mainTitle">Luxury Accommodations</h3>
+                        <p id="mainDescription">Experience our elegantly appointed rooms with premium bedding, modern amenities, and stunning views designed for your ultimate comfort and relaxation.</p>
+                        <div class="amenity-features" id="mainFeatures">
+                            <span class="feature-tag">Premium Bedding</span>
+                            <span class="feature-tag">Smart Room Controls</span>
+                            <span class="feature-tag">Panoramic Views</span>
+                            <span class="feature-tag">24/7 Room Service</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="amenities-carousel-container">
+                    <div class="carousel-header">
+                        <h3>Explore Our Amenities</h3>
+                        <div class="carousel-controls">
+                            <button class="carousel-btn" id="prevBtn">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button class="carousel-btn" id="nextBtn">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="amenities-carousel">
+                        <div class="carousel-track" id="carouselTrack">
+                            <!-- Cards will be populated by JavaScript -->
+                        </div>
+                    </div>
+                    
+                    <div class="carousel-indicators" id="carouselIndicators">
+                        <!-- Indicators will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Enhanced Features Section -->
+            <div class="amenities-grid">
+                <div class="amenity-feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-concierge-bell"></i>
+                    </div>
+                    <h4>Premium Services</h4>
+                    <p>Our dedicated staff is available 24/7 to ensure your stay is exceptional.</p>
+                    <ul class="feature-list">
+                        <li>24/7 Concierge Service</li>
+                        <li>Personalized Check-in</li>
+                        <li>Luxury Transportation</li>
+                        <li>Business Center Access</li>
+                    </ul>
+                </div>
+                
+                <div class="amenity-feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h4>Safety & Security</h4>
+                    <p>Your safety and privacy are our top priorities with advanced security systems.</p>
+                    <ul class="feature-list">
+                        <li>24/7 Security Personnel</li>
+                        <li>Secure Keycard Access</li>
+                        <li>In-room Safes</li>
+                        <li>Emergency Response System</li>
+                    </ul>
+                </div>
+                
+                <div class="amenity-feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h4>Family Friendly</h4>
+                    <p>We welcome families with special amenities and services for all ages.</p>
+                    <ul class="feature-list">
+                        <li>Family Suites Available</li>
+                        <li>Children's Activities</li>
+                        <li>Babysitting Services</li>
+                        <li>Kids' Pool Area</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const carouselTrack = document.getElementById('carouselTrack');
+            const carouselIndicators = document.getElementById('carouselIndicators');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const mainImage = document.getElementById('mainImage');
+            const mainTitle = document.getElementById('mainTitle');
+            const mainDescription = document.getElementById('mainDescription');
+            const mainFeatures = document.getElementById('mainFeatures');
+            
+            // Amenities data with all requested amenities
+            const amenitiesData = [
+                {
+                    image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+                    title: 'Luxury Accommodations',
+                    description: 'Experience our elegantly appointed rooms with premium bedding, modern amenities, and stunning views designed for your ultimate comfort and relaxation.',
+                    brief: 'Elegant rooms with premium bedding and modern amenities.',
+                    features: ['Premium Bedding', 'Smart Room Controls', 'Panoramic Views', '24/7 Room Service'],
+                    icons: ['fas fa-bed', 'fas fa-tv', 'fas fa-wifi']
+                },
+                {
+                    image: 'https://images.unsplash.com/photo-1551632436-cbf8dd35adfa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80',
+                    title: 'Bar & Lounge',
+                    description: 'Relax and socialize in our sophisticated bar and lounge area with premium beverages and cozy ambiance.',
+                    brief: 'Sophisticated bar with premium beverages and live music.',
+                    features: ['Premium Beverages', 'Live Music', 'Cozy Ambiance', 'Expert Mixologists'],
+                    icons: ['fas fa-cocktail', 'fas fa-music', 'fas fa-wine-glass-alt']
+                },
+                {
+                    image: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+                    title: 'Spa & Wellness',
+                    description: 'Rejuvenate your senses with our premium spa treatments and wellness therapies. Our expert therapists provide personalized treatments for ultimate relaxation.',
+                    brief: 'Premium spa treatments and wellness therapies.',
+                    features: ['Massage Therapy', 'Beauty Treatments', 'Wellness Programs', 'Expert Therapists'],
+                    icons: ['fas fa-spa', 'fas fa-hot-tub', 'fas fa-leaf']
+                },
+                {
+                    image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+                    title: 'Fine Dining',
+                    description: 'Savor exquisite culinary experiences at our fine dining restaurant. Our chefs create innovative dishes using locally sourced ingredients and international flavors.',
+                    brief: 'Exquisite culinary experiences with local and international flavors.',
+                    features: ['Local Cuisine', 'International Dishes', 'Wine Selection', 'Chef Specials'],
+                    icons: ['fas fa-utensils', 'fas fa-wine-glass-alt', 'fas fa-coffee']
+                },
+                {
+                    image: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1480&q=80',
+                    title: 'Coffee Corner',
+                    description: 'Start your day right with our premium coffee selection, artisanal pastries, and comfortable seating area.',
+                    brief: 'Premium coffee and artisanal pastries to start your day.',
+                    features: ['Premium Coffee', 'Artisanal Pastries', 'Comfortable Seating', 'Morning Specials'],
+                    icons: ['fas fa-coffee', 'fas fa-cookie', 'fas fa-mug-hot']
+                },
+                {
+                    image: 'https://images.unsplash.com/photo-1563453392212-326f5e854473?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+                    title: 'High-Speed WiFi',
+                    description: 'Stay connected with our complimentary high-speed WiFi available throughout the entire property.',
+                    brief: 'Complimentary high-speed WiFi throughout the property.',
+                    features: ['Fiber Optic', 'Unlimited Data', 'Multiple Devices', '24/7 Support'],
+                    icons: ['fas fa-wifi', 'fa-solid fa-house-signal', 'fas fa-signal']
+                },
+                {
+                    image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1373&q=80',
+                    title: 'Secure Parking',
+                    description: 'Park with peace of mind in our secure, well-lit parking facility with 24/7 surveillance.',
+                    brief: 'Secure, well-lit parking with 24/7 surveillance.',
+                    features: ['24/7 Surveillance', 'Covered Parking', 'Easy Access', 'Valet Service'],
+                    icons: ['fas fa-parking', 'fas fa-shield-alt', 'fas fa-key']
+                },
+                {
+                    image: 'https://images.unsplash.com/photo-1521747116042-71d81d59e689?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+                    title: 'Air Conditioning',
+                    description: 'Our state-of-the-art climate control systems ensure your comfort in every season with individual room controls.',
+                    brief: 'State-of-the-art climate control for all-season comfort.',
+                    features: ['Individual Controls', 'Energy Efficient', 'Quiet Operation', 'All-Season Comfort'],
+                    icons: ['fas fa-snowflake', 'fas fa-thermometer-half', 'fas fa-wind']
+                },
+                {
+                    image: 'https://images.unsplash.com/photo-1582719471384-894fbb16e074?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+                    title: 'Room Service',
+                    description: 'Enjoy delicious meals and snacks delivered directly to your room with our 24/7 room service.',
+                    brief: '24/7 room service with an extensive menu.',
+                    features: ['24/7 Availability', 'Extensive Menu', 'Quick Delivery', 'Professional Staff'],
+                    icons: ['fas fa-concierge-bell', 'fas fa-utensils', 'fas fa-clock']
+                },
+                {
+                    image: 'https://images.unsplash.com/photo-1556227835-5a6e52edab9f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+                    title: 'Premium Toiletries',
+                    description: 'Pamper yourself with our exclusive line of premium toiletries made from natural, eco-friendly ingredients.',
+                    brief: 'Exclusive line of premium, eco-friendly toiletries.',
+                    features: ['Natural Ingredients', 'Eco-Friendly', 'Luxury Brands', 'Daily Replenishment'],
+                    icons: ['fas fa-pump-soap', 'fas fa-recycle', 'fas fa-spa']
+                }
+            ];
+            
+            let currentIndex = 0;
+            let isAnimating = false;
+            let carouselInterval;
+            
+            // Create amenity cards with infinite loop
+            function createAmenityCards() {
+                carouselTrack.innerHTML = '';
+                carouselIndicators.innerHTML = '';
+                
+                // Create cards for the original data
+                amenitiesData.forEach((amenity, index) => {
+                    // Create card
+                    const card = document.createElement('div');
+                    card.className = 'amenity-card';
+                    card.dataset.index = index;
+                    
+                    card.innerHTML = `
+                        <img src="${amenity.image}" alt="${amenity.title}" class="amenity-image">
+                        <div class="amenity-info">
+                            <h4>${amenity.title}</h4>
+                            <p class="amenity-brief">${amenity.brief}</p>
+                            <div class="amenity-icons">
+                                ${amenity.icons.map(icon => `
+                                    <div class="amenity-icon">
+                                        <i class="${icon}"></i>
+                                    </div>
+                                `).join('')}
+                            </div>
+                            <a href="#" class="learn-more-btn">Learn More</a>
+                        </div>
+                    `;
+                    
+                    carouselTrack.appendChild(card);
+                    
+                    // Create indicator
+                    const indicator = document.createElement('div');
+                    indicator.className = 'indicator';
+                    indicator.dataset.index = index;
+                    carouselIndicators.appendChild(indicator);
+                });
+                
+                // Clone first few cards and append to end for infinite effect
+                for (let i = 0; i < 5; i++) {
+                    const clone = carouselTrack.children[i].cloneNode(true);
+                    clone.dataset.index = amenitiesData.length + i;
+                    carouselTrack.appendChild(clone);
+                }
+                
+                // Set initial active states
+                updateActiveStates();
+            }
+            
+            // Update main display when amenity card is clicked
+            function updateMainDisplay(index) {
+                const amenity = amenitiesData[index];
+                
+                // Update main content
+                mainImage.src = amenity.image;
+                mainTitle.textContent = amenity.title;
+                mainDescription.textContent = amenity.description;
+                
+                // Update features
+                mainFeatures.innerHTML = '';
+                amenity.features.forEach(feature => {
+                    const featureTag = document.createElement('span');
+                    featureTag.className = 'feature-tag';
+                    featureTag.textContent = feature;
+                    mainFeatures.appendChild(featureTag);
+                });
+            }
+            
+            // Update active states for cards and indicators
+            function updateActiveStates() {
+                const amenityCards = document.querySelectorAll('.amenity-card');
+                const indicators = document.querySelectorAll('.indicator');
+                
+                amenityCards.forEach(card => {
+                    card.classList.remove('active');
+                });
+                
+                indicators.forEach(indicator => {
+                    indicator.classList.remove('active');
+                });
+                
+                const actualIndex = currentIndex % amenitiesData.length;
+                
+                if (amenityCards[currentIndex]) {
+                    amenityCards[currentIndex].classList.add('active');
+                }
+                
+                if (indicators[actualIndex]) {
+                    indicators[actualIndex].classList.add('active');
+                }
+            }
+            
+            // Update carousel position with smooth, slow transition
+            function updateCarouselPosition() {
+                if (isAnimating) return;
+                
+                isAnimating = true;
+                
+                const scrollPosition = currentIndex * 320; // 300px card + 20px gap
+                carouselTrack.style.transform = `translateX(-${scrollPosition}px)`;
+                
+                // Update active states after animation
+                setTimeout(() => {
+                    updateActiveStates();
+                    isAnimating = false;
+                    
+                    // Reset position if we're at the cloned cards
+                    if (currentIndex >= amenitiesData.length) {
+                        currentIndex = currentIndex % amenitiesData.length;
+                        carouselTrack.style.transition = 'none';
+                        carouselTrack.style.transform = `translateX(-${currentIndex * 320}px)`;
+                        setTimeout(() => {
+                            carouselTrack.style.transition = 'transform 1.2s ease';
+                        }, 50);
+                    }
+                }, 1200); // Match the CSS transition duration
+            }
+            
+            // Navigate carousel with infinite loop
+            function navigateCarousel(direction) {
+                if (isAnimating) return;
+                
+                if (direction === 'next') {
+                    currentIndex = (currentIndex + 1) % (amenitiesData.length + 5);
+                } else {
+                    currentIndex = (currentIndex - 1 + (amenitiesData.length + 5)) % (amenitiesData.length + 5);
+                    
+                    // If we're going backwards from the beginning, jump to the end of the original set
+                    if (currentIndex === amenitiesData.length + 5 - 1) {
+                        currentIndex = amenitiesData.length - 1;
+                    }
+                }
+                
+                // Update main display
+                updateMainDisplay(currentIndex % amenitiesData.length);
+                
+                // Update carousel position
+                updateCarouselPosition();
+            }
+            
+            // Start auto-rotation
+            function startAutoRotation() {
+                carouselInterval = setInterval(() => {
+                    navigateCarousel('next');
+                }, 6000); // Slower auto-rotation for luxury feel
+            }
+            
+            // Stop auto-rotation
+            function stopAutoRotation() {
+                clearInterval(carouselInterval);
+            }
+            
+            // Initialize
+            function init() {
+                createAmenityCards();
+                updateMainDisplay(0);
+                startAutoRotation();
+                
+                // Add event listeners to amenity cards
+                document.addEventListener('click', (e) => {
+                    const card = e.target.closest('.amenity-card');
+                    if (card) {
+                        const index = parseInt(card.dataset.index);
+                        currentIndex = index % amenitiesData.length;
+                        updateMainDisplay(currentIndex);
+                        updateCarouselPosition();
+                        stopAutoRotation();
+                        setTimeout(startAutoRotation, 10000); // Restart after 10 seconds
+                    }
+                    
+                    const indicator = e.target.closest('.indicator');
+                    if (indicator) {
+                        const index = parseInt(indicator.dataset.index);
+                        currentIndex = index;
+                        updateMainDisplay(currentIndex);
+                        updateCarouselPosition();
+                        stopAutoRotation();
+                        setTimeout(startAutoRotation, 10000); // Restart after 10 seconds
+                    }
+                    
+                    // Handle Learn More button clicks
+                    const learnMoreBtn = e.target.closest('.learn-more-btn');
+                    if (learnMoreBtn) {
+                        e.preventDefault();
+                        const card = learnMoreBtn.closest('.amenity-card');
+                        const index = parseInt(card.dataset.index);
+                        currentIndex = index % amenitiesData.length;
+                        updateMainDisplay(currentIndex);
+                        updateCarouselPosition();
+                        stopAutoRotation();
+                        setTimeout(startAutoRotation, 10000); // Restart after 10 seconds
+                        
+                        // Scroll to main amenity section
+                        document.querySelector('.main-amenity').scrollIntoView({ 
+                            behavior: 'smooth',
+                            block: 'center'
+                        });
+                    }
+                });
+                
+                // Add event listeners to navigation buttons
+                prevBtn.addEventListener('click', () => {
+                    navigateCarousel('prev');
+                    stopAutoRotation();
+                    setTimeout(startAutoRotation, 10000); // Restart after 10 seconds
+                });
+                
+                nextBtn.addEventListener('click', () => {
+                    navigateCarousel('next');
+                    stopAutoRotation();
+                    setTimeout(startAutoRotation, 10000); // Restart after 10 seconds
+                });
+                
+                // Add touch/swipe support for mobile
+                let startX = 0;
+                let endX = 0;
+                
+                carouselTrack.addEventListener('touchstart', (e) => {
+                    startX = e.touches[0].clientX;
+                    stopAutoRotation();
+                });
+                
+                carouselTrack.addEventListener('touchend', (e) => {
+                    endX = e.changedTouches[0].clientX;
+                    handleSwipe();
+                    setTimeout(startAutoRotation, 10000); // Restart after 10 seconds
+                });
+                
+                function handleSwipe() {
+                    const swipeThreshold = 50; // Minimum swipe distance
+                    
+                    if (startX - endX > swipeThreshold) {
+                        // Swipe left - next
+                        navigateCarousel('next');
+                    } else if (endX - startX > swipeThreshold) {
+                        // Swipe right - previous
+                        navigateCarousel('prev');
+                    }
+                }
+            }
+            
+            // Initialize the amenities section
+            init();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Hotel Virtual Tour</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --crimson: #C32026;
+            --crimson-dark: #741721;
+            --evergreen: #0F3A34;
+            --evergreen-dark: #0D2F2B;
+            --light: #f8f8f8;
+            --white: #fff;
+            --gold: #D4AF37;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--evergreen);
+            background-color: var(--white);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .virtual-tour-container {
+            width: 100%;
+            max-width: 1400px;
+        }
+
+        /* Luxury Header */
+        .luxury-header {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .luxury-header-3-container {
+            display: flex;
+            align-items: center;
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .luxury-border-side {
+            flex-grow: 1;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--evergreen), transparent);
+            opacity: 0.4;
+        }
+
+        .luxury-header-content {
+            padding: 0 4rem;
+            text-align: center;
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        .ribbon {
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+            --r: .8em;
+            
+            border-block: .5em solid #0000;
+            padding-inline: calc(var(--r) + .25em) .5em;
+            line-height: 1.8;
+            clip-path: polygon(0 0,100% 0,100% 100%,0 100%,0 calc(100% - .25em),var(--r) 50%,0 .25em);
+            background:
+             radial-gradient(.2em 50% at right,#000a,#0000) border-box,
+             var(--crimson) padding-box;
+            width: fit-content;
+            margin: 0 auto 3rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .luxury-header-content h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            color: var(--evergreen-dark);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .luxury-header-content h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--crimson), transparent);
+        }
+
+        .luxury-header-content p {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+            color: var(--evergreen);
+            line-height: 1.7;
+            max-width: 500px;
+            margin: 0 auto;
+            opacity: 0.85;
+        }
+
+        /* Virtual Tour Section */
+        .virtual-tour-section {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Quote Icons */
+        .quote-icon {
+            position: absolute;
+            color: rgba(13, 47, 43, 0.08);
+            font-size: 8rem;
+            z-index: 0;
+        }
+
+        .quote-top {
+            top: 20px;
+            left: 20px;
+        }
+
+        .quote-bottom {
+            bottom: 20px;
+            right: 20px;
+            transform: rotate(180deg);
+        }
+
+        /* Two-Column Layout */
+        .tour-layout {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (min-width: 992px) {
+            .tour-layout {
+                grid-template-columns: 1.2fr 0.8fr;
+            }
+        }
+
+        /* Tour Container */
+        .tour-container {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .tour-iframe-container {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (min-width: 992px) {
+            .tour-iframe-container {
+                height: 640px;
+            }
+        }
+
+        #virtual-tour-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Controls */
+        .tour-controls {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .control-btn {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--evergreen);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .control-btn:hover {
+            background: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .control-btn.fullscreen {
+            background: var(--crimson);
+            color: var(--white);
+        }
+
+        .control-btn.fullscreen:hover {
+            background: var(--crimson-dark);
+        }
+
+        /* Tour Content */
+        .tour-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .tour-description {
+            margin-bottom: 2rem;
+        }
+
+        .tour-description p {
+            font-size: 1.1rem;
+            color: var(--evergreen);
+            line-height: 1.7;
+            margin-bottom: .5rem;
+        }
+
+        .location-highlight {
+            background: linear-gradient(135deg, var(--evergreen) 0%, var(--evergreen-dark) 100%);
+            color: var(--white);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .location-highlight h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .location-highlight p {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
+        }
+
+        .location-highlight i {
+            margin-right: 10px;
+            color: var(--gold);
+            width: 20px;
+        }
+
+        .tour-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .tour-feature {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .tour-feature i {
+            width: 50px;
+            height: 50px;
+            background: var(--crimson);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .tour-feature div h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+            color: var(--evergreen-dark);
+        }
+
+        .tour-feature div p {
+            font-size: 0.9rem;
+            color: var(--evergreen);
+            opacity: 0.8;
+            line-height: 1.5;
+        }
+
+        .tour-cta {
+            margin-top: 2rem;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background: var(--crimson);
+            color: var(--white);
+            padding: 1rem 2rem;
+            border-radius: 4px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+        }
+
+        .cta-btn:hover {
+            background: var(--crimson-dark);
+            transform: translateY(-2px);
+        }
+
+        /* Fullscreen Mode */
+        .fullscreen-active {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 9999;
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .fullscreen-active .tour-iframe-container {
+            width: 100%;
+            height: 100%;
+            max-height: calc(100vh - 100px);
+        }
+
+        .fullscreen-active .tour-controls {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+        }
+
+        .fullscreen-active .close-fullscreen {
+            display: flex;
+        }
+
+        .close-fullscreen {
+            display: none;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            color: var(--evergreen);
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 10000;
+            transition: all 0.3s ease;
+        }
+
+        .close-fullscreen:hover {
+            background: var(--white);
+            transform: scale(1.1);
+        }
+
+        /* Lake Victoria Special Feature */
+        .lake-feature {
+            background: linear-gradient(135deg, #0a4d68 0%, #088395 100%);
+            color: var(--white);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .lake-icon {
+            font-size: 3rem;
+            color: var(--white);
+            flex-shrink: 0;
+        }
+
+        .lake-content h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .lake-content p {
+            font-size: 1rem;
+            opacity: 0.9;
+            line-height: 1.5;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            
+            .luxury-header-3-container {
+                flex-direction: column;
+            }
+            
+            .luxury-border-side {
+                width: 100%;
+                margin: 1rem 0;
+            }
+            
+            .luxury-header-content {
+                padding: 0;
+            }
+            
+            .luxury-header-content h2 {
+                font-size: 2.5rem;
+            }
+            
+            .virtual-tour-section {
+                padding: 2rem 1.5rem;
+            }
+            
+            .tour-iframe-container {
+                height: 400px;
+            }
+            
+            .tour-features {
+                grid-template-columns: 1fr;
+            }
+            
+            .quote-icon {
+                font-size: 5rem;
+            }
+            
+            .lake-feature {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="virtual-tour-container">
+        <section class="virtual-tour-section">
+            <!-- Quote Icons -->
+            <i class="fas fa-quote-left quote-icon quote-top"></i>
+            <i class="fas fa-quote-left quote-icon quote-bottom"></i>
+            
+            <!-- Luxury Header -->
+            <div class="luxury-header">
+                <div class="luxury-header-3-container">
+                    <div class="luxury-border-side"></div>
+                    <div class="luxury-header-content">
+                        <div class="ribbon">Immersive Experience</div>
+                        <h2>Virtual Tour</h2>
+                        <p>Explore our luxurious facilities and breathtaking surroundings from the comfort of your home.</p>
+                    </div>
+                    <div class="luxury-border-side"></div>
+                </div>
+            </div>
+
+            <!-- Two-Column Layout -->
+            <div class="tour-layout">
+                <!-- Virtual Tour (Left on large screens) -->
+                <div class="tour-container">
+                    <div class="tour-iframe-container">
+                        <iframe id="virtual-tour-iframe" width="100%" height="640" frameborder="0" 
+                                allow="xr-spatial-tracking; gyroscope; accelerometer" 
+                                allowfullscreen scrolling="no" 
+                                src="https://kristolklearphotography360.viewin360.co/share/collection/7H9QH?logo=1&card=1&info=0&logosize=112&fs=1&vr=1&zoom=1&initload=0&thumbs=1">
+                        </iframe>
+                        
+                        <div class="tour-controls">
+                            <button class="control-btn fullscreen" title="Enter Fullscreen">
+                                <i class="fas fa-expand"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <button class="close-fullscreen" title="Exit Fullscreen">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+
+                <!-- Tour Content (Right on large screens) -->
+                <div class="tour-content">
+                    <div class="tour-description">
+                        <p>Step inside 7 Days Motel through our immersive virtual tour. Navigate through our elegant accommodations, world-class amenities, and stunning natural surroundings with this interactive 360-degree experience.</p>
+                    </div>
+
+                    <!-- Location Highlight -->
+                    <div class="location-highlight">
+                        <h3>Prime Location</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> Opposite the UN Base in Entebbe</p>
+                        <p><i class="fas fa-plane"></i> Just 7 minutes from Entebbe International Airport</p>
+                        <p><i class="fas fa-water"></i> Stunning views of Lake Victoria</p>
+                        <p><i class="fas fa-city"></i> Close to Entebbe's main attractions</p>
+                    </div>
+
+                    <!-- Tour Features -->
+                    <div class="tour-features">
+                        <div class="tour-feature">
+                            <i class="fas fa-vr-cardboard"></i>
+                            <div>
+                                <h4>VR Compatible</h4>
+                                <p>Experience with VR headsets</p>
+                            </div>
+                        </div>
+                        <div class="tour-feature">
+                            <i class="fas fa-expand-arrows-alt"></i>
+                            <div>
+                                <h4>360° Views</h4>
+                                <p>Fully immersive experience</p>
+                            </div>
+                        </div>
+                        <div class="tour-feature">
+                            <i class="fas fa-mouse-pointer"></i>
+                            <div>
+                                <h4>Interactive</h4>
+                                <p>Click to explore different areas</p>
+                            </div>
+                        </div>
+                        <div class="tour-feature">
+                            <i class="fas fa-highlighter"></i>
+                            <div>
+                                <h4>Hotspots</h4>
+                                <p>Information points throughout</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const iframeContainer = document.querySelector('.tour-container');
+            const fullscreenBtn = document.querySelector('.control-btn.fullscreen');
+            const closeFullscreenBtn = document.querySelector('.close-fullscreen');
+            
+            // Fullscreen functionality
+            fullscreenBtn.addEventListener('click', function() {
+                if (!document.fullscreenElement) {
+                    iframeContainer.classList.add('fullscreen-active');
+                    
+                    if (iframeContainer.requestFullscreen) {
+                        iframeContainer.requestFullscreen();
+                    } else if (iframeContainer.mozRequestFullScreen) {
+                        iframeContainer.mozRequestFullScreen();
+                    } else if (iframeContainer.webkitRequestFullscreen) {
+                        iframeContainer.webkitRequestFullscreen();
+                    } else if (iframeContainer.msRequestFullscreen) {
+                        iframeContainer.msRequestFullscreen();
+                    }
+                } else {
+                    exitFullscreen();
+                }
+            });
+            
+            closeFullscreenBtn.addEventListener('click', function() {
+                exitFullscreen();
+            });
+            
+            function exitFullscreen() {
+                iframeContainer.classList.remove('fullscreen-active');
+                
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) {
+                    document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
+                }
+            }
+            
+            // Update fullscreen button when exiting via ESC key
+            document.addEventListener('fullscreenchange', exitHandler);
+            document.addEventListener('webkitfullscreenchange', exitHandler);
+            document.addEventListener('mozfullscreenchange', exitHandler);
+            document.addEventListener('MSFullscreenChange', exitHandler);
+            
+            function exitHandler() {
+                if (!document.fullscreenElement && 
+                    !document.webkitFullscreenElement && 
+                    !document.mozFullScreenElement && 
+                    !document.msFullscreenElement) {
+                    iframeContainer.classList.remove('fullscreen-active');
+                }
+            }
+            
+            // Add some interactive effects
+            const iframe = document.getElementById('virtual-tour-iframe');
+            
+            // Show loading state
+            iframe.addEventListener('load', function() {
+                iframeContainer.style.opacity = '1';
+            });
+            
+            // Initial state
+            iframeContainer.style.opacity = '0.7';
+            iframeContainer.style.transition = 'opacity 0.5s ease';
+        });
+    </script>
+</body>
+</html>

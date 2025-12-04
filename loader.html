@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7 Days Motel - Loading</title>
+    <style>
+        :root {
+            --crimson: #C32026;
+            --crimson-dark: #741721;
+            --evergreen: #0F3A34;
+            --evergreen-dark: #0D2F2B;
+            --gold: #D6B87A;
+            --gold-light: #E8D4B0;
+            --gold-dark: #C7B8A2;
+            --white: #FFFFFF;
+            --ivory: #F7F4EC;
+            --charcoal: #1A1A1A;
+            --mist: #E2E2E2;
+            --smoke: #444444;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+            --whatsapp: #25D366;
+            --email: #EA4335;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+
+        .loader-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: radial-gradient(ellipse at center, var(--evergreen-dark) 0%, var(--charcoal) 70%, #000000 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 1.2s ease, visibility 1.2s ease;
+        }
+
+        .loader-container.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader {
+            position: relative;
+            width: 320px;
+            height: 320px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo-container {
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, var(--ivory) 0%, var(--white) 100%);
+            border-radius: 50%;
+            backdrop-filter: blur(10px);
+            box-shadow: 
+                var(--shadow), 
+                0 0 50px rgba(214, 184, 122, 0.4),
+                0 0 80px rgba(195, 32, 38, 0.2),
+                inset 0 2px 20px rgba(255, 255, 255, 0.8);
+            padding: 25px;
+            border: 2px solid rgba(214, 184, 122, 0.3);
+        }
+
+        .logo {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.15));
+        }
+
+        /* Outer Ring - Evergreen */
+        .ring-outer {
+            position: absolute;
+            width: 280px;
+            height: 280px;
+            border: 4px solid transparent;
+            border-top-color: var(--evergreen);
+            border-right-color: var(--evergreen);
+            border-radius: 50%;
+            animation: rotateClockwise 6s ease-in-out infinite;
+            filter: drop-shadow(0 0 15px rgba(15, 58, 52, 0.6));
+        }
+
+        /* Inner Ring - Gold with Crimson accent */
+        .ring-inner {
+            position: absolute;
+            width: 230px;
+            height: 230px;
+            border: 4px solid transparent;
+            border-top-color: var(--gold);
+            border-right-color: var(--gold-light);
+            border-bottom-color: var(--crimson);
+            border-radius: 50%;
+            animation: rotateCounterClockwise 4.5s ease-in-out infinite;
+            filter: drop-shadow(0 0 15px rgba(214, 184, 122, 0.6)) drop-shadow(0 0 20px rgba(195, 32, 38, 0.3));
+        }
+
+        /* Accent Ring - Crimson */
+        .ring-accent {
+            position: absolute;
+            width: 310px;
+            height: 310px;
+            border: 2px solid transparent;
+            border-left-color: var(--crimson);
+            border-bottom-color: var(--crimson-dark);
+            border-radius: 50%;
+            animation: rotateClockwise 8s ease-in-out infinite;
+            filter: drop-shadow(0 0 20px rgba(195, 32, 38, 0.5));
+            opacity: 0.7;
+        }
+
+        @keyframes rotateClockwise {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes rotateCounterClockwise {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(-360deg);
+            }
+        }
+
+        .loading-text {
+            position: absolute;
+            bottom: -70px;
+            color: var(--gold);
+            font-size: 13px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            animation: luxuryPulse 2.5s ease-in-out infinite;
+            font-weight: 300;
+        }
+
+        @keyframes luxuryPulse {
+            0%, 100% {
+                opacity: 0.5;
+                letter-spacing: 4px;
+            }
+            50% {
+                opacity: 1;
+                letter-spacing: 5px;
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 0.6;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        /* Main Content */
+        .main-content {
+            width: 100%;
+            min-height: 100vh;
+            background: linear-gradient(to bottom, var(--ivory), var(--white));
+            padding: 60px 20px;
+        }
+
+        .content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .content-wrapper h1 {
+            font-size: 48px;
+            color: var(--evergreen);
+            margin-bottom: 20px;
+            font-family: 'Georgia', serif;
+        }
+
+        .content-wrapper p {
+            font-size: 18px;
+            color: var(--smoke);
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 40px 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-card h3 {
+            color: var(--gold-dark);
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            color: var(--smoke);
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Loader -->
+    <div class="loader-container" id="loader">
+        <div class="loader">
+            <div class="ring-accent"></div>
+            <div class="ring-outer"></div>
+            <div class="ring-inner"></div>
+            <div class="logo-container">
+                <img src="https://ibb.co/m5Zn6qFf" alt="7 Days Motel Logo" class="logo" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'color: var(--evergreen); font-size: 24px; font-weight: bold; text-align: center; font-family: Georgia, serif;\'>7<br>DAYS<br>MOTEL</div>'">
+                <!-- Replace 'your-logo.png' with your actual logo path -->
+            </div>
+            <div class="loading-text">Loading Excellence</div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="content-wrapper">
+            <h1>Welcome to 7 Days Motel</h1>
+            <p>Experience premium comfort and luxury at affordable prices. Your perfect stay awaits at our carefully designed accommodations.</p>
+            
+            <div class="features">
+                <div class="feature-card">
+                    <h3>Premium Comfort</h3>
+                    <p>Luxurious rooms designed for your ultimate relaxation and comfort.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>24/7 Service</h3>
+                    <p>Round-the-clock assistance to ensure your stay is seamless.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Perfect Location</h3>
+                    <p>Strategically located for easy access to all major attractions.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simulate page loading - remove this and use actual page load event
+        window.addEventListener('load', function() {
+            // Add a minimum display time for the loader (3 seconds for luxury feel)
+            setTimeout(function() {
+                const loader = document.getElementById('loader');
+                loader.classList.add('hidden');
+                
+                // Optional: Remove loader from DOM after animation completes
+                setTimeout(function() {
+                    loader.style.display = 'none';
+                }, 1200);
+            }, 3000);
+        });
+
+        // For demonstration: if all resources load quickly, ensure loader shows for at least 3 seconds
+        document.addEventListener('DOMContentLoaded', function() {
+            const loader = document.getElementById('loader');
+            let minLoadTime = 3000; // 3 seconds minimum for luxury experience
+            let startTime = Date.now();
+            
+            window.addEventListener('load', function() {
+                let elapsedTime = Date.now() - startTime;
+                let remainingTime = Math.max(0, minLoadTime - elapsedTime);
+                
+                setTimeout(function() {
+                    loader.classList.add('hidden');
+                    setTimeout(function() {
+                        loader.style.display = 'none';
+                    }, 1200);
+                }, remainingTime);
+            });
+        });
+    </script>
+</body>
+</html>

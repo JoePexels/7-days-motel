@@ -1,0 +1,1753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7Days Motel | Luxury Contact</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --crimson: #C32026;
+            --crimson-dark: #741721;
+            --evergreen: #0F3A34;
+            --evergreen-dark: #0D2F2B;
+            --platinum: #E5E4E2;
+            --platinum-light: #F5F5F5;
+            --platinum-dark: #B0B0B0;
+            --white: #FFFFFF;
+            --ivory: #F7F4EC;
+            --charcoal: #1A1A1A;
+            --mist: #E2E2E2;
+            --smoke: #444444;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+            --transition-slow: all 0.6s ease;
+        }
+        
+        body {
+            background: var(--ivory);
+            color: var(--charcoal);
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Luxury Header */
+        .luxury-header {
+            margin-bottom: 3rem;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .luxury-header-3-container {
+            display: flex;
+            align-items: center;
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .luxury-border-side {
+            flex-grow: 1;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--evergreen), transparent);
+            opacity: 0.4;
+        }
+
+        .luxury-header-content {
+            padding: 0 4rem;
+            text-align: center;
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        .ribbon {
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+            --r: .8em;
+            
+            border-block: .5em solid #0000;
+            padding-inline: calc(var(--r) + .25em) .5em;
+            line-height: 1.8;
+            clip-path: polygon(0 0,100% 0,100% 100%,0 100%,0 calc(100% - .25em),var(--r) 50%,0 .25em);
+            background:
+             radial-gradient(.2em 50% at right,#000a,#0000) border-box,
+             var(--crimson) padding-box;
+            width: fit-content;
+            margin: 0 auto 3rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .luxury-header-content h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            color: var(--evergreen-dark);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .luxury-header-content h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--crimson), transparent);
+        }
+
+        .luxury-header-content p {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+            color: var(--evergreen);
+            line-height: 1.7;
+            max-width: 500px;
+            margin: 0 auto;
+            opacity: 0.85;
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            height: 85vh;
+            background: linear-gradient(rgba(15, 58, 52, 0.8), rgba(15, 58, 52, 0.6)), 
+                        url('https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+            z-index: 2;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease 0.3s forwards;
+        }
+
+        .hero-content h1 {
+            font-size: 4.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-content p {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            background: var(--crimson);
+            color: var(--white);
+            padding: 15px 35px;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+            text-align: center;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(195, 32, 38, 0.3);
+        }
+
+        .hero-btn:hover {
+            background: var(--crimson-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-features {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+
+        .hero-feature {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 180px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .hero-feature:nth-child(1) { animation-delay: 0.6s; }
+        .hero-feature:nth-child(2) { animation-delay: 0.8s; }
+        .hero-feature:nth-child(3) { animation-delay: 1s; }
+        .hero-feature:nth-child(4) { animation-delay: 1.2s; }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--platinum);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .feature-text {
+            font-size: 0.9rem;
+            text-align: center;
+            opacity: 0.9;
+        }
+        
+        /* Contact Section Styles */
+        .contact-section {
+            margin: 100px 0;
+            position: relative;
+        }
+
+        /* Quote Icons */
+        .quote-icon {
+            position: absolute;
+            color: rgba(13, 47, 43, 0.08);
+            font-size: 8rem;
+            z-index: 0;
+        }
+
+        .quote-top {
+            top: 20px;
+            left: 20px;
+        }
+
+        .quote-bottom {
+            bottom: 20px;
+            right: 20px;
+            transform: rotate(180deg);
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 50px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .contact-info {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+            height: fit-content;
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: var(--transition-slow);
+        }
+
+        .contact-info.animate {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .contact-info h3 {
+            font-size: 1.8rem;
+            color: var(--evergreen);
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .contact-info h3:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 2px;
+            background: var(--crimson);
+            bottom: -10px;
+            left: 0;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 30px;
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .contact-item.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--crimson);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            transition: var(--transition);
+        }
+
+        .contact-item:hover .contact-icon {
+            transform: scale(1.1);
+            background: var(--crimson-dark);
+        }
+        
+        .contact-details h4 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            color: var(--evergreen);
+        }
+        
+        .contact-details p {
+            color: var(--smoke);
+            margin-bottom: 5px;
+        }
+        
+        .contact-details a {
+            color: var(--crimson);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .contact-details a:hover {
+            color: var(--crimson-dark);
+        }
+        
+        .opening-hours {
+            margin-top: 40px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: var(--transition-slow);
+        }
+
+        .opening-hours.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .hours-list {
+            list-style: none;
+        }
+        
+        .hours-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--mist);
+            transition: var(--transition);
+        }
+
+        .hours-list li:hover {
+            background: rgba(214, 184, 122, 0.1);
+            padding-left: 10px;
+        }
+        
+        .hours-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .day {
+            font-weight: 600;
+            color: var(--evergreen);
+        }
+        
+        .time {
+            color: var(--smoke);
+        }
+        
+        /* Contact Form */
+        .contact-form-container {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+            opacity: 0;
+            transform: translateX(30px);
+            transition: var(--transition-slow);
+        }
+
+        .contact-form-container.animate {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .contact-form-container h3 {
+            font-size: 1.8rem;
+            color: var(--evergreen);
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .contact-form-container h3:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 2px;
+            background: var(--crimson);
+            bottom: -10px;
+            left: 0;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        /* Animated Form Inputs */
+        .form-control {
+            position: relative;
+            margin: 20px 0 40px;
+            width: 100%;
+        }
+
+        .form-control input, .form-control textarea {
+            background-color: transparent;
+            border: 0;
+            border-bottom: 2px var(--evergreen) solid;
+            display: block;
+            width: 100%;
+            padding: 15px 0;
+            font-size: 18px;
+            color: var(--evergreen);
+            font-family: 'Montserrat', sans-serif;
+            resize: none;
+        }
+
+        .form-control input:focus, .form-control textarea:focus {
+            outline: 0;
+            border-bottom-color: var(--crimson);
+        }
+
+        .form-control label {
+            position: absolute;
+            top: 15px;
+            left: 0;
+            pointer-events: none;
+        }
+
+        .form-control label span {
+            display: inline-block;
+            font-size: 18px;
+            min-width: 5px;
+            color: var(--evergreen);
+            transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .form-control input:focus + label span,
+        .form-control input:valid + label span,
+        .form-control textarea:focus + label span,
+        .form-control textarea:valid + label span {
+            color: var(--crimson);
+            transform: translateY(-30px);
+        }
+
+        /* Fix for phone input */
+        .form-control input#phone:not(:focus):not(:valid) + label span {
+            transform: translateY(0);
+            color: var(--evergreen);
+        }
+        
+        .submit-btn {
+            background: var(--crimson);
+            color: var(--white);
+            border: none;
+            padding: 15px 35px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .submit-btn:hover {
+            background: var(--crimson-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Map Section */
+        .map-section {
+            margin: 80px 0;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: var(--transition-slow);
+        }
+
+        .map-section.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .map-container {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            height: 450px;
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .map-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--evergreen) 0%, var(--evergreen-dark) 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-align: center;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .map-placeholder:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==');
+        }
+        
+        .map-placeholder i {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: var(--platinum);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .map-placeholder h3 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .map-placeholder p {
+            max-width: 500px;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .directions-btn {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--crimson);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            opacity: 0;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .map-container:hover .directions-btn {
+            opacity: 1;
+            animation: pulse 2s infinite;
+        }
+
+        .directions-btn:hover {
+            background: var(--crimson-dark);
+            transform: translateX(-50%) translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .map-details {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .map-detail-item {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .map-detail-item.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .map-detail-item:nth-child(1) { transition-delay: 0.2s; }
+        .map-detail-item:nth-child(2) { transition-delay: 0.4s; }
+        .map-detail-item:nth-child(3) { transition-delay: 0.6s; }
+
+        .map-detail-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .map-detail-icon {
+            font-size: 2rem;
+            color: var(--crimson);
+            margin-bottom: 15px;
+        }
+
+        .map-detail-text h4 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--evergreen);
+        }
+
+        .map-detail-text p {
+            font-size: 0.9rem;
+            color: var(--smoke);
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 40px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transform: translateY(30px);
+            transition: transform 0.3s ease;
+        }
+
+        .modal.active .modal-content {
+            transform: translateY(0);
+        }
+
+        .modal-icon {
+            font-size: 4rem;
+            color: var(--crimson);
+            margin-bottom: 20px;
+        }
+
+        .modal h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--evergreen);
+        }
+
+        .modal p {
+            margin-bottom: 25px;
+            color: var(--smoke);
+        }
+
+        .modal-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .modal-btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .modal-btn.confirm {
+            background: var(--crimson);
+            color: white;
+        }
+
+        .modal-btn.confirm:hover {
+            background: var(--crimson-dark);
+        }
+
+        .modal-btn.cancel {
+            background: var(--mist);
+            color: var(--charcoal);
+        }
+
+        .modal-btn.cancel:hover {
+            background: var(--smoke);
+            color: white;
+        }
+
+        /* Testimonials Section */
+        .testimonials-section {
+            margin: 80px 0;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: var(--transition-slow);
+        }
+
+        .testimonials-section.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .testimonials-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .testimonial-card.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .testimonial-card:nth-child(1) { transition-delay: 0.1s; }
+        .testimonial-card:nth-child(2) { transition-delay: 0.2s; }
+        .testimonial-card:nth-child(3) { transition-delay: 0.3s; }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: var(--smoke);
+            position: relative;
+        }
+
+        .testimonial-text:before {
+            content: '"';
+            font-size: 4rem;
+            color: var(--crimson);
+            opacity: 0.2;
+            position: absolute;
+            top: -20px;
+            left: -10px;
+            font-family: serif;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--evergreen);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .author-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: var(--evergreen);
+        }
+
+        .author-info p {
+            font-size: 0.9rem;
+            color: var(--smoke);
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            margin: 80px 0;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: var(--transition-slow);
+        }
+
+        .faq-section.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: var(--transition-slow);
+        }
+
+        .faq-item.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .faq-item:nth-child(1) { transition-delay: 0.1s; }
+        .faq-item:nth-child(2) { transition-delay: 0.2s; }
+        .faq-item:nth-child(3) { transition-delay: 0.3s; }
+        .faq-item:nth-child(4) { transition-delay: 0.4s; }
+        .faq-item:nth-child(5) { transition-delay: 0.5s; }
+        
+        .faq-question {
+            background: var(--white);
+            padding: 25px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+        }
+        
+        .faq-question:hover {
+            background: #f9f9f9;
+        }
+        
+        .faq-answer {
+            background: var(--white);
+            padding: 0 25px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        
+        .faq-answer p {
+            padding-bottom: 25px;
+            color: var(--smoke);
+            line-height: 1.6;
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+            padding: 0 25px 25px;
+        }
+        
+        .faq-toggle {
+            color: var(--crimson);
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+        
+        /* Call to Action */
+        .cta-section {
+            text-align: center;
+            margin: 80px 0;
+            padding: 60px 40px;
+            background: linear-gradient(135deg, var(--evergreen) 0%, var(--evergreen-dark) 100%);
+            border-radius: 12px;
+            color: var(--white);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: var(--transition-slow);
+        }
+
+        .cta-section.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .cta-section h3 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .cta-section p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--crimson);
+            color: var(--white);
+            padding: 15px 35px;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+            text-align: center;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(195, 32, 38, 0.3);
+        }
+        
+        .btn:hover {
+            background: var(--crimson-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--white);
+            color: var(--white);
+            margin-left: 15px;
+        }
+        
+        .btn-outline:hover {
+            background: var(--white);
+            color: var(--evergreen);
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .luxury-header-content h2 {
+                font-size: 3rem;
+            }
+            
+            .hero-content h1 {
+                font-size: 3.8rem;
+            }
+
+            .testimonials-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .luxury-header-content h2 {
+                font-size: 2.5rem;
+            }
+            
+            .luxury-header-3-container {
+                flex-direction: column;
+            }
+            
+            .luxury-border-side {
+                width: 100%;
+                margin: 1rem 0;
+            }
+            
+            .luxury-header-content {
+                padding: 0;
+            }
+            
+            .hero-content h1 {
+                font-size: 3.2rem;
+            }
+            
+            .map-details {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonials-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .quote-icon {
+                font-size: 5rem;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info, .contact-form-container {
+                padding: 30px;
+            }
+            
+            .btn-outline {
+                margin-left: 0;
+                margin-top: 15px;
+                display: block;
+            }
+            
+            .cta-section {
+                padding: 50px 30px;
+            }
+            
+            .cta-section h3 {
+                font-size: 2rem;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero-features {
+                gap: 20px;
+            }
+
+            .modal-buttons {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            body {
+                padding: 15px;
+            }
+            
+            .luxury-header-content h2 {
+                font-size: 2.2rem;
+            }
+            
+            .luxury-header-content p {
+                font-size: 1rem;
+            }
+            
+            .contact-info, .contact-form-container {
+                padding: 25px;
+            }
+            
+            .contact-item {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            .contact-icon {
+                align-self: center;
+            }
+            
+            .cta-section {
+                padding: 40px 25px;
+            }
+            
+            .cta-section h3 {
+                font-size: 1.8rem;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+            
+            .hero-feature {
+                max-width: 140px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>Experience Luxury at 7Days Motel</h1>
+            <p>Your premier destination for comfort, elegance, and exceptional service in the heart of Entebbe</p>
+            <a href="#" class="hero-btn">Book Your Stay</a>
+            
+            <div class="hero-features">
+                <div class="hero-feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-concierge-bell"></i>
+                    </div>
+                    <div class="feature-text">24/7 Concierge Service</div>
+                </div>
+                <div class="hero-feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-wifi"></i>
+                    </div>
+                    <div class="feature-text">High-Speed WiFi</div>
+                </div>
+                <div class="hero-feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <div class="feature-text">Fine Dining</div>
+                </div>
+                <div class="hero-feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                    <div class="feature-text">Luxury Spa</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <!-- Quote Icons -->
+            <i class="fas fa-quote-right quote-icon quote-top"></i>
+            <i class="fas fa-quote-right quote-icon quote-bottom"></i>
+            
+            <!-- Luxury Header -->
+            <div class="luxury-header">
+                <div class="luxury-header-3-container">
+                    <div class="luxury-border-side"></div>
+                    <div class="luxury-header-content">
+                        <div class="ribbon">Get In Touch</div>
+                        <h2>Contact Us</h2>
+                        <p>We're here to assist you with any inquiries about your stay at 7Days Motel</p>
+                    </div>
+                    <div class="luxury-border-side"></div>
+                </div>
+            </div>
+            
+            <div class="contact-container">
+                <!-- Contact Information -->
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Our Location</h4>
+                            <p>Opposite UN Base, Entebbe, Uganda</p>
+                            <p>Just 7 minutes from Entebbe International Airport</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Phone Numbers</h4>
+                            <p><a href="tel:+256414256789">+256 41 425 6789</a></p>
+                            <p><a href="tel:+256774123456">+256 774 123 456</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Email Address</h4>
+                            <p><a href="mailto:info@7daysmotel.com">info@7daysmotel.com</a></p>
+                            <p><a href="mailto:reservations@7daysmotel.com">reservations@7daysmotel.com</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="opening-hours">
+                        <h4>Opening Hours</h4>
+                        <ul class="hours-list">
+                            <li>
+                                <span class="day">Monday - Thursday</span>
+                                <span class="time">8:00 AM - 10:00 PM</span>
+                            </li>
+                            <li>
+                                <span class="day">Friday - Saturday</span>
+                                <span class="time">8:00 AM - 11:00 PM</span>
+                            </li>
+                            <li>
+                                <span class="day">Sunday</span>
+                                <span class="time">9:00 AM - 9:00 PM</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <div class="contact-form-container">
+                    <h3>Send Us a Message</h3>
+                    <form id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <div class="form-control">
+                                    <input type="text" id="firstName" required>
+                                    <label for="firstName">
+                                        <span style="transition-delay:0ms">F</span>
+                                        <span style="transition-delay:50ms">i</span>
+                                        <span style="transition-delay:100ms">r</span>
+                                        <span style="transition-delay:150ms">s</span>
+                                        <span style="transition-delay:200ms">t</span>
+                                        <span style="transition-delay:250ms"></span>
+                                        <span style="transition-delay:300ms">N</span>
+                                        <span style="transition-delay:350ms">a</span>
+                                        <span style="transition-delay:400ms">m</span>
+                                        <span style="transition-delay:450ms">e</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-control">
+                                    <input type="text" id="lastName" required>
+                                    <label for="lastName">
+                                        <span style="transition-delay:0ms">L</span>
+                                        <span style="transition-delay:50ms">a</span>
+                                        <span style="transition-delay:100ms">s</span>
+                                        <span style="transition-delay:150ms">t</span>
+                                        <span style="transition-delay:200ms"></span>
+                                        <span style="transition-delay:250ms">N</span>
+                                        <span style="transition-delay:300ms">a</span>
+                                        <span style="transition-delay:350ms">m</span>
+                                        <span style="transition-delay:400ms">e</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="form-control">
+                                <input type="email" id="email" required>
+                                <label for="email">
+                                    <span style="transition-delay:0ms">E</span>
+                                    <span style="transition-delay:50ms">m</span>
+                                    <span style="transition-delay:100ms">a</span>
+                                    <span style="transition-delay:150ms">i</span>
+                                    <span style="transition-delay:200ms">l</span>
+                                    <span style="transition-delay:250ms"></span>
+                                    <span style="transition-delay:300ms">A</span>
+                                    <span style="transition-delay:350ms">d</span>
+                                    <span style="transition-delay:400ms">d</span>
+                                    <span style="transition-delay:450ms">r</span>
+                                    <span style="transition-delay:500ms">e</span>
+                                    <span style="transition-delay:550ms">s</span>
+                                    <span style="transition-delay:600ms">s</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="form-control">
+                                <input type="email" id="email" required>
+                                <label for="email">
+                                    <span style="transition-delay:0ms">P</span>
+                                    <span style="transition-delay:50ms">h</span>
+                                    <span style="transition-delay:100ms">o</span>
+                                    <span style="transition-delay:150ms">n</span>
+                                    <span style="transition-delay:200ms">e</span>
+                                    <span style="transition-delay:250ms"></span>
+                                    <span style="transition-delay:300ms">N</span>
+                                    <span style="transition-delay:350ms">u</span>
+                                    <span style="transition-delay:400ms">m</span>
+                                    <span style="transition-delay:450ms">b</span>
+                                    <span style="transition-delay:500ms">e</span>
+                                    <span style="transition-delay:550ms">r</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="form-control">
+                                <input type="text" id="subject" required>
+                                <label for="subject">
+                                    <span style="transition-delay:0ms">S</span>
+                                    <span style="transition-delay:50ms">u</span>
+                                    <span style="transition-delay:100ms">b</span>
+                                    <span style="transition-delay:150ms">j</span>
+                                    <span style="transition-delay:200ms">e</span>
+                                    <span style="transition-delay:250ms">c</span>
+                                    <span style="transition-delay:300ms">t</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="form-control">
+                                <textarea id="message" required></textarea>
+                                <label for="message">
+                                    <span style="transition-delay:0ms">Y</span>
+                                    <span style="transition-delay:50ms">o</span>
+                                    <span style="transition-delay:100ms">u</span>
+                                    <span style="transition-delay:150ms">r</span>
+                                    <span style="transition-delay:200ms"></span>
+                                    <span style="transition-delay:250ms">M</span>
+                                    <span style="transition-delay:300ms">e</span>
+                                    <span style="transition-delay:350ms">s</span>
+                                    <span style="transition-delay:400ms">s</span>
+                                    <span style="transition-delay:450ms">a</span>
+                                    <span style="transition-delay:500ms">g</span>
+                                    <span style="transition-delay:550ms">e</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <!-- Luxury Header -->
+            <div class="luxury-header">
+                <div class="luxury-header-3-container">
+                    <div class="luxury-border-side"></div>
+                    <div class="luxury-header-content">
+                        <div class="ribbon">Guest Reviews</div>
+                        <h2>What Our Guests Say</h2>
+                        <p>Discover why our guests keep coming back to 7Days Motel</p>
+                    </div>
+                    <div class="luxury-border-side"></div>
+                </div>
+            </div>
+            
+            <div class="testimonials-container">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        The attention to detail at 7Days Motel is exceptional. From the luxurious linens to the personalized service, every aspect of our stay was perfect. We'll definitely be returning!
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">JS</div>
+                        <div class="author-info">
+                            <h4>James Smith</h4>
+                            <p>Business Traveler</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        The location is perfect for both business and leisure. Close to the airport but still feels like a peaceful retreat. The staff went above and beyond to make our anniversary special.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MJ</div>
+                        <div class="author-info">
+                            <h4>Maria Johnson</h4>
+                            <p>Honeymooner</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        As a frequent traveler to Entebbe, 7Days Motel has become my preferred accommodation. The rooms are spacious, the dining is excellent, and the service is consistently outstanding.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">RW</div>
+                        <div class="author-info">
+                            <h4>Robert Williams</h4>
+                            <p>Regular Guest</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="container">
+            <!-- Luxury Header -->
+            <div class="luxury-header">
+                <div class="luxury-header-3-container">
+                    <div class="luxury-border-side"></div>
+                    <div class="luxury-header-content">
+                        <div class="ribbon">Our Location</div>
+                        <h2>Find Us in Entebbe</h2>
+                        <p>Conveniently located with easy access to key destinations</p>
+                    </div>
+                    <div class="luxury-border-side"></div>
+                </div>
+            </div>
+            
+            <div class="map-container">
+                <div class="map-placeholder">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <h3>Find Us in Entebbe</h3>
+                    <p>Located opposite the UN Base with easy access to Entebbe International Airport and Lake Victoria</p>
+                </div>
+                <button class="directions-btn" id="directionsBtn">
+                    <i class="fas fa-route"></i> Get Directions
+                </button>
+            </div>
+            
+            <div class="map-details">
+                <div class="map-detail-item">
+                    <div class="map-detail-icon">
+                        <i class="fas fa-plane"></i>
+                    </div>
+                    <div class="map-detail-text">
+                        <h4>Airport Access</h4>
+                        <p>Just 7 minutes from Entebbe International Airport</p>
+                    </div>
+                </div>
+                <div class="map-detail-item">
+                    <div class="map-detail-icon">
+                        <i class="fas fa-landmark"></i>
+                    </div>
+                    <div class="map-detail-text">
+                        <h4>UN Base</h4>
+                        <p>Located directly opposite the UN Base for convenience</p>
+                    </div>
+                </div>
+                <div class="map-detail-item">
+                    <div class="map-detail-icon">
+                        <i class="fas fa-water"></i>
+                    </div>
+                    <div class="map-detail-text">
+                        <h4>Lake Victoria</h4>
+                        <p>Stunning views of Africa's largest lake</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <!-- Luxury Header -->
+            <div class="luxury-header">
+                <div class="luxury-header-3-container">
+                    <div class="luxury-border-side"></div>
+                    <div class="luxury-header-content">
+                        <div class="ribbon">Information</div>
+                        <h2>Frequently Asked Questions</h2>
+                        <p>Find answers to common questions about our services and facilities</p>
+                    </div>
+                    <div class="luxury-border-side"></div>
+                </div>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What are your check-in and check-out times?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Check-in time is from 2:00 PM, and check-out time is by 11:00 AM. Early check-in and late check-out may be available upon request, subject to availability and additional charges.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Do you offer airport transfers?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we offer complimentary airport transfers for guests staying in our premium suites. For other room categories, airport transfer services are available at an additional charge. Please contact our concierge to arrange your transportation.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Is parking available at the motel?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we provide secure, complimentary parking for all our guests. Our parking facility is well-lit and monitored 24/7 for your peace of mind.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Do you have facilities for business travelers?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely! We offer a business center with printing, copying, and fax services. All our rooms have dedicated workstations and high-speed WiFi. Meeting rooms can also be arranged upon request.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What dining options are available?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We have multiple dining options including our fine dining restaurant, casual bar and lounge, and 24/7 room service. Our coffee corner serves premium Ugandan coffee and fresh pastries throughout the day.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Call to Action -->
+    <section class="cta-section">
+        <div class="container">
+            <h3>Ready to Experience Luxury?</h3>
+            <p>Book your stay at 7Days Motel and enjoy premium amenities, exceptional service, and breathtaking views of Lake Victoria.</p>
+            <a href="#" class="btn">Book Your Stay Now</a>
+            <a href="#" class="btn btn-outline">View Our Rooms</a>
+        </div>
+    </section>
+
+    <!-- Modal for Directions -->
+    <div class="modal" id="locationModal">
+        <div class="modal-content">
+            <div class="modal-icon">
+                <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <h3>Get Directions to 7Days Motel</h3>
+            <p>To provide you with the best route, we need to access your current location. This will open Google Maps with directions from your location to our motel.</p>
+            <div class="modal-buttons">
+                <button class="modal-btn confirm" id="confirmLocation">Allow Location Access</button>
+                <button class="modal-btn cancel" id="cancelLocation">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // FAQ Toggle Functionality
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                
+                question.addEventListener('click', () => {
+                    // Close all other FAQs
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    
+                    // Toggle current FAQ
+                    item.classList.toggle('active');
+                });
+            });
+            
+            // Contact Form Submission
+            const contactForm = document.getElementById('contactForm');
+            
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form values
+                const firstName = document.getElementById('firstName').value;
+                const lastName = document.getElementById('lastName').value;
+                const email = document.getElementById('email').value;
+                const subject = document.getElementById('subject').value;
+                
+                // In a real application, you would send this data to a server
+                // For this example, we'll just show a success message
+                
+                // Show success message
+                alert(`Thank you ${firstName} ${lastName}! Your message about "${subject}" has been received. We'll respond to ${email} shortly.`);
+                
+                // Reset form
+                contactForm.reset();
+            });
+            
+            // Directions Modal Functionality
+            const directionsBtn = document.getElementById('directionsBtn');
+            const locationModal = document.getElementById('locationModal');
+            const confirmLocation = document.getElementById('confirmLocation');
+            const cancelLocation = document.getElementById('cancelLocation');
+            
+            directionsBtn.addEventListener('click', function() {
+                locationModal.classList.add('active');
+            });
+            
+            cancelLocation.addEventListener('click', function() {
+                locationModal.classList.remove('active');
+            });
+            
+            confirmLocation.addEventListener('click', function() {
+                // Check if browser supports geolocation
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(
+                        function(position) {
+                            // Success callback
+                            const userLat = position.coords.latitude;
+                            const userLng = position.coords.longitude;
+                            
+                            // Motel coordinates (approximate location in Entebbe near UN Base)
+                            const motelLat = 0.0616;
+                            const motelLng = 32.4637;
+                            
+                            // Open Google Maps with directions
+                            window.open(`https://www.google.com/maps/dir/${userLat},${userLng}/${motelLat},${motelLng}/`, '_blank');
+                            
+                            // Close modal
+                            locationModal.classList.remove('active');
+                        },
+                        function(error) {
+                            // Error callback
+                            alert('Unable to retrieve your location. Please enable location services and try again.');
+                            console.error('Geolocation error:', error);
+                            locationModal.classList.remove('active');
+                        }
+                    );
+                } else {
+                    // Browser doesn't support geolocation
+                    alert('Geolocation is not supported by this browser. Please use a different browser or manually navigate to our location.');
+                    locationModal.classList.remove('active');
+                }
+            });
+            
+            // Add scroll animations
+            const animateOnScroll = function() {
+                const elements = document.querySelectorAll('.contact-info, .contact-form-container, .contact-item, .opening-hours, .map-section, .faq-section, .cta-section, .faq-item, .map-detail-item, .testimonials-section, .testimonial-card');
+                
+                elements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementVisible = 150;
+                    
+                    if (elementTop < window.innerHeight - elementVisible) {
+                        element.classList.add('animate');
+                    }
+                });
+            };
+            
+            // Initial check on page load
+            animateOnScroll();
+            
+            // Check on scroll
+            window.addEventListener('scroll', animateOnScroll);
+            
+            // Add some interactive effects
+            const contactItems = document.querySelectorAll('.contact-item');
+            
+            contactItems.forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                    this.style.transition = 'transform 0.3s ease';
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+
+            // Fix for phone input label
+            const phoneInput = document.getElementById('phone');
+            phoneInput.addEventListener('input', function() {
+                const phoneLabel = document.querySelector('label[for="phone"]');
+                if (this.value) {
+                    phoneLabel.querySelectorAll('span').forEach(span => {
+                        span.style.transform = 'translateY(-30px)';
+                        span.style.color = 'var(--crimson)';
+                    });
+                } else {
+                    phoneLabel.querySelectorAll('span').forEach(span => {
+                        span.style.transform = 'translateY(0)';
+                        span.style.color = 'var(--evergreen)';
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

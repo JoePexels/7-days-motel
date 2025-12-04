@@ -1,0 +1,1660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Dining | 7Days Motel Entebbe</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --crimson: #C32026;
+            --crimson-dark: #741721;
+            --evergreen: #0F3A34;
+            --evergreen-dark: #0D2F2B;
+            --gold: #D4AF37;
+            --light-bg: #f8f5f0;
+            --light-text: #eaeaea;
+            --dark-text: #222222;
+            --gold-light: #e6c875;
+            --gold-dark: #b8941f;
+            --white: #ffffff;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark-text);
+            background-color: #fefefe;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            color: var(--evergreen);
+            letter-spacing: 0.5px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        /* Header Styles - More Luxurious */
+        header {
+            background: linear-gradient(135deg, rgba(13, 47, 43, 0.95), rgba(15, 58, 52, 0.98));
+            color: var(--white);
+            padding: 15px 0;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--gold);
+            display: flex;
+            align-items: center;
+            letter-spacing: 1px;
+        }
+
+        .logo i {
+            margin-right: 12px;
+            font-size: 36px;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+
+        .logo span {
+            color: var(--white);
+            font-weight: 300;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav li {
+            margin-left: 35px;
+            position: relative;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            font-size: 16px;
+            letter-spacing: 0.5px;
+        }
+
+        nav a:hover {
+            color: var(--gold);
+        }
+
+        nav li:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(to right, var(--gold), transparent);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s;
+        }
+
+        nav li:hover:after {
+            width: 100%;
+        }
+
+        /* Hero Section - Luxurious Design */
+        .hero-section {
+            height: 85vh;
+            background: linear-gradient(rgba(13, 47, 43, 0.85), rgba(13, 47, 43, 0.7)), url('https://images.unsplash.com/photo-1559925393-8be0ec4767c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            position: relative;
+            margin-top: 70px;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            padding: 0 20px;
+            z-index: 2;
+            animation: fadeInUp 1.2s ease-out;
+        }
+
+        .hero-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 26px;
+            font-weight: 300;
+            color: var(--gold-light);
+            margin-bottom: 15px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .hero-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 72px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: var(--white);
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            line-height: 1.1;
+        }
+
+        .hero-title span {
+            color: var(--gold);
+            font-style: italic;
+        }
+
+        .hero-description {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        /* Button Styles - As Provided */
+        .btn {
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition);
+            letter-spacing: 1px;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--crimson) 0%, var(--crimson-dark) 100%);
+            color: var(--white);
+            border: none;
+            box-shadow: 0 4px 15px rgba(195, 32, 38, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, var(--crimson-dark) 0%, var(--crimson) 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(195, 32, 38, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            backdrop-filter: blur(10px);
+            color: var(--white);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.7);
+            transform: translateY(-3px);
+        }
+
+        .hero-ornament {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='20' viewBox='0 0 100 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,10 Q25,5 50,10 T100,10 L100,20 L0,20 Z' fill='%23fefefe'/%3E%3C/svg%3E");
+            background-size: 100% 100%;
+        }
+
+        /* Main Layout */
+        .main-content {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .booking-sidebar {
+            width: 420px;
+            min-width: 350px;
+        }
+
+        /* Tag Styling */
+        .article-tag {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .motel-tag {
+            background: linear-gradient(to right, var(--crimson), var(--crimson-dark));
+            color: var(--white);
+            padding: 10px 25px;
+            border-radius: 5px 0 0 5px;
+            border-left: 4px solid var(--gold);
+            font-weight: 600;
+            letter-spacing: 1px;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+
+        .read-time {
+            background-color: var(--evergreen);
+            color: var(--white);
+            padding: 10px 20px;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            border-radius: 0 5px 5px 0;
+        }
+
+        /* Article Section - Enhanced */
+        .article-section {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 50px;
+            margin-bottom: 40px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .article-section:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--crimson), var(--gold), var(--evergreen));
+        }
+
+        .article-title {
+            font-size: 42px;
+            margin-bottom: 25px;
+            color: var(--evergreen-dark);
+            line-height: 1.2;
+        }
+
+        .article-content {
+            margin-bottom: 30px;
+            font-size: 17px;
+            color: #444;
+        }
+
+        .article-image {
+            display: flex;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .rounded-img {
+            border-radius: 10px;
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transition: transform 0.5s ease;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .rounded-img:hover {
+            transform: scale(1.03);
+        }
+
+        /* Reviews Section - Enhanced */
+        .reviews-section {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 50px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            position: relative;
+        }
+
+        .reviews-section:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--evergreen), var(--gold), var(--crimson));
+        }
+
+        .section-title {
+            font-size: 36px;
+            margin-bottom: 30px;
+            color: var(--evergreen-dark);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background-color: var(--gold);
+        }
+
+        .review-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .review-card {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .review-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .review-card:before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 80px;
+            color: rgba(212, 175, 55, 0.1);
+            font-family: 'Cormorant Garamond', serif;
+            line-height: 1;
+        }
+
+        .reviewer {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .reviewer-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 20px;
+            border: 2px solid var(--gold);
+        }
+
+        .reviewer-name {
+            font-weight: 600;
+            color: var(--evergreen);
+            font-size: 18px;
+        }
+
+        .reviewer-location {
+            font-size: 14px;
+            color: #777;
+            font-weight: 300;
+        }
+
+        .stars {
+            color: var(--gold);
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .review-text {
+            font-style: italic;
+            color: #555;
+            line-height: 1.7;
+        }
+
+        /* PREMIUM BOOKING FORM - Completely Redesigned */
+        .booking-sidebar-premium {
+            width: 420px;
+            min-width: 350px;
+        }
+
+        .booking-form-container-premium {
+            background: linear-gradient(145deg, #ffffff 0%, #f8f5f0 100%);
+            border-radius: 15px;
+            padding: 0;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+            position: sticky;
+            top: 100px;
+            overflow: hidden;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .form-header-premium {
+            background: linear-gradient(135deg, var(--evergreen) 0%, var(--evergreen-dark) 100%);
+            padding: 35px 40px 25px;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .form-header-premium:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--crimson), var(--gold), var(--evergreen));
+        }
+
+        .form-header-premium:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+        }
+
+        .form-title-premium {
+            font-size: 32px;
+            margin-bottom: 10px;
+            color: var(--white);
+            position: relative;
+            z-index: 1;
+        }
+
+        .form-subtitle-premium {
+            font-size: 16px;
+            opacity: 0.9;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .form-body-premium {
+            padding: 40px;
+        }
+
+        .form-group-premium {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .form-label-premium {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--evergreen);
+            font-size: 15px;
+            letter-spacing: 0.5px;
+        }
+
+        .form-input-premium, .form-select-premium {
+            width: 100%;
+            padding: 16px 20px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            transition: var(--transition);
+            background-color: rgba(255, 255, 255, 0.9);
+            color: #333;
+        }
+
+        .form-input-premium:focus, .form-select-premium:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+            background-color: var(--white);
+        }
+
+        .form-input-premium::placeholder {
+            color: #aaa;
+        }
+
+        .form-icon {
+            position: absolute;
+            right: 20px;
+            top: 45px;
+            color: var(--gold);
+            font-size: 18px;
+        }
+
+        .submit-btn-premium {
+            width: 100%;
+            padding: 18px;
+            font-size: 16px;
+            font-weight: 600;
+            margin-top: 10px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            border: none;
+            background: linear-gradient(135deg, var(--crimson) 0%, var(--crimson-dark) 100%);
+            color: var(--white);
+            box-shadow: 0 6px 20px rgba(195, 32, 38, 0.3);
+            transition: var(--transition);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .submit-btn-premium:hover {
+            background: linear-gradient(135deg, var(--crimson-dark) 0%, var(--crimson) 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(195, 32, 38, 0.4);
+        }
+
+        .submit-btn-premium:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.7s;
+        }
+
+        .submit-btn-premium:hover:after {
+            left: 100%;
+        }
+
+        .booking-features-premium {
+            margin-top: 35px;
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(248, 245, 240, 0.8) 0%, rgba(255, 255, 255, 0.9) 100%);
+            border-radius: 12px;
+            border-left: 4px solid var(--gold);
+        }
+
+        .features-title-premium {
+            font-size: 22px;
+            margin-bottom: 20px;
+            color: var(--evergreen);
+            position: relative;
+            display: inline-block;
+        }
+
+        .features-title-premium:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--crimson);
+        }
+
+        .features-list-premium {
+            list-style: none;
+        }
+
+        .features-list-premium li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .features-list-premium li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-icon-premium {
+            background: linear-gradient(135deg, var(--evergreen) 0%, var(--evergreen-dark) 100%);
+            color: var(--gold);
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+            font-size: 16px;
+        }
+
+        .feature-text-premium {
+            flex: 1;
+        }
+
+        .feature-text-premium strong {
+            color: var(--evergreen);
+            display: block;
+            margin-bottom: 3px;
+        }
+
+        .feature-text-premium span {
+            color: #666;
+            font-size: 14px;
+            font-weight: 300;
+        }
+
+        /* Modal Styles - Enhanced */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s, visibility 0.5s;
+            padding: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background-color: var(--white);
+            border-radius: 15px;
+            max-width: 1100px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            transform: translateY(50px) scale(0.95);
+            transition: transform 0.5s;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: translateY(0) scale(1);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            background: var(--crimson);
+            color: var(--white);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 22px;
+            cursor: pointer;
+            z-index: 10;
+            transition: var(--transition);
+            border: 2px solid var(--white);
+        }
+
+        .close-modal:hover {
+            background-color: var(--crimson-dark);
+            transform: rotate(90deg);
+        }
+
+        .modal-hero {
+            height: 350px;
+            background: linear-gradient(rgba(15, 58, 52, 0.85), rgba(15, 58, 52, 0.8)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: var(--white);
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        .modal-hero:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='20' viewBox='0 0 100 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,20 Q25,15 50,20 T100,20 L100,20 L0,20 Z' fill='white'/%3E%3C/svg%3E");
+            background-size: 100% 100%;
+        }
+
+        .modal-hero h2 {
+            font-size: 48px;
+            color: var(--white);
+            margin-bottom: 15px;
+            text-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-hero p {
+            font-size: 20px;
+            color: var(--gold-light);
+            max-width: 600px;
+        }
+
+        .modal-body {
+            padding: 40px;
+        }
+
+        .modal-section {
+            margin-bottom: 40px;
+        }
+
+        .modal-section h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: var(--evergreen);
+            border-bottom: 2px solid var(--gold);
+            padding-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .modal-section h3:after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background-color: var(--crimson);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+            gap: 25px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 20px;
+            background-color: #f9f9f9;
+            transition: transform 0.3s;
+            border-radius: 10px;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-5px);
+            background-color: var(--white);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .feature-icon {
+            background: linear-gradient(135deg, var(--evergreen), var(--evergreen-dark));
+            color: var(--gold);
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 20px;
+            flex-shrink: 0;
+            font-size: 22px;
+        }
+
+        .modal-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .modal-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform 0.5s;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .modal-img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Footer - Enhanced */
+        footer {
+            background: linear-gradient(135deg, var(--evergreen-dark), #0a2622);
+            color: var(--white);
+            padding: 60px 0 25px;
+            margin-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--crimson), var(--gold), var(--evergreen));
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 280px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            color: var(--gold);
+            margin-bottom: 25px;
+            font-size: 24px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-section h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--crimson);
+        }
+
+        .footer-section p, .footer-section a {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 12px;
+            display: block;
+            text-decoration: none;
+            transition: var(--transition);
+            font-weight: 300;
+        }
+
+        .footer-section a:hover {
+            color: var(--gold);
+            transform: translateX(5px);
+        }
+
+        .footer-section i {
+            margin-right: 10px;
+            color: var(--gold-light);
+            width: 20px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 30px;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+            letter-spacing: 0.5px;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .hero-title {
+                font-size: 60px;
+            }
+            
+            .container {
+                flex-direction: column;
+            }
+            
+            .booking-sidebar-premium {
+                width: 100%;
+            }
+            
+            .modal-content {
+                max-width: 95%;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 50px;
+            }
+            
+            .hero-description {
+                font-size: 18px;
+            }
+            
+            .article-title {
+                font-size: 36px;
+            }
+            
+            .modal-hero h2 {
+                font-size: 36px;
+            }
+            
+            .article-section, .reviews-section {
+                padding: 40px 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 12px 0;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav li {
+                margin: 8px 15px;
+            }
+            
+            .hero-title {
+                font-size: 42px;
+            }
+            
+            .hero-subtitle {
+                font-size: 20px;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn-primary, .btn-outline {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+            
+            .article-image {
+                flex-direction: column;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-images {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .form-header-premium, .form-body-premium {
+                padding: 30px 25px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 36px;
+            }
+            
+            .hero-description {
+                font-size: 16px;
+            }
+            
+            .article-section, .reviews-section {
+                padding: 30px 20px;
+            }
+            
+            .review-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-images {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-header-premium, .form-body-premium {
+                padding: 25px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <i class="fas fa-crown"></i>
+                7Days <span>Motel</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="#"><i class="fas fa-concierge-bell"></i> Dining</a></li>
+                    <li><a href="#"><i class="fas fa-bed"></i> Suites</a></li>
+                    <li><a href="#"><i class="fas fa-swimming-pool"></i> Amenities</a></li>
+                    <li><a href="#"><i class="fas fa-phone-alt"></i> Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <div class="hero-subtitle">Exquisite Dining Experience</div>
+            <h1 class="hero-title">Where Culinary <span>Artistry</span> Meets Luxury</h1>
+            <p class="hero-description">Indulge in an unforgettable dining journey at 7Days Motel Entebbe, where world-class chefs craft exceptional dishes using the finest local ingredients, presented with impeccable service in an elegant ambiance.</p>
+            <div class="hero-buttons">
+                <a href="#booking" class="btn btn-primary">
+                    <i class="fas fa-calendar-plus"></i> Reserve Your Table
+                </a>
+                <a href="#menu" class="btn btn-outline">
+                    <i class="fas fa-utensils"></i> View Our Menu
+                </a>
+            </div>
+        </div>
+        <div class="hero-ornament"></div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Middle Content Section -->
+        <main class="main-content">
+            <!-- Article Section -->
+            <section class="article-section">
+                <div class="article-tag">
+                    <div class="motel-tag">7DAYS MOTEL SIGNATURE DINING</div>
+                    <div class="read-time">5 MIN READ</div>
+                </div>
+                
+                <h1 class="article-title">An Unparalleled Culinary Experience in the Heart of Entebbe</h1>
+                
+                <div class="article-image">
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Luxurious dining area" class="rounded-img">
+                    <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Exquisite cuisine" class="rounded-img">
+                </div>
+                
+                <div class="article-content">
+                    <p>At 7Days Motel Entebbe, we've redefined luxury dining with an unwavering commitment to excellence. Our executive chefs, trained at some of the world's most prestigious culinary institutions, blend international techniques with Uganda's vibrant local ingredients to create dishes that are both visually stunning and extraordinarily flavorful.</p>
+                    
+                    <p>Every element of our dining experience is carefully curated—from the hand-selected crystal glassware and fine linen to the bespoke service provided by our professionally trained staff. Our sommelier has curated an exceptional wine list featuring rare vintages and local favorites, perfectly paired to complement each dish on our seasonal menu.</p>
+                    
+                    <p>Beyond the food and ambiance, we offer private dining rooms for intimate celebrations, chef's table experiences with personalized menus, and exclusive wine tasting events. Whether you're joining us for breakfast overlooking Lake Victoria, a business lunch in our conservatory, or a romantic dinner under the stars, every moment at 7Days Motel is crafted to be memorable.</p>
+                </div>
+                
+                <button class="btn btn-primary" id="readMoreBtn">
+                    Discover Our Story <i class="fas fa-arrow-right"></i>
+                </button>
+            </section>
+
+            <!-- Reviews Section -->
+            <section class="reviews-section" id="reviews">
+                <h2 class="section-title">Guest Experiences</h2>
+                
+                <div class="review-cards">
+                    <div class="review-card">
+                        <div class="reviewer">
+                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Sarah Johnson" class="reviewer-img">
+                            <div>
+                                <div class="reviewer-name">Sarah Johnson</div>
+                                <div class="reviewer-location">Nairobi, Kenya</div>
+                            </div>
+                        </div>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="review-text">"The dining experience at 7Days Motel was nothing short of extraordinary. The lobster bisque was the best I've ever had, and the service was impeccable. The sommelier's wine pairing elevated the entire meal. I'll definitely be back on my next trip to Entebbe."</p>
+                    </div>
+                    
+                    <div class="review-card">
+                        <div class="reviewer">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="James Okello" class="reviewer-img">
+                            <div>
+                                <div class="reviewer-name">James Okello</div>
+                                <div class="reviewer-location">Kampala, Uganda</div>
+                            </div>
+                        </div>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <p class="review-text">"As a local food critic, I've dined at many establishments in Entebbe. 7Days Motel stands out for its innovative fusion cuisine and meticulous attention to detail. The tilapia with plantain mash is a masterpiece! The ambiance is both luxurious and welcoming."</p>
+                    </div>
+                    
+                    <div class="review-card">
+                        <div class="reviewer">
+                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1976&q=80" alt="Fatima Ali" class="reviewer-img">
+                            <div>
+                                <div class="reviewer-name">Fatima Ali</div>
+                                <div class="reviewer-location">Dubai, UAE</div>
+                            </div>
+                        </div>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="review-text">"During our family vacation, we dined at 7Days Motel every evening. The children's menu was fantastic, and the staff went above and beyond to accommodate our dietary requirements. The private dining room made our anniversary celebration truly special. World-class in every aspect!"</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- PREMIUM RIGHT SIDEBAR with Booking Form -->
+        <aside class="booking-sidebar-premium" id="booking">
+            <div class="booking-form-container-premium">
+                <div class="form-header-premium">
+                    <h2 class="form-title-premium">Reserve Your Table</h2>
+                    <p class="form-subtitle-premium">Experience fine dining at its finest. Book your table in advance to guarantee your preferred time.</p>
+                </div>
+                
+                <div class="form-body-premium">
+                    <form id="diningBookingForm">
+                        <div class="form-group-premium">
+                            <label class="form-label-premium" for="name">Full Name</label>
+                            <input type="text" id="name" class="form-input-premium" placeholder="Enter your full name" required>
+                            <div class="form-icon"><i class="fas fa-user"></i></div>
+                        </div>
+                        
+                        <div class="form-group-premium">
+                            <label class="form-label-premium" for="email">Email Address</label>
+                            <input type="email" id="email" class="form-input-premium" placeholder="Enter your email" required>
+                            <div class="form-icon"><i class="fas fa-envelope"></i></div>
+                        </div>
+                        
+                        <div class="form-group-premium">
+                            <label class="form-label-premium" for="phone">Phone Number</label>
+                            <input type="tel" id="phone" class="form-input-premium" placeholder="Enter your phone number" required>
+                            <div class="form-icon"><i class="fas fa-phone"></i></div>
+                        </div>
+                        
+                        <div class="form-group-premium">
+                            <label class="form-label-premium" for="date">Reservation Date</label>
+                            <input type="date" id="date" class="form-input-premium" required>
+                            <div class="form-icon"><i class="fas fa-calendar-alt"></i></div>
+                        </div>
+                        
+                        <div class="form-group-premium">
+                            <label class="form-label-premium" for="time">Preferred Time</label>
+                            <select id="time" class="form-select-premium" required>
+                                <option value="">Select dining time</option>
+                                <option value="07:00">7:00 AM - Breakfast</option>
+                                <option value="08:00">8:00 AM - Breakfast</option>
+                                <option value="12:00">12:00 PM - Lunch</option>
+                                <option value="13:30">1:30 PM - Lunch</option>
+                                <option value="18:00">6:00 PM - Dinner</option>
+                                <option value="19:30">7:30 PM - Dinner</option>
+                                <option value="21:00">9:00 PM - Late Dining</option>
+                            </select>
+                            <div class="form-icon"><i class="fas fa-clock"></i></div>
+                        </div>
+                        
+                        <div class="form-group-premium">
+                            <label class="form-label-premium" for="guests">Number of Guests</label>
+                            <select id="guests" class="form-select-premium" required>
+                                <option value="">Select number of guests</option>
+                                <option value="1">1 Person</option>
+                                <option value="2">2 People</option>
+                                <option value="3">3 People</option>
+                                <option value="4">4 People</option>
+                                <option value="5">5 People</option>
+                                <option value="6">6 People</option>
+                                <option value="7">7+ People</option>
+                            </select>
+                            <div class="form-icon"><i class="fas fa-users"></i></div>
+                        </div>
+                        
+                        <div class="form-group-premium">
+                            <label class="form-label-premium" for="occasion">Special Occasion</label>
+                            <select id="occasion" class="form-select-premium">
+                                <option value="">None</option>
+                                <option value="anniversary">Anniversary</option>
+                                <option value="birthday">Birthday</option>
+                                <option value="business">Business Dinner</option>
+                                <option value="proposal">Marriage Proposal</option>
+                                <option value="other">Other Celebration</option>
+                            </select>
+                            <div class="form-icon"><i class="fas fa-gift"></i></div>
+                        </div>
+                        
+                        <div class="form-group-premium">
+                            <label class="form-label-premium" for="specialRequests">Special Requests</label>
+                            <textarea id="specialRequests" class="form-input-premium" rows="3" placeholder="Dietary restrictions, seating preferences, celebrations, etc."></textarea>
+                            <div class="form-icon"><i class="fas fa-edit"></i></div>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn-premium">
+                            <i class="fas fa-calendar-check"></i> Confirm Reservation
+                        </button>
+                    </form>
+                    
+                    <div class="booking-features-premium">
+                        <h3 class="features-title-premium">Exclusive Dining Benefits</h3>
+                        <ul class="features-list-premium">
+                            <li>
+                                <div class="feature-icon-premium"><i class="fas fa-crown"></i></div>
+                                <div class="feature-text-premium">
+                                    <strong>Priority Seating</strong>
+                                    <span>Hotel guests receive priority reservations</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="feature-icon-premium"><i class="fas fa-wine-glass-alt"></i></div>
+                                <div class="feature-text-premium">
+                                    <strong>Welcome Drink</strong>
+                                    <span>Complimentary welcome drink for first-time visitors</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="feature-icon-premium"><i class="fas fa-utensils"></i></div>
+                                <div class="feature-text-premium">
+                                    <strong>Seasonal Menu</strong>
+                                    <span>Fresh, locally sourced ingredients changed seasonally</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="feature-icon-premium"><i class="fas fa-parking"></i></div>
+                                <div class="feature-text-premium">
+                                    <strong>Valet Parking</strong>
+                                    <span>Complimentary valet service for all dining guests</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Modal for Read More -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-content">
+            <div class="close-modal" id="closeModal">
+                <i class="fas fa-times"></i>
+            </div>
+            
+            <div class="modal-hero">
+                <h2>The 7Days Motel Dining Experience</h2>
+                <p>Discover why our restaurant is Entebbe's premier dining destination</p>
+            </div>
+            
+            <div class="modal-body">
+                <div class="modal-section">
+                    <h3>About Our Culinary Philosophy</h3>
+                    <p>At 7Days Motel, we believe that exceptional dining is about more than just food—it's about creating memorable experiences. Our culinary team, led by Executive Chef Samuel Kintu, combines international techniques with the freshest local ingredients to create dishes that tell a story of Uganda's rich culinary heritage with a modern twist.</p>
+                    
+                    <p>We work directly with local farmers, fishermen, and producers to ensure that every ingredient is not only fresh but also sustainably sourced. This farm-to-table approach allows us to support our community while delivering unparalleled flavor in every dish. Our commitment to excellence extends from sourcing to presentation, with each plate crafted as a work of art.</p>
+                </div>
+                
+                <div class="modal-section">
+                    <h3>Signature Features</h3>
+                    <div class="features-grid">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-seedling"></i>
+                            </div>
+                            <div>
+                                <h4>Farm-to-Table Ingredients</h4>
+                                <p>We source over 80% of our ingredients from local Ugandan farms and producers, ensuring freshness and supporting the local economy.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-wine-glass-alt"></i>
+                            </div>
+                            <div>
+                                <h4>Curated Wine Selection</h4>
+                                <p>Our sommelier has selected over 200 wines from around the world, with a special focus on African vineyards, to complement our menu.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <div>
+                                <h4>Expert Service Staff</h4>
+                                <p>Our waitstaff undergo extensive training in European-style service to provide attentive, unobtrusive, and personalized service.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-music"></i>
+                            </div>
+                            <div>
+                                <h4>Live Entertainment</h4>
+                                <p>Enjoy live jazz performances every Friday and Saturday evening, and traditional Ugandan music during Sunday brunch.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="modal-section">
+                    <h3>Amenities & Services</h3>
+                    <div class="features-grid">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-umbrella-beach"></i>
+                            </div>
+                            <div>
+                                <h4>Outdoor Terrace</h4>
+                                <p>Al fresco dining with panoramic views of our tropical gardens and Lake Victoria in the distance.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-glass-cheers"></i>
+                            </div>
+                            <div>
+                                <h4>Private Dining Room</h4>
+                                <p>An exclusive space for special occasions and business meetings, accommodating up to 20 guests.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-child"></i>
+                            </div>
+                            <div>
+                                <h4>Children's Menu</h4>
+                                <p>Specially crafted dishes for our younger guests, with nutrition and taste perfectly balanced.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-car"></i>
+                            </div>
+                            <div>
+                                <h4>Valet Parking</h4>
+                                <p>Complimentary valet service for all dining guests, with secure parking facilities.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="modal-section">
+                    <h3>Photo Gallery</h3>
+                    <div class="modal-images">
+                        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Restaurant interior" class="modal-img">
+                        <img src="https://images.unsplash.com/photo-1554679665-f5537f187268?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Chef preparing food" class="modal-img">
+                        <img src="https://images.unsplash.com/photo-1578474846511-04ba529f0b88?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Wine selection" class="modal-img">
+                        <img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80" alt="Dessert presentation" class="modal-img">
+                    </div>
+                </div>
+                
+                <div class="modal-section">
+                    <h3>Benefits of Dining With Us</h3>
+                    <ul class="features-list-premium">
+                        <li>
+                            <div class="feature-icon-premium"><i class="fas fa-check-circle"></i></div>
+                            <div class="feature-text-premium">
+                                <strong>Priority Reservations</strong>
+                                <span>Hotel guests receive priority reservations and preferred seating</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="feature-icon-premium"><i class="fas fa-check-circle"></i></div>
+                            <div class="feature-text-premium">
+                                <strong>Welcome Gifts</strong>
+                                <span>Complimentary welcome drink and appetizer for first-time visitors</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="feature-icon-premium"><i class="fas fa-check-circle"></i></div>
+                            <div class="feature-text-premium">
+                                <strong>Seasonal Menus</strong>
+                                <span>Regular menu changes to showcase the best local produce available</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="feature-icon-premium"><i class="fas fa-check-circle"></i></div>
+                            <div class="feature-text-premium">
+                                <strong>Cooking Classes</strong>
+                                <span>Exclusive cooking classes with our executive chef (monthly events)</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>7Days Motel Entebbe</h3>
+                <p>Experience luxury dining at its finest in the heart of Entebbe. Our award-winning restaurant offers an unforgettable culinary journey that engages all senses.</p>
+                <p><i class="fas fa-map-marker-alt"></i> Entebbe Road, Central Division</p>
+                <p><i class="fas fa-phone"></i> +256 41 123 4567</p>
+                <p><i class="fas fa-envelope"></i> dining@7daysmotelentebbe.com</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Dining Hours</h3>
+                <p><i class="fas fa-coffee"></i> <strong>Breakfast:</strong> 6:00 AM - 10:30 AM</p>
+                <p><i class="fas fa-utensils"></i> <strong>Lunch:</strong> 12:00 PM - 3:00 PM</p>
+                <p><i class="fas fa-moon"></i> <strong>Dinner:</strong> 6:00 PM - 10:00 PM</p>
+                <p><i class="fas fa-glass-cheers"></i> <strong>Weekend Brunch:</strong> 10:00 AM - 2:00 PM</p>
+                <p><i class="fas fa-wine-glass"></i> <strong>Bar:</strong> 5:00 PM - 12:00 AM</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="#"><i class="fas fa-chevron-right"></i> Menu & Wine List</a>
+                <a href="#"><i class="fas fa-chevron-right"></i> Special Events</a>
+                <a href="#"><i class="fas fa-chevron-right"></i> Private Dining</a>
+                <a href="#"><i class="fas fa-chevron-right"></i> Gift Cards</a>
+                <a href="#"><i class="fas fa-chevron-right"></i> Chef's Table Experience</a>
+                <a href="#"><i class="fas fa-chevron-right"></i> Careers</a>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2023 7Days Motel Entebbe. All rights reserved. | Designed with <i class="fas fa-heart" style="color: var(--crimson);"></i> for exceptional dining experiences</p>
+        </div>
+    </footer>
+
+    <script>
+        // Modal functionality
+        const readMoreBtn = document.getElementById('readMoreBtn');
+        const modalOverlay = document.getElementById('modalOverlay');
+        const closeModal = document.getElementById('closeModal');
+        
+        // Open modal when Read More button is clicked
+        readMoreBtn.addEventListener('click', () => {
+            modalOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        // Close modal when X button is clicked
+        closeModal.addEventListener('click', () => {
+            modalOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Close modal when clicking outside the modal content
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) {
+                modalOverlay.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Form submission handling
+        const bookingForm = document.getElementById('diningBookingForm');
+        
+        bookingForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const date = document.getElementById('date').value;
+            const time = document.getElementById('time').value;
+            const guests = document.getElementById('guests').value;
+            const occasion = document.getElementById('occasion').value;
+            
+            // Format the date
+            const formattedDate = new Date(date).toLocaleDateString('en-US', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+            
+            // Get the selected time text
+            const timeSelect = document.getElementById('time');
+            const selectedTimeText = timeSelect.options[timeSelect.selectedIndex].text;
+            
+            // Occasion text
+            let occasionText = '';
+            if (occasion) {
+                const occasionSelect = document.getElementById('occasion');
+                occasionText = `• Occasion: ${occasionSelect.options[occasionSelect.selectedIndex].text}\n`;
+            }
+            
+            // Create confirmation message
+            const confirmationMessage = `
+                Thank you, ${name}! Your table reservation has been received.
+                
+                RESERVATION DETAILS:
+                • Date: ${formattedDate}
+                • Time: ${selectedTimeText}
+                • Guests: ${guests} person(s)
+                ${occasionText}
+                A confirmation email has been sent to you with your reservation details.
+                
+                We look forward to serving you at 7Days Motel!
+                
+                Please note: For parties of 6 or more, we require 24 hours cancellation notice.
+            `;
+            
+            // Show confirmation alert
+            alert(confirmationMessage);
+            
+            // Reset the form
+            bookingForm.reset();
+            
+            // Set a default date (tomorrow)
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            const formattedTomorrow = tomorrow.toISOString().split('T')[0];
+            document.getElementById('date').value = formattedTomorrow;
+        });
+        
+        // Set default date to tomorrow
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        const formattedTomorrow = tomorrow.toISOString().split('T')[0];
+        document.getElementById('date').value = formattedTomorrow;
+        
+        // Set minimum date to today
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('date').min = today;
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if(this.getAttribute('href') === '#') return;
+                
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

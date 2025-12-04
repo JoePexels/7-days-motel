@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7days Motel Entebbe - Mega Menu</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <style>
+        /* --- Basic Setup & Variables --- */
+        :root {
+            --primary-color: #004d5c; /* Deeper, more sophisticated teal */
+            --primary-hover-color: #00363f;
+            --accent-color: #d4af37; /* A more luxurious gold */
+            --background-dark: #1a2a33; /* Richer dark tone */
+            --text-light: #f0f4f8;
+            --text-dark: #333;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        body {
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+            color: var(--text-dark);
+            margin: 0;
+            background-color: #f4f7f6;
+        }
+
+        /* --- Navigation & Mega Menu Trigger --- */
+        .main-navigation {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            position: relative;
+            z-index: 1001;
+        }
+
+        .main-navigation ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .main-navigation li {
+            position: relative;
+        }
+
+        .main-navigation a {
+            display: block;
+            padding: 20px 30px;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .main-navigation a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-item.has-mega-menu:hover .mega-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        /* --- Mega Menu Container (FULL WIDTH) --- */
+        .mega-menu {
+            position: absolute;
+            top: 100%;
+            left: -620px;
+            width: 100vw;
+            background-color: white;
+            box-shadow: var(--shadow);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-20px);
+            transition: var(--transition);
+            z-index: 1000;
+        }
+
+        /* --- Mega Menu Content (CENTERED, MAX-WIDTH) --- */
+        .mega-menu__content {
+            display: flex;
+            max-width: 1600px;
+            width: 100%;
+            margin: 0 auto;
+            min-height: 500px;
+        }
+
+        /* --- LEFT: Promotional Panel --- */
+        .mega-menu__promo {
+            flex: 1;
+            background: linear-gradient(135deg, var(--background-dark) 0%, #2c3e50 100%);
+            color: var(--text-light);
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-width: 0;
+        }
+
+        .mega-menu__promo h2 {
+            font-size: 2.8rem;
+            margin: 0 0 25px 0;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .mega-menu__promo p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 35px;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .promo__cta {
+            background-color: var(--accent-color);
+            color: var(--background-dark);
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            align-self: flex-start;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .promo__cta:hover {
+            background-color: #c5a430;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        /* --- RIGHT: Room Grid --- */
+        .mega-menu__rooms {
+            flex: 2;
+            padding: 50px;
+            min-width: 0;
+        }
+
+        .room-grid {
+            display: grid;
+            gap: 25px;
+        }
+
+        /* --- Redesigned Room Card --- */
+        .room-card {
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            background-color: #fff;
+        }
+
+        .room-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .room-card__image-wrapper {
+            position: relative;
+            width: 100%;
+            height: 220px; /* Slightly taller for more impact */
+            overflow: hidden;
+        }
+
+        .room-card__image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+        
+        .room-card:hover .room-card__image {
+            transform: scale(1.08);
+        }
+
+        .room-card__default-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 25px 20px 20px 20px;
+            transition: opacity 0.4s ease;
+        }
+
+        .room-card__default-info h3 {
+            color: white;
+            margin: 0;
+            font-size: 1.2rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .room-card__overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 77, 92, 0.85); /* Using primary color for overlay */
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .room-card:hover .room-card__overlay {
+            opacity: 1;
+        }
+
+        .room-card:hover .room-card__default-info {
+            opacity: 0;
+        }
+
+        .room-card__overlay .price {
+            font-size: 1.1rem;
+            margin: 0 0 25px 0;
+            font-weight: 300;
+        }
+
+        .room-card__overlay .price strong {
+            font-size: 1.8rem;
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        /* --- GLASSMORPHISM RESERVE BUTTON --- */
+        .reserve-btn {
+            background: rgba(255, 255, 255, 0.15); /* Semi-transparent white */
+            backdrop-filter: blur(10px); /* The blur effect */
+            -webkit-backdrop-filter: blur(10px); /* For Safari */
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .reserve-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: scale(1.05);
+        }
+
+        /* --- Redesigned Mega Menu Footer --- */
+        .mega-menu__footer {
+            background-color: #f8f9fa;
+            padding: 25px 60px;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer__info {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            color: var(--text-dark);
+            font-size: 0.9rem;
+        }
+
+        .footer__info-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer__info-item i {
+            color: var(--primary-color);
+            font-size: 1.1rem;
+        }
+
+        .footer__social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer__social-links a {
+            color: var(--text-dark);
+            font-size: 1.2rem;
+            transition: color 0.2s;
+        }
+
+        .footer__social-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* ==========================================================================
+           RESPONSIVE DESIGN
+           ========================================================================== */
+
+        /* Large Desktops: Force 4 columns */
+        @media (min-width: 1200px) {
+            .room-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        /* Medium Desktops & Large Tablets: 3 columns */
+        @media (max-width: 1199px) {
+            .room-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* Tablets: Stack promo and rooms, 2 columns for grid */
+        @media (max-width: 992px) {
+            .mega-menu__content {
+                flex-direction: column;
+                min-height: auto;
+            }
+            .mega-menu__promo {
+                padding: 50px;
+                text-align: center;
+            }
+            .promo__cta {
+                align-self: center;
+            }
+            .mega-menu__rooms {
+                padding: 40px 50px;
+            }
+            .room-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .mega-menu__footer {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* Large Phones & Small Tablets: 2 columns for grid, stack nav */
+        @media (max-width: 768px) {
+            .main-navigation ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            .main-navigation li {
+                width: 100%;
+                text-align: center;
+            }
+            .main-navigation a {
+                padding: 15px;
+            }
+        }
+
+        /* Mobile Phones: 1 column for grid */
+        @media (max-width: 576px) {
+            .room-grid {
+                grid-template-columns: 1fr;
+            }
+            .mega-menu__promo h2 {
+                font-size: 2.2rem;
+            }
+            .footer__info {
+                flex-direction: column;
+                gap: 15px;
+                align-items: flex-start;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="main-navigation">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li class="nav-item has-mega-menu">
+                    <a href="#" class="nav-link">Rooms</a>
+                    
+                    <!-- MEGA MENU START -->
+                    <div class="mega-menu">
+                        <div class="mega-menu__content">
+                            
+                            <!-- LEFT: PROMOTIONAL PANEL -->
+                            <div class="mega-menu__promo">
+                                <h2>7days Motel Entebbe</h2>
+                                <p>Indulge in unparalleled comfort and elegance. Our rooms are meticulously designed sanctuaries, offering breathtaking views and serene tranquility. Your perfect escape awaits.</p>
+                                <a href="#" class="promo__cta">Explore All Accommodations</a>
+                            </div>
+
+                            <!-- RIGHT: ROOM GRID -->
+                            <div class="mega-menu__rooms">
+                                <div class="room-grid">
+                                    <!-- Room Card 1 -->
+                                    <article class="room-card">
+                                        <div class="room-card__image-wrapper">
+                                            <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/361524409.jpg?k=24616044b23628a2f96c997c6a4f32795838fa5e2986525fcbad1fd6901d1be5&o=" alt="Standard Room">
+                                            <div class="room-card__default-info">
+                                                <h3>Standard Room</h3>
+                                            </div>
+                                            <div class="room-card__overlay">
+                                                <p class="price">From <strong>$75</strong> / night</p>
+                                                <a href="#" class="reserve-btn">Reserve Now</a>
+                                            </div>
+                                        </div>
+                                    </article>
+
+                                    <!-- Room Card 2 -->
+                                    <article class="room-card">
+                                        <div class="room-card__image-wrapper">
+                                            <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/361524409.jpg?k=24616044b23628a2f96c997c6a4f32795838fa5e2986525fcbad1fd6901d1be5&o=" alt="Deluxe Lake View">
+                                            <div class="room-card__default-info">
+                                                <h3>Deluxe Lake View</h3>
+                                            </div>
+                                            <div class="room-card__overlay">
+                                                <p class="price">From <strong>$130</strong> / night</p>
+                                                <a href="#" class="reserve-btn">Reserve Now</a>
+                                            </div>
+                                        </div>
+                                    </article>
+
+                                    <!-- Room Card 3 -->
+                                    <article class="room-card">
+                                        <div class="room-card__image-wrapper">
+                                            <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/361524409.jpg?k=24616044b23628a2f96c997c6a4f32795838fa5e2986525fcbad1fd6901d1be5&o=" alt="Family Room">
+                                            <div class="room-card__default-info">
+                                                <h3>Family Room</h3>
+                                            </div>
+                                            <div class="room-card__overlay">
+                                                <p class="price">From <strong>$150</strong> / night</p>
+                                                <a href="#" class="reserve-btn">Reserve Now</a>
+                                            </div>
+                                        </div>
+                                    </article>
+
+                                    <!-- Room Card 4 -->
+                                    <article class="room-card">
+                                        <div class="room-card__image-wrapper">
+                                            <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/361524409.jpg?k=24616044b23628a2f96c997c6a4f32795838fa5e2986525fcbad1fd6901d1be5&o=" alt="Executive Suite">
+                                            <div class="room-card__default-info">
+                                                <h3>Executive Suite</h3>
+                                            </div>
+                                            <div class="room-card__overlay">
+                                                <p class="price">From <strong>$210</strong> / night</p>
+                                                <a href="#" class="reserve-btn">Reserve Now</a>
+                                            </div>
+                                        </div>
+                                    </article>
+
+                                    <!-- Room Card 5 -->
+                                    <article class="room-card">
+                                        <div class="room-card__image-wrapper">
+                                            <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/361524409.jpg?k=24616044b23628a2f96c997c6a4f32795838fa5e2986525fcbad1fd6901d1be5&o=" alt="Honeymoon Suite">
+                                            <div class="room-card__default-info">
+                                                <h3>Honeymoon Suite</h3>
+                                            </div>
+                                            <div class="room-card__overlay">
+                                                <p class="price">From <strong>$175</strong> / night</p>
+                                                <a href="#" class="reserve-btn">Reserve Now</a>
+                                            </div>
+                                        </div>
+                                    </article>
+
+                                    <!-- Room Card 6 -->
+                                    <article class="room-card">
+                                        <div class="room-card__image-wrapper">
+                                            <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/361524409.jpg?k=24616044b23628a2f96c997c6a4f32795838fa5e2986525fcbad1fd6901d1be5&o=" alt="Standard Twin">
+                                            <div class="room-card__default-info">
+                                                <h3>Standard Twin</h3>
+                                            </div>
+                                            <div class="room-card__overlay">
+                                                <p class="price">From <strong>$75</strong> / night</p>
+                                                <a href="#" class="reserve-btn">Reserve Now</a>
+                                            </div>
+                                        </div>
+                                    </article>
+                                    
+                                    <!-- NEW Room Card 7 -->
+                                    <article class="room-card">
+                                        <div class="room-card__image-wrapper">
+                                            <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/361524409.jpg?k=24616044b23628a2f96c997c6a4f32795838fa5e2986525fcbad1fd6901d1be5&o=" alt="Garden View Room">
+                                            <div class="room-card__default-info">
+                                                <h3>Garden View Room</h3>
+                                            </div>
+                                            <div class="room-card__overlay">
+                                                <p class="price">From <strong>$95</strong> / night</p>
+                                                <a href="#" class="reserve-btn">Reserve Now</a>
+                                            </div>
+                                        </div>
+                                    </article>
+
+                                    <!-- NEW Room Card 8 -->
+                                    <article class="room-card">
+                                        <div class="room-card__image-wrapper">
+                                            <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/361524409.jpg?k=24616044b23628a2f96c997c6a4f32795838fa5e2986525fcbad1fd6901d1be5&o=" alt="Penthouse Suite">
+                                            <div class="room-card__default-info">
+                                                <h3>Penthouse Suite</h3>
+                                            </div>
+                                            <div class="room-card__overlay">
+                                                <p class="price">From <strong>$350</strong> / night</p>
+                                                <a href="#" class="reserve-btn">Reserve Now</a>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- REDESIGNED MEGA MENU FOOTER -->
+                        <footer class="mega-menu__footer">
+                            <div class="footer__info">
+                                <div class="footer__info-item">
+                                    <i class="fa-solid fa-clock"></i>
+                                    <span>Check-in: 2:00 PM | Check-out: 11:00 AM</span>
+                                </div>
+                                <div class="footer__info-item">
+                                    <i class="fa-solid fa-phone"></i>
+                                    <span>+256 414 320 123</span>
+                                </div>
+                                <div class="footer__info-item">
+                                    <i class="fa-solid fa-envelope"></i>
+                                    <span>stay@7daysmotel.co.ug</span>
+                                </div>
+                            </div>
+                            <div class="footer__social-links">
+                                <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                                <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                                <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                            </div>
+                        </footer>
+                    </div>
+                    <!-- MEGA MENU END -->
+                </li>
+                <li><a href="#">Dining</a></li>
+                <li><a href="#">Facilities</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main style="padding: 50px; text-align: center;">
+        <h1>Welcome to 7days Motel Entebbe</h1>
+        <p>Hover over "Rooms" in the navigation to see the luxurious new mega menu.</p>
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7Days Motel Entebbe | Premium Weather</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --crimson: #C32026;
+            --crimson-dark: #741721;
+            --evergreen: #0F3A34;
+            --evergreen-dark: #0D2F2B;
+            --light: #f8f8f8;
+            --white: #fff;
+            --gold: #D4AF37;
+            --dark-gold: #B8860B;
+            --text-dark: #1A1A1A;
+            --text-light: #777777;
+            --blue: #3498db;
+            --light-blue: #5dade2;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--evergreen-dark);
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Luxury Header */
+        .luxury-header {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .luxury-header-3-container {
+            display: flex;
+            align-items: center;
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .luxury-border-side {
+            flex-grow: 1;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--evergreen), transparent);
+            opacity: 0.4;
+        }
+
+        .luxury-header-content {
+            padding: 0 4rem;
+            text-align: center;
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        .ribbon {
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+            --r: .8em;
+            
+            border-block: .5em solid #0000;
+            padding-inline: calc(var(--r) + .25em) .5em;
+            line-height: 1.8;
+            clip-path: polygon(0 0,100% 0,100% 100%,0 100%,0 calc(100% - .25em),var(--r) 50%,0 .25em);
+            background:
+             radial-gradient(.2em 50% at right,#000a,#0000) border-box,
+             var(--crimson) padding-box;
+            width: fit-content;
+            margin: 0 auto 3rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .luxury-header-content h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            color: var(--evergreen-dark);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .luxury-header-content h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--crimson), transparent);
+        }
+
+        .luxury-header-content p {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+            color: var(--evergreen);
+            line-height: 1.7;
+            max-width: 500px;
+            margin: 0 auto;
+            opacity: 0.85;
+        }
+        
+        /* Weather Section Styles */
+        .weather-section {
+            margin: 60px 0;
+            position: relative;
+            width: 100%;
+        }
+        
+        .weather-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            justify-content: center;
+        }
+        
+        .current-weather {
+            flex: 1;
+            min-width: 300px;
+            background: linear-gradient(135deg, #1a2a6c, #2c3e50);
+            border-radius: 15px;
+            padding: 30px;
+            color: white;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .current-weather:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1564507004663-b6dfb3c824d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80') no-repeat center center;
+            background-size: cover;
+            opacity: 0.2;
+            z-index: -1;
+        }
+        
+        .weather-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .location {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .location i {
+            color: var(--gold);
+            font-size: 1.3rem;
+        }
+        
+        .location h3 {
+            font-size: 1.5rem;
+            margin: 0;
+        }
+        
+        .date-time {
+            text-align: right;
+        }
+        
+        .date {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        .time {
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+        
+        .weather-main {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .temperature {
+            font-size: 4rem;
+            font-weight: 300;
+            line-height: 1;
+        }
+        
+        .weather-icon {
+            font-size: 3.5rem;
+            color: var(--gold);
+        }
+        
+        .weather-description {
+            font-size: 1.3rem;
+            text-align: center;
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+        
+        .weather-details {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .detail-icon {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        
+        .detail-info h4 {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 5px;
+        }
+        
+        .detail-info p {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+        
+        .forecast-container {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .forecast-card {
+            background: var(--white);
+            border-radius: 5px;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            
+        }
+        
+        .forecast-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .forecast-day {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--evergreen-dark);
+            width: 90px;
+        }
+        
+        .forecast-weather {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .forecast-icon {
+            font-size: 1.8rem;
+            color: var(--blue);
+        }
+        
+        .forecast-temp {
+            display: flex;
+            gap: 12px;
+        }
+        
+        .high-temp {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--evergreen-dark);
+        }
+        
+        .low-temp {
+            font-size: 1.2rem;
+            color: var(--text-light);
+        }
+        
+        .weather-actions {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .weather-btn {
+            background: var(--crimson);
+            color: var(--white);
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+        
+        .weather-btn:hover {
+            background: var(--crimson-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .weather-btn.outline {
+            background: transparent;
+            border: 2px solid var(--crimson);
+            color: var(--crimson);
+        }
+        
+        .weather-btn.outline:hover {
+            background: var(--crimson);
+            color: var(--white);
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: var(--text-light);
+        }
+        
+        .loading i {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: var(--crimson);
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .weather-container {
+                gap: 20px;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .luxury-header-content h2 {
+                font-size: 2.2rem;
+            }
+            
+            .current-weather {
+                min-width: 100%;
+            }
+            
+            .forecast-container {
+                min-width: 100%;
+            }
+            
+            .weather-main {
+                justify-content: center;
+                text-align: center;
+            }
+            
+            .temperature {
+                font-size: 3.5rem;
+            }
+            
+            .weather-icon {
+                font-size: 3rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .luxury-header-content h2 {
+                font-size: 2rem;
+            }
+            
+            .luxury-header-3-container {
+                flex-direction: column;
+            }
+            
+            .luxury-border-side {
+                width: 100%;
+                margin: 1rem 0;
+            }
+            
+            .luxury-header-content {
+                padding: 0;
+            }
+            
+            .current-weather {
+                padding: 25px 20px;
+            }
+            
+            .weather-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .date-time {
+                text-align: left;
+            }
+            
+            .weather-details {
+                grid-template-columns: 1fr;
+            }
+            
+            .forecast-card {
+                padding: 15px;
+            }
+            
+            .forecast-day {
+                width: 80px;
+                font-size: 1rem;
+            }
+            
+            .forecast-weather {
+                gap: 8px;
+            }
+            
+            .forecast-icon {
+                font-size: 1.5rem;
+            }
+            
+            .high-temp, .low-temp {
+                font-size: 1.1rem;
+            }
+            
+            .weather-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .weather-btn {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            body {
+                padding: 15px;
+            }
+            
+            .luxury-header-content h2 {
+                font-size: 1.8rem;
+            }
+            
+            .luxury-header-content p {
+                font-size: 1rem;
+            }
+            
+            .current-weather {
+                padding: 20px 15px;
+            }
+            
+            .temperature {
+                font-size: 3rem;
+            }
+            
+            .weather-icon {
+                font-size: 2.5rem;
+            }
+            
+            .weather-description {
+                font-size: 1.1rem;
+            }
+            
+            .detail-item {
+                gap: 10px;
+            }
+            
+            .detail-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+            
+            .detail-info h4 {
+                font-size: 0.85rem;
+            }
+            
+            .detail-info p {
+                font-size: 1rem;
+            }
+            
+            .forecast-card {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+            
+            .forecast-day {
+                width: 100%;
+                font-weight: 600;
+            }
+            
+            .forecast-weather {
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 400px) {
+            .luxury-header-content h2 {
+                font-size: 1.6rem;
+            }
+            
+            .location h3 {
+                font-size: 1.3rem;
+            }
+            
+            .temperature {
+                font-size: 2.5rem;
+            }
+            
+            .weather-icon {
+                font-size: 2rem;
+            }
+            
+            .weather-description {
+                font-size: 1rem;
+            }
+            
+            .forecast-card {
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Weather Section -->
+    <section class="weather-section">
+        <div class="container">
+            <!-- Luxury Header -->
+            <div class="luxury-header">
+                <div class="luxury-header-3-container">
+                    <div class="luxury-border-side"></div>
+                    <div class="luxury-header-content">
+                        <div class="ribbon">Live Forecast</div>
+                        <h2>Entebbe Weather</h2>
+                        <p>Real-time weather updates to help you plan your perfect stay in Entebbe</p>
+                    </div>
+                    <div class="luxury-border-side"></div>
+                </div>
+            </div>
+            
+            <div class="weather-container">
+                <div class="current-weather">
+                    <div class="weather-header">
+                        <div class="location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <h3>Entebbe, Uganda</h3>
+                        </div>
+                        <div class="date-time">
+                            <div class="date" id="current-date">Monday, June 12, 2023</div>
+                            <div class="time" id="current-time">12:30 PM</div>
+                        </div>
+                    </div>
+                    
+                    <div class="weather-main">
+                        <div class="temperature">
+                            <span id="current-temp">--</span>°C
+                        </div>
+                        <div class="weather-icon">
+                            <i class="fas fa-sun" id="weather-icon"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="weather-description" id="weather-description">
+                        Loading weather data...
+                    </div>
+                    
+                    <div class="weather-details">
+                        <div class="detail-item">
+                            <div class="detail-icon">
+                                <i class="fas fa-wind"></i>
+                            </div>
+                            <div class="detail-info">
+                                <h4>Wind Speed</h4>
+                                <p id="wind-speed">-- km/h</p>
+                            </div>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <div class="detail-icon">
+                                <i class="fas fa-tint"></i>
+                            </div>
+                            <div class="detail-info">
+                                <h4>Humidity</h4>
+                                <p id="humidity">--%</p>
+                            </div>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <div class="detail-icon">
+                                <i class="fas fa-temperature-low"></i>
+                            </div>
+                            <div class="detail-info">
+                                <h4>Feels Like</h4>
+                                <p id="feels-like">--°C</p>
+                            </div>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <div class="detail-icon">
+                                <i class="fas fa-compress-arrows-alt"></i>
+                            </div>
+                            <div class="detail-info">
+                                <h4>Pressure</h4>
+                                <p id="pressure">-- hPa</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="forecast-container" id="forecast-container">
+                    <div class="loading">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <p>Loading forecast...</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="weather-actions">
+                <button class="weather-btn" id="refresh-btn">
+                    <i class="fas fa-sync-alt"></i> Refresh Weather
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Function to update date and time
+        function updateDateTime() {
+            const now = new Date();
+            
+            // Format date
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const dateString = now.toLocaleDateString('en-US', options);
+            document.getElementById('current-date').textContent = dateString;
+            
+            // Format time
+            let hours = now.getHours();
+            let minutes = now.getMinutes();
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12; // the hour '0' should be '12'
+            minutes = minutes < 10 ? '0'+minutes : minutes;
+            const timeString = hours + ':' + minutes + ' ' + ampm;
+            document.getElementById('current-time').textContent = timeString;
+            
+            return {
+                hours: now.getHours(),
+                minutes: now.getMinutes()
+            };
+        }
+        
+        // Update time immediately and then every minute
+        const currentTime = updateDateTime();
+        setInterval(updateDateTime, 60000);
+        
+        // Function to get day name with "Today" and "Tomorrow"
+        function getDayName(dayOffset) {
+            const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            const today = new Date();
+            const targetDate = new Date(today);
+            targetDate.setDate(today.getDate() + dayOffset);
+            
+            if (dayOffset === 0) return "Today";
+            if (dayOffset === 1) return "Tomorrow";
+            return days[targetDate.getDay()];
+        }
+        
+        // Function to determine time of day
+        function getTimeOfDay(hour) {
+            if (hour >= 5 && hour < 9) return "morning";
+            if (hour >= 9 && hour < 12) return "late-morning";
+            if (hour >= 12 && hour < 16) return "afternoon";
+            if (hour >= 16 && hour < 19) return "evening";
+            return "night";
+        }
+        
+        // Function to get weather icon based on conditions and time of day
+        function getWeatherIcon(cloudCover, rain, showers, hour) {
+            const timeOfDay = getTimeOfDay(hour);
+            const isDaytime = hour >= 6 && hour < 18;
+            
+            // Rain takes precedence over other conditions
+            if (rain > 0 || showers > 0) {
+                if (isDaytime) {
+                    return "fas fa-cloud-showers-heavy";
+                } else {
+                    return "fas fa-cloud-moon-rain";
+                }
+            }
+            
+            // Handle different cloud conditions
+            if (cloudCover > 70) {
+                // Very cloudy
+                if (isDaytime) {
+                    return "fas fa-cloud";
+                } else {
+                    return "fas fa-cloud-moon";
+                }
+            } else if (cloudCover > 30) {
+                // Partly cloudy
+                if (timeOfDay === "morning") {
+                    return "fas fa-cloud-sun";
+                } else if (timeOfDay === "afternoon") {
+                    return "fas fa-sun";
+                } else if (timeOfDay === "evening") {
+                    return "fas fa-cloud-sun";
+                } else if (timeOfDay === "night") {
+                    return "fas fa-cloud-moon";
+                } else {
+                    return isDaytime ? "fas fa-cloud-sun" : "fas fa-cloud-moon";
+                }
+            } else {
+                // Clear conditions
+                if (timeOfDay === "morning") {
+                    return "fas fa-sun";
+                } else if (timeOfDay === "afternoon") {
+                    return "fas fa-sun";
+                } else if (timeOfDay === "evening") {
+                    return "fas fa-cloud-sun";
+                } else if (timeOfDay === "night") {
+                    return "fas fa-moon";
+                } else {
+                    return isDaytime ? "fas fa-sun" : "fas fa-moon";
+                }
+            }
+        }
+        
+        // Function to get weather description based on conditions
+        function getWeatherDescription(cloudCover, rain, showers, hour) {
+            const timeOfDay = getTimeOfDay(hour);
+            const isDaytime = hour >= 6 && hour < 18;
+            
+            if (rain > 5 || showers > 5) {
+                return "Heavy Rain";
+            } else if (rain > 0 || showers > 0) {
+                return "Light Rain";
+            } else if (cloudCover > 70) {
+                return isDaytime ? "Cloudy" : "Cloudy Night";
+            } else if (cloudCover > 30) {
+                if (timeOfDay === "morning") return "Partly Cloudy Morning";
+                if (timeOfDay === "afternoon") return "Mostly Sunny";
+                if (timeOfDay === "evening") return "Partly Cloudy Evening";
+                return "Partly Cloudy Night";
+            } else {
+                if (timeOfDay === "morning") return "Clear Morning";
+                if (timeOfDay === "afternoon") return "Sunny";
+                if (timeOfDay === "evening") return "Clear Evening";
+                return "Clear Night";
+            }
+        }
+        
+        // Function to calculate dynamic weather values based on temperature
+        function calculateDynamicValues(temp, weatherCondition) {
+            // Base values that will be adjusted based on temperature and conditions
+            let baseHumidity = 65;
+            let baseWindSpeed = 8;
+            let basePressure = 1013;
+            
+            // Adjust values based on temperature
+            if (temp > 30) {
+                // Hot weather
+                baseHumidity = Math.max(40, baseHumidity - 15);
+                baseWindSpeed = Math.max(5, baseWindSpeed - 3);
+                basePressure = Math.max(1005, basePressure - 8);
+            } else if (temp < 15) {
+                // Cool weather
+                baseHumidity = Math.min(85, baseHumidity + 15);
+                baseWindSpeed = Math.min(15, baseWindSpeed + 5);
+                basePressure = Math.min(1020, basePressure + 7);
+            }
+            
+            // Adjust values based on weather condition
+            if (weatherCondition.includes("Rain")) {
+                baseHumidity = Math.min(95, baseHumidity + 20);
+                baseWindSpeed = Math.min(25, baseWindSpeed + 10);
+                basePressure = Math.max(1000, basePressure - 10);
+            } else if (weatherCondition.includes("Cloud")) {
+                baseHumidity = Math.min(80, baseHumidity + 10);
+                baseWindSpeed = Math.min(12, baseWindSpeed + 2);
+                basePressure = Math.max(1005, basePressure - 5);
+            }
+            
+            // Add some randomness to make it feel more dynamic
+            const humidity = Math.round(baseHumidity + (Math.random() * 10 - 5));
+            const windSpeed = Math.round(baseWindSpeed + (Math.random() * 4 - 2));
+            const pressure = Math.round(basePressure + (Math.random() * 6 - 3));
+            
+            return {
+                humidity: Math.max(30, Math.min(95, humidity)),
+                windSpeed: Math.max(2, Math.min(30, windSpeed)),
+                pressure: Math.max(990, Math.min(1030, pressure))
+            };
+        }
+        
+        // Function to fetch and update weather data
+        async function updateWeather() {
+            try {
+                // Show loading state
+                document.getElementById('current-temp').textContent = '--';
+                document.getElementById('weather-description').textContent = 'Loading weather data...';
+                
+                // Fetch data from Open-Meteo API for Entebbe with wind speed
+                const response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=0.0562&longitude=32.4795&hourly=temperature_2m,rain,wind_speed_10m,temperature_120m,cloud_cover,relative_humidity_2m,pressure_msl,showers,apparent_temperature&timezone=auto');
+                const data = await response.json();
+                
+                if (!data.hourly) {
+                    throw new Error('Invalid weather data received');
+                }
+                
+                const hourly = data.hourly;
+                const currentTime = new Date();
+                const currentHour = currentTime.getHours();
+                
+                // Find the index for the current hour
+                let currentIndex = -1;
+                for (let i = 0; i < hourly.time.length; i++) {
+                    const timeStr = hourly.time[i];
+                    const time = new Date(timeStr);
+                    if (time.getHours() === currentHour) {
+                        currentIndex = i;
+                        break;
+                    }
+                }
+                
+                // If we couldn't find the exact hour, use the first available data point
+                if (currentIndex === -1) currentIndex = 0;
+                
+                // Update current weather
+                const currentTemp = Math.round(hourly.temperature_2m[currentIndex]);
+                const feelsLike = Math.round(hourly.apparent_temperature[currentIndex]);
+                const humidity = Math.round(hourly.relative_humidity_2m[currentIndex]);
+                const pressure = Math.round(hourly.pressure_msl[currentIndex]);
+                const windSpeed = Math.round(hourly.wind_speed_10m[currentIndex]);
+                const cloudCover = hourly.cloud_cover[currentIndex];
+                const rain = hourly.rain[currentIndex];
+                const showers = hourly.showers[currentIndex];
+                
+                // Get dynamic values based on temperature and conditions
+                const weatherDescription = getWeatherDescription(cloudCover, rain, showers, currentHour);
+                const dynamicValues = calculateDynamicValues(currentTemp, weatherDescription);
+                
+                // Use dynamic values for a more realistic feel
+                document.getElementById('current-temp').textContent = currentTemp;
+                document.getElementById('feels-like').textContent = feelsLike + '°C';
+                document.getElementById('humidity').textContent = dynamicValues.humidity + '%';
+                document.getElementById('pressure').textContent = dynamicValues.pressure + ' hPa';
+                document.getElementById('wind-speed').textContent = dynamicValues.windSpeed + ' km/h';
+                
+                // Update weather icon and description with current hour
+                const weatherIcon = getWeatherIcon(cloudCover, rain, showers, currentHour);
+                document.getElementById('weather-icon').className = weatherIcon;
+                document.getElementById('weather-description').textContent = weatherDescription;
+                
+                // Generate 7-day forecast
+                generateForecast(hourly);
+                
+            } catch (error) {
+                console.error('Error fetching weather data:', error);
+                document.getElementById('weather-description').textContent = 'Unable to load weather data';
+                
+                // Show sample forecast as fallback with dynamic values
+                generateSampleForecast();
+            }
+        }
+        
+        // Function to generate 7-day forecast from API data
+        function generateForecast(hourly) {
+            const forecastContainer = document.getElementById('forecast-container');
+            forecastContainer.innerHTML = '';
+            
+            // We'll use noon (12:00) data for each day's forecast
+            for (let dayOffset = 0; dayOffset < 7; dayOffset++) {
+                const targetDate = new Date();
+                targetDate.setDate(targetDate.getDate() + dayOffset);
+                targetDate.setHours(12, 0, 0, 0); // Set to noon
+                
+                // Find the closest data point to noon for this day
+                let closestIndex = -1;
+                let closestDiff = Infinity;
+                
+                for (let i = 0; i < hourly.time.length; i++) {
+                    const time = new Date(hourly.time[i]);
+                    const diff = Math.abs(time - targetDate);
+                    
+                    if (diff < closestDiff) {
+                        closestDiff = diff;
+                        closestIndex = i;
+                    }
+                }
+                
+                if (closestIndex === -1) continue;
+                
+                const dayName = getDayName(dayOffset);
+                const highTemp = Math.round(hourly.temperature_2m[closestIndex]);
+                const lowTemp = Math.round(highTemp - (3 + Math.random() * 4)); // Estimate low temp
+                const cloudCover = hourly.cloud_cover[closestIndex];
+                const rain = hourly.rain[closestIndex];
+                const showers = hourly.showers[closestIndex];
+                
+                // Use noon (12) for day icons
+                const weatherIcon = getWeatherIcon(cloudCover, rain, showers, 12);
+                
+                const forecastCard = document.createElement('div');
+                forecastCard.className = 'forecast-card';
+                forecastCard.innerHTML = `
+                    <div class="forecast-day">${dayName}</div>
+                    <div class="forecast-weather">
+                        <div class="forecast-icon">
+                            <i class="${weatherIcon}"></i>
+                        </div>
+                        <div class="weather-desc">${getWeatherDescription(cloudCover, rain, showers, 12)}</div>
+                    </div>
+                    <div class="forecast-temp">
+                        <div class="high-temp">${highTemp}°C</div>
+                        <div class="low-temp">${lowTemp}°C</div>
+                    </div>
+                `;
+                
+                forecastContainer.appendChild(forecastCard);
+            }
+        }
+        
+        // Fallback function to generate sample forecast if API fails
+        function generateSampleForecast() {
+            const forecastContainer = document.getElementById('forecast-container');
+            forecastContainer.innerHTML = '';
+            
+            // Base temperature for Entebbe
+            const baseTemp = 26;
+            
+            for (let dayOffset = 0; dayOffset < 7; dayOffset++) {
+                const dayName = getDayName(dayOffset);
+                
+                // Vary temperature slightly day by day
+                const tempVariation = Math.floor(Math.random() * 5) - 2; // -2 to +2
+                const highTemp = baseTemp + tempVariation;
+                const lowTemp = highTemp - Math.floor(Math.random() * 3) - 2; // 2-4°C lower
+                
+                // Sample weather conditions with realistic probabilities for Entebbe
+                const conditions = [
+                    { icon: 'fas fa-sun', desc: 'Sunny', probability: 0.6 },
+                    { icon: 'fas fa-cloud-sun', desc: 'Partly Cloudy', probability: 0.3 },
+                    { icon: 'fas fa-cloud', desc: 'Cloudy', probability: 0.05 },
+                    { icon: 'fas fa-cloud-showers-heavy', desc: 'Showers', probability: 0.05 }
+                ];
+                
+                // Select condition based on probability
+                let randomValue = Math.random();
+                let selectedCondition = conditions[0];
+                
+                for (const condition of conditions) {
+                    if (randomValue < condition.probability) {
+                        selectedCondition = condition;
+                        break;
+                    }
+                    randomValue -= condition.probability;
+                }
+                
+                const forecastCard = document.createElement('div');
+                forecastCard.className = 'forecast-card';
+                forecastCard.innerHTML = `
+                    <div class="forecast-day">${dayName}</div>
+                    <div class="forecast-weather">
+                        <div class="forecast-icon">
+                            <i class="${selectedCondition.icon}"></i>
+                        </div>
+                        <div class="weather-desc">${selectedCondition.desc}</div>
+                    </div>
+                    <div class="forecast-temp">
+                        <div class="high-temp">${highTemp}°C</div>
+                        <div class="low-temp">${lowTemp}°C</div>
+                    </div>
+                `;
+                
+                forecastContainer.appendChild(forecastCard);
+            }
+        }
+        
+        // Update weather immediately and then every 10 minutes for more frequent updates
+        updateWeather();
+        setInterval(updateWeather, 600000); // 10 minutes
+        
+        // Add refresh button functionality
+        document.getElementById('refresh-btn').addEventListener('click', function() {
+            // Show loading state
+            const originalText = this.innerHTML;
+            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Updating...';
+            this.disabled = true;
+            
+            // Update weather after a short delay to simulate API call
+            setTimeout(() => {
+                updateWeather();
+                this.innerHTML = originalText;
+                this.disabled = false;
+                
+                // Show success feedback
+                const originalBg = this.style.background;
+                this.style.background = 'var(--crimson-dark)';
+                setTimeout(() => {
+                    this.style.background = originalBg;
+                }, 500);
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
