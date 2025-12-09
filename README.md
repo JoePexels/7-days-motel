@@ -1,1 +1,1 @@
-# 7-days-motel
+# 7-days-website
